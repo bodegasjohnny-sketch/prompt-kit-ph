@@ -23,18 +23,25 @@ def badge(d):
     d.rounded_rectangle([1040, 30, 1170, 72], 21, fill='#c41e3a'); d.text((1062, 39), 'PREVIEW', font=F(FB, 20), fill='#fff')
 def render(k, outdir):
     outdir.mkdir(parents=True, exist_ok=True)
-    im, d = bg(); x, y, w, h = 380, 60, 470, 680; page(d, x, y, w, h)
-    d.rectangle([x, y, x + w, y + 12], fill='#c41e3a')
-    d.rounded_rectangle([x + 36, y + 50, x + 36 + d.textlength(k['cat'].upper() + ' KIT', font=F(FB, 16)) + 28, y + 84], 17, fill=(196, 30, 58, 60), outline='#ff4d66')
-    d.text((x + 50, y + 57), k['cat'].upper() + ' KIT', font=F(FB, 16), fill='#ff8a9a')
-    ty = y + 120
-    for l in wrap(d, k['title'], F(FB, 44), w - 72)[:4]: d.text((x + 36, ty), l, font=F(FB, 44), fill='#f4f6fa'); ty += 56
-    ty += 16
-    for l in wrap(d, k['summary'], F(FR, 19), w - 72)[:5]: d.text((x + 36, ty), l, font=F(FR, 19), fill='#9aa8bf'); ty += 28
+    im, d = bg(); x, y, w, h = 300, 40, 600, 720; page(d, x, y, w, h)
+    ah = 330; art = Image.open(outdir / f"{k['slug']}-art.jpg").convert('RGB')
+    sw, sh = art.size; ch = int(sw * ah / w); top = max(0, (sh - ch) // 2)
+    art = art.crop((0, top, sw, top + ch)).resize((w, ah), Image.LANCZOS)
+    mask = Image.new('L', (w, ah), 0); ImageDraw.Draw(mask).rounded_rectangle([0, 0, w, ah + 20], 14, fill=255)
+    im.paste(art, (x, y), mask); d = ImageDraw.Draw(im, 'RGBA')
+    d.rectangle([x, y + ah, x + w, y + ah + 8], fill='#c41e3a')
+    cy = y + ah + 30; lab = k['cat'].upper() + ' KIT'
+    d.rounded_rectangle([x + 36, cy, x + 36 + d.textlength(lab, font=F(FB, 15)) + 28, cy + 32], 16, fill=(196, 30, 58, 60), outline='#ff4d66')
+    d.text((x + 50, cy + 7), lab, font=F(FB, 15), fill='#ff8a9a')
+    ty = cy + 48
+    for l in wrap(d, k['title'], F(FB, 38), w - 72)[:2]: d.text((x + 36, ty), l, font=F(FB, 38), fill='#f4f6fa'); ty += 48
+    ty += 6
+    for l in wrap(d, k['summary'], F(FR, 17), w - 72)[:2]: d.text((x + 36, ty), l, font=F(FR, 17), fill='#9aa8bf'); ty += 25
     for i, s in enumerate(['Prompt framework', 'Example prompts', 'How to adapt it', 'Fact check checklist']):
-        yy = y + 470 + i * 38; d.ellipse([x + 36, yy + 6, x + 48, yy + 18], fill='#ff4d66'); d.text((x + 60, yy), s, font=F(FR, 19), fill='#f4f6fa')
-    d.text((x + 36, y + h - 50), 'Prompt Kit PH  |  AI-assisted. Check facts.', font=F(FR, 15), fill='#9aa8bf')
-    badge(d); d.text((40, 750), 'Sample cover of the printable kit', font=F(FR, 18), fill='#9aa8bf')
+        xx = x + 36 + (i % 2) * 270; yy = y + h - 104 + (i // 2) * 32
+        d.ellipse([xx, yy + 6, xx + 11, yy + 17], fill='#ff4d66'); d.text((xx + 22, yy), s, font=F(FR, 17), fill='#f4f6fa')
+    d.text((x + 36, y + h - 34), 'Prompt Kit PH  |  AI-assisted. Check facts.', font=F(FR, 14), fill='#9aa8bf')
+    badge(d); d.text((40, 750), 'Sample cover', font=F(FR, 18), fill='#9aa8bf')
     im.save(outdir / f"{k['slug']}-cover.jpg", quality=82, optimize=True, progressive=True)
     im, d = bg(); x, y, w, h = 150, 50, 900, 700; page(d, x, y, w, h)
     d.text((x + 40, y + 34), k['title'].upper(), font=F(FB, 15), fill='#ff8a9a'); d.text((x + w - 120, y + 34), 'Page 2', font=F(FR, 15), fill='#9aa8bf')

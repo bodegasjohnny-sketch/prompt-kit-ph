@@ -3,7 +3,7 @@
 import json, shutil, pathlib, html, sys
 from previews import render
 from PIL import Image, ImageDraw, ImageFont
-BASE_URL = 'https://example.invalid'   # <- single config value for canonical, OG, sitemap
+BASE_URL = 'https://mjd.johnnybodegas.com'   # <- single config value for canonical, OG, sitemap
 SITE_NAME = 'Prompt Kit PH'
 SRC = pathlib.Path('site'); OUT = pathlib.Path('docs')
 sys.path.insert(0, str(SRC)); from content import KITS, GUIDES, DATE
@@ -86,7 +86,7 @@ def hero(h1, lead, kicker='', extra='', small=True):
 def kitcard(k, lvl='h3'):
     text = E((k['title'] + ' ' + k['summary'] + ' ' + k['cat']).lower())
     return f'''<div class="rv" data-kit data-cat="{E(k['cat'])}" data-text="{text}"><a class="card kitcard" href="/kits/{k['slug']}/">
-<img src="/assets/kits/{k['slug']}-cover.jpg" alt="Preview of the {E(k['title'])} printable cover page" width="1200" height="800" loading="lazy" decoding="async">
+<img src="/assets/kits/{k['slug']}-cover.jpg" alt="Preview of the {E(k['title'])} printable cover page, with its illustration" width="1200" height="800" loading="lazy" decoding="async">
 <span class="tag">{E(k['cat'])}</span><{lvl}>{E(k['title'])}</{lvl}><p>{E(k['summary'])}</p></a></div>'''
 
 def pblock(id_, label, text):
@@ -96,7 +96,7 @@ STEPS = '''<ol class="steps"><li><span>STEP 1</span><strong>Get the idea</strong
 
 def build():
     if OUT.exists(): shutil.rmtree(OUT)
-    OUT.mkdir(); shutil.copytree(SRC / 'css', OUT / 'css'); shutil.copytree(SRC / 'js', OUT / 'js')
+    OUT.mkdir(); (OUT / 'CNAME').write_text('mjd.johnnybodegas.com\n'); (OUT / '.nojekyll').write_text(''); shutil.copytree(SRC / 'css', OUT / 'css'); shutil.copytree(SRC / 'js', OUT / 'js')
     (OUT / 'favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#c41e3a"/><text x="16" y="22" font-family="monospace" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">&gt;_</text></svg>')
     for k in KITS: render(k, SRC / 'assets/kits')
     shutil.copytree(SRC / 'assets', OUT / 'assets')
@@ -149,9 +149,10 @@ def build():
 <nav class="pager" aria-label="More kits"><a class="card prev" href="/kits/{prev['slug']}/"><small>Previous kit</small>{E(prev['title'])}</a><a class="card next" href="/kits/{nxt['slug']}/"><small>Next kit</small>{E(nxt['title'])}</a></nav>
 <section class="related" aria-labelledby="rel"><h2 id="rel">Related kits</h2><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">{''.join(kitcard(x) for x in rel)}</div></section>
 </article>'''
-        prev_html = f'''<figure class="preview"><div class="pv"><img src="/assets/kits/{k['slug']}-cover.jpg" alt="Preview of the printable cover page for the {E(k['title'])}, showing the title and section list" width="1200" height="800" fetchpriority="high" decoding="async"><img src="/assets/kits/{k['slug']}-inside.jpg" alt="Preview of an inside page of the {E(k['title'])}, showing the Role, Context and Output prompt framework and the fact check checklist" width="1200" height="800" loading="lazy" decoding="async"></div><figcaption>Preview of the printable kit. Use Print / Save as PDF to get the full version of this page as a PDF.</figcaption></figure>'''
+        banner = f'''<div class="artbanner"><img src="/assets/kits/{k['slug']}-art.jpg" alt="Illustration for the {E(k['title'])}" width="1152" height="864" fetchpriority="high" decoding="async"></div>'''
+        prev_html = f'''<figure class="preview"><div class="pv"><img src="/assets/kits/{k['slug']}-cover.jpg" alt="Preview of the printable cover page for the {E(k['title'])}, showing the illustration, title and section list" width="1200" height="800" loading="lazy" decoding="async"><img src="/assets/kits/{k['slug']}-inside.jpg" alt="Preview of an inside page of the {E(k['title'])}, showing the Role, Context and Output prompt framework and the fact check checklist" width="1200" height="800" loading="lazy" decoding="async"></div><figcaption>Preview of the printable kit. Use Print / Save as PDF to get the full version of this page as a PDF.</figcaption></figure>'''
         tools = '<div class="tools"><button class="btn pri" type="button" data-print>Print / Save as PDF</button><a class="btn" href="/builder/">Open the builder</a></div>'
-        body = hero(E(k['title']), E(k['summary']), E(k['cat']) + ' kit', f'<div class="meta"><span>{rtime(n)} min read</span><span>Updated {DATE}</span><span>Original content</span></div><p class="notice" role="note">{NOTICE}</p>{tools}{prev_html}') + \
+        body = hero(E(k['title']), E(k['summary']), E(k['cat']) + ' kit', f'<div class="meta"><span>{rtime(n)} min read</span><span>Updated {DATE}</span><span>Original content</span></div><p class="notice" role="note">{NOTICE}</p>{banner}{tools}{prev_html}') + \
             f'<div class="wrap layout"><nav class="toc" aria-label="On this page"><strong>On this page</strong><ol>{"".join(f"<li><a href=\"#{a}\">{b}</a></li>" for a, b in toc)}</ol></nav>{art}</div>'
         howto = {"@context": "https://schema.org", "@type": "HowTo", "name": k['title'], "description": k['summary'], "inLanguage": "en", "image": [url(f"assets/kits/{k['slug']}-cover.jpg"), url(f"assets/kits/{k['slug']}-inside.jpg")], "totalTime": f"PT{rtime(n) + 10}M",
                  "step": [{"@type": "HowToStep", "position": 1, "name": "Set the role", "text": k['role']}, {"@type": "HowToStep", "position": 2, "name": "Add the context", "text": k['context']},
@@ -185,7 +186,7 @@ def build():
     layout('builder/', 'Prompt Builder: Make a 3 Part AI Prompt', 'Free prompt builder that turns your topic, audience and format into a clear Role, Context and Output prompt. Runs in your browser, saves nothing.', body, crumbs=[('builder/', 'Builder')], og_slug='builder', og_kicker='Tool')
     # ABOUT / PRIVACY / 404
     layout('about/', 'About Prompt Kit PH', 'Prompt Kit PH is a free library of original AI prompt kits and guides for Filipino creators, built to teach clear prompts and careful fact-checking.',
-           hero('About Prompt Kit PH', 'A free library of original prompt kits and guides, made for first time and busy creators.', 'Working name') + f'<div class="wrap narrow"><article class="prose" style="padding:40px 0"><h2>What this site is</h2><p>Each kit is a web page with a prompt framework, examples, tips to adapt it and a fact check checklist. You can print any kit or save it as a PDF from your browser.</p><h2>How the content is made</h2><p>Kits and guides are written for this site and drafted with AI assistance, then reviewed. They do not contain verified facts about their topics. The prompts ask you to check facts yourself before publishing.</p><p class="notice" role="note">{NOTICE}</p><h2>What we do not do</h2><ul><li>No accounts, no sign ups.</li><li>No analytics, ads or trackers.</li><li>No collection of what you type in the builder.</li></ul><p>Read the <a href="/privacy/">privacy page</a> for details.</p></article></div>',
+           hero('About Prompt Kit PH', 'A free library of original prompt kits and guides, made for first time and busy creators.', 'Working name') + f'<div class="wrap narrow"><article class="prose" style="padding:40px 0"><h2>What this site is</h2><p>Each kit is a web page with a prompt framework, examples, tips to adapt it and a fact check checklist. You can print any kit or save it as a PDF from your browser.</p><h2>How the content is made</h2><p>Kits and guides are written for this site and drafted with AI assistance, then reviewed. They do not contain verified facts about their topics. The prompts ask you to check facts yourself before publishing.</p><p>Cover illustrations are AI generated.</p><p class="notice" role="note">{NOTICE}</p><h2>What we do not do</h2><ul><li>No accounts, no sign ups.</li><li>No analytics, ads or trackers.</li><li>No collection of what you type in the builder.</li></ul><p>Read the <a href="/privacy/">privacy page</a> for details.</p></article></div>',
            crumbs=[('about/', 'About')], og_slug='about')
     layout('privacy/', 'Privacy', 'Prompt Kit PH uses no cookies, analytics or trackers. The prompt builder runs in your browser and nothing you type is saved or sent.',
            hero('Privacy', 'Short version: we do not collect anything.', '') + '<div class="wrap narrow"><article class="prose" style="padding:40px 0"><h2>No tracking</h2><p>This site has no analytics, ads, cookies or third party scripts. Fonts and scripts load from this site only.</p><h2>The prompt builder</h2><p>The builder runs in your browser. What you type is not stored or sent to any server. Copying uses your browser clipboard.</p><h2>Hosting</h2><p>Like any website, the host server may keep standard access logs. Check the hosting provider for its policy once the site is live.</p></article></div>',
