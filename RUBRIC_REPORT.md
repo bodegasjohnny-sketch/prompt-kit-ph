@@ -134,3 +134,15 @@ PDF **bytes/text were never altered**.
 - Live PDF sha256 matched fresh OSP for all 10 after deploy.
 - Copy all (local server) matched layout text for all 10.
 - Screenshots under `/tmp/osp-audit/shots3/` (local) and `LIVE-390-pkg-drink.png` (live).
+
+## Change 2026-11-05: real name + PDF-only landing + Niche ideas tab (commit 62d511f)
+
+| Check | Result | Evidence |
+|---|---|---|
+| Name replaced everywhere ("Open Source Prompt PH") | PASS | SITE_NAME, header brand (logo kept, "(working name)" removed), titles, OG, JSON-LD, footer, about, privacy, 404, README, app.js/css/content comments, og images + cover previews regenerated, 3 site-written PDFs. `grep -rai "prompt kit ph\|working name" docs` = none; pdftotext of all PDFs = none. |
+| Landing + /kits/ show only the 10 PDF kits | PASS | Home 6 latest PDF kits + "See all 10 kits"; /kits/ "10 kits shown", 10 cards, ItemList 10, chips from PDF kits only; PDF kit pager/related link only PDF kits; no niche URL on home or /kits/. |
+| Niche ideas tab | PASS | Nav: Home, Kits, Niche ideas, Guides, Builder, About (header + footer). /niche-ideas/ lists 3 niche kits; their URLs unchanged, in sitemap, breadcrumb "Niche ideas", pager/related only within niche ideas. |
+| Mobile OK (360/390) + desktop 1280 | PASS | scrollWidth = viewport, nav wraps to 2 rows, tap targets 44px; header non-sticky under 820px to save space. |
+| PDFs untouched / package text | PASS | cmp site/pdfs vs docs/downloads and live: identical (10/10); #package text identical to previous build (10/10). |
+| Tests | PASS | tests/test_site.py: 24 html files, 0 failures (new checks: counts, niche isolation, no old name). |
+| Live | PASS | Pages build `built`; /, /kits/, /niche-ideas/, PDF kit, 3 niche kit URLs, PDF download all 200. |
