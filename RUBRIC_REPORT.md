@@ -234,3 +234,20 @@ Notes: `<title>` for new kits uses the title minus " Creator Kit- AI Prompt Fram
 | Ammunition-v3  Creator Kit- AI Prompt Framework | `ammunition-v3` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Ammunition-3-1.pdf | 4 | Military | 2026-10-23 |
 | Ammunition-v2  Creator Kit- AI Prompt Framework | `ammunition-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Ammunition-2.pdf | 3 | Military | 2026-10-23 |
 | Ammunition-v1  Creator Kit- AI Prompt Framework | `ammunition-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Ammunition-1-1.pdf | 6 | Military | 2026-10-23 |
+
+## Change 2026-11-05: replicate the original site structure (commit 0946268)
+
+Full inventory and gap list: `ORIGINAL_SITE_AUDIT.md`. Checkers: `tests/linkcheck.py` (internal links) and `tests/textdiff.py` (original vs mjd visible text).
+
+| Check | Result | Evidence |
+|---|---|---|
+| Every original menu item present, same label/order, working link | PASS | 7/7 header + 7/7 footer (Premium niche, Video editing guide, Instructions, Explore prompts, Prompt workshop, Search via google, Facebook community); Niche ideas tab appended; anchors #guides/#workshop exist |
+| Every original page has an mjd page with the same text | PASS | 92 original pages (home, /page/2-8/, 2 WP pages, 4 categories + 6 extra category pages, 72 posts): 2655 text lines, 0 missing except 4 lines of visitor comments (intentionally not copied) |
+| Internal links resolve | PASS | 6654 internal links/srcs in docs/, 0 broken; live sitemap 172 URLs all 200; unknown URL returns 404 page |
+| All 67 kits still pass | PASS | live sha256 == recorded OSP sha256 67/67; Full package text unchanged vs previous build 67/67; Copy all + Download present; tests 0 failures |
+| Self-hosted media, no hotlinking | PASS | 5 carousel images, 1 page image, 4 MP4s, 4 .txt attachments (byte-identical) under /assets/osp/ and /files/ |
+| Mobile 360/390 every new page type | PASS | no horizontal scroll at 360/390/1280/1366/1440 on home, page/N, category, search, WP pages, post, kits, kit, niche, guides, builder, about, 404; Menu button (8 items, 44px) below 1366px |
+| Tests | PASS | tests/test_site.py: 173 HTML files, 0 failures |
+| Live | PASS | Pages built 0946268; WebFetch of home and Instructions page shows replicated text |
+
+Not replicated: comment threads/forms, GTM/AdSense/Site Kit sign-in/Ko-fi widget scripts, author/date archives, feeds, attachment pages, wp-admin. docs/ is 102 MB (videos 88 MB).
