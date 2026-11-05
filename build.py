@@ -198,9 +198,12 @@ def hdate(d): x = _dt.date.fromisoformat(d[:10]); return f'{x.strftime("%B")} {x
 def pshort(t): return short(t.replace('.pdf', '').strip())
 PER = 10
 
-def search_form(q=''):
+def search_form(q='', cur_cat=''):
+    chips = ''.join(
+        f'<a class="chip" href="/category/{c["slug"]}/"{" aria-current=page" if c["slug"] == cur_cat else ""}>{E(c["name"])}</a>'
+        for c in OSP_CATS)
     return f'''<form role="search" method="get" class="search-form" action="/search/"><label class="vh" for="site-search">Search articles</label><input class="search" type="search" id="site-search" name="s" placeholder="Search articles…" value="{E(q)}"><button class="btn pri" type="submit">Search</button></form>
-<div class="filters">{''.join(f'<a class="chip" href="/category/{c["slug"]}/">{E(c["name"])}</a>' for c in OSP_CATS)}</div>'''
+<div class="filters" role="navigation" aria-label="Categories">{chips}</div>'''
 
 def pcard(p, lvl='h3'):
     return f'''<article class="card pcard" data-post><div class="kicker">{E(p['catname'])}</div><{lvl}><a href="/{p['slug']}/">{E(p['title'].strip())}</a></{lvl}><p></p><a class="more" href="/{p['slug']}/">Read article ↗</a><div class="pmeta"><span>Partee88</span><time datetime="{p['date']}">{hdate(p['date'])}</time></div></article>'''
@@ -216,8 +219,8 @@ def pager(base, cur, total):
     if cur < total: out.append(f'<a href="{u(cur + 1)}">Next</a>')
     return f'<nav class="pnav" aria-label="Posts pagination"><h2 class="vh">Posts pagination</h2>{"".join(out)}</nav>'
 
-def reading_room(posts, base, cur, total, h='h2', head='Explore the latest articles.', q=''):
-    return f'''<section class="wrap sec" id="guides"><div class="kicker">The creator’s reading room</div><{h}>{E(head)}</{h}>{search_form(q)}
+def reading_room(posts, base, cur, total, h='h2', head='Explore the latest articles.', q='', cur_cat=''):
+    return f'''<section class="wrap sec" id="guides"><div class="kicker">The creator’s reading room</div><{h}>{E(head)}</{h}>{search_form(q, cur_cat)}
 <div class="grid pgrid">{''.join(pcard(p, 'h2' if h == 'h1' else 'h3') for p in posts)}</div>{pager(base, cur, total)}</section>'''
 
 def home_top():
@@ -255,7 +258,7 @@ def osp_site():
         cp = [p for p in OSP_POSTS if p['cat'] == c['slug']]; tot = (len(cp) + PER - 1) // PER
         for n in range(1, tot + 1):
             base = f"category/{c['slug']}/"; path = base if n == 1 else f'{base}page/{n}/'
-            body = '<div class="sp"></div>' + reading_room(cp[(n - 1) * PER:n * PER], '/' + base, n, tot, 'h1', f"Category: {c['name']}")
+            body = '<div class="sp"></div>' + reading_room(cp[(n - 1) * PER:n * PER], '/' + base, n, tot, 'h1', f"Category: {c['name']}", cur_cat=c['slug'])
             layout(path, f"Category: {c['name']}" + ('' if n == 1 else f' – Page {n}'), f"Open Source Prompt PH articles in the {c['name']} category: {len(cp)} AI prompt creator kits with original PDF downloads.", body, crumbs=None, og_slug='cat-' + c['slug'], og_kicker='Category')
     # search (client side; the original uses WordPress ?s=)
     idx = [{"t": p['title'].strip(), "u": f"/{p['slug']}/", "c": p['catname'], "d": p['date'], "h": hdate(p['date'])} for p in OSP_POSTS]

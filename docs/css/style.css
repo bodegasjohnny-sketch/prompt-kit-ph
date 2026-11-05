@@ -193,3 +193,38 @@ footer.site .fbrand{color:#fff;font-weight:800;text-decoration:none;display:inli
 .part .pl{color:var(--red2);font-weight:700;font-size:14px;letter-spacing:.06em}
 .brand .bn{font-weight:800;white-space:nowrap}nav.main ul{flex-wrap:nowrap}@media(max-width:1365px){.js nav.main ul{flex-wrap:wrap}}@media(min-width:1366px){nav.main a{padding:8px 9px}}
 @media(min-width:1366px){nav.main a{white-space:nowrap;font-size:13.5px;padding:8px 8px}nav.main ul{gap:0}}
+
+/* ---- High-contrast menus (WCAG AAA text ≥7:1) ---- */
+:root{--menu-bg:#050d18;--menu-fg:#ffffff;--menu-fg-dim:#e8eef8;--menu-hover:#1a2a44;--menu-active:#8b1224;--menu-border:#d0d8e6}
+header.top{background:var(--menu-bg);border-bottom:2px solid rgba(255,255,255,.28);backdrop-filter:none;-webkit-backdrop-filter:none}
+.menubtn{border:2px solid var(--menu-border);color:var(--menu-fg);background:var(--menu-bg);font-weight:800}
+.menubtn:hover,.menubtn[aria-expanded="true"]{background:var(--menu-hover);border-color:#fff;color:#fff}
+.menubtn:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--menu-active)}
+nav.main a{color:var(--menu-fg);font-weight:700;border:2px solid transparent}
+nav.main a:hover{color:#fff;background:var(--menu-hover);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+nav.main a[aria-current]{background:var(--menu-active);color:#fff;font-weight:800;border:2px solid #fff;box-shadow:inset 0 -3px 0 #fff;text-decoration:none}
+nav.main a:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--menu-active)}
+@media(max-width:1365px){.js nav.main.open{border-top:2px solid rgba(255,255,255,.28);background:var(--menu-bg);padding-top:4px}}
+.chip{color:#fff;background:#0f1f38;border:2px solid var(--menu-border);font-weight:700}
+.chip:hover{background:var(--menu-hover);border-color:#fff;color:#fff;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px}
+.chip[aria-pressed=true],.filters a.chip[aria-current]{background:var(--menu-active);border-color:#fff;color:#fff;font-weight:800;box-shadow:inset 0 -3px 0 #fff;text-decoration:none}
+.chip:focus-visible,.filters a.chip:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--menu-active)}
+.nb-tabs .chip{min-height:44px}
+.pnav a,.pnav span{border:2px solid var(--menu-border);color:#fff;font-weight:700;background:#0f1f38}
+.pnav a:hover{background:var(--menu-hover);border-color:#fff;text-decoration:underline;text-underline-offset:3px}
+.pnav [aria-current]{background:var(--menu-active);border-color:#fff;color:#fff;font-weight:800;box-shadow:inset 0 -3px 0 #fff}
+.pnav a:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--menu-active)}
+footer.site{border-top:2px solid rgba(255,255,255,.28);color:var(--menu-fg-dim)}
+footer.site a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+footer.site a:hover{color:#fff;text-decoration-thickness:2px}
+footer.site a:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--menu-active)}
+footer.site .fbrand{color:#fff;text-decoration:none;border-bottom:2px solid #fff}
+footer.site .fbrand:hover{text-decoration:underline;text-decoration-thickness:2px}
+.mbar{background:var(--menu-bg);border-top:2px solid rgba(255,255,255,.28)}
+.mbar .btn{border:2px solid var(--menu-border);color:#fff;font-weight:800;background:#0f1f38}
+.mbar .btn.pri{background:var(--menu-active);border:2px solid #fff;box-shadow:none}
+.mbar .btn:hover{background:var(--menu-hover);border-color:#fff}
+.mbar .btn:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--menu-active)}
+.toc a{color:var(--menu-fg-dim);font-weight:600}
+.toc a.on,.toc a:hover{color:#fff;border-color:#fff;font-weight:800;background:var(--menu-hover)}
+.toc a:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 5px var(--menu-active)}
