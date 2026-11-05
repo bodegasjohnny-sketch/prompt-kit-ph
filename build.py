@@ -148,7 +148,7 @@ def build():
 <div class="part on"><b>01 · ROLE</b><p>You are a friendly science teacher for Grade 6 students.</p></div>
 <div class="part"><b>02 · CONTEXT</b><p>Topic: why the Philippines has a rainy season. Keep it under 90 seconds. Mark claims I should verify.</p></div>
 <div class="part"><b>03 · OUTPUT</b><p>Give me a 6 scene script with one image prompt per scene.</p></div>
-<p class="muted" style="font-size:13px;margin:14px 0 0">Example prompt for illustration. Results vary by tool.</p></div>'''
+<p class="muted" style="font-size:14px;margin:14px 0 0">Example prompt for illustration. Results vary by tool.</p></div>'''
     body = f'''<section class="hero"><div class="gridbg" aria-hidden="true"></div><div class="orb o1" aria-hidden="true"></div><div class="orb o2" aria-hidden="true"></div>
 <div class="wrap hgrid"><div class="rv"><span class="pill"><b></b>Free AI prompt kits for Filipino creators</span>
 <h1>Write it clearly. <span class="grad">Create it better.</span></h1>
@@ -184,14 +184,18 @@ def build():
             ptext = (SRC/'pdf_text'/f"{k['slug']}.txt").read_text(encoding='utf-8')
             phead = 'Full package: complete text of the PDF'
             pintro = 'This is the complete text of the PDF; downloading gives you the original file.'
+            tfile = SRC/'pdfs'/f"{k['slug']}.title"
+            osp_title = tfile.read_text(encoding='utf-8').strip() if tfile.exists() else dlname
+            orig_line = f'<p class="orig"><strong>Original title:</strong> {E(osp_title)}<br><strong>Original:</strong> {E(osp_title)} ({E(dlname)})</p>'
             guide = '<p class="note"><strong>Simplified starter guide.</strong> The sections below are a simplified starter guide written for this site, not the PDF. The full PDF text is above.</p>'
         else:
             make_pdf(k, OUT/'downloads'/f"{k['slug']}.pdf")
             dlname = f"{k['slug']}.pdf"; ptext = package_text(k)
             phead = 'Full package (site-written)'
             pintro = 'This kit has no original PDF yet. This text and PDF were written for this site from the guide below; they are not an original kit PDF.'
+            orig_line = '<p class="orig"><strong>Site-written kit.</strong> No original Open Source Prompt PH PDF is attached to this page.</p>'
             guide = ''
-        pkg = f'''<section class="pkg" id="package" aria-labelledby="pkg-h"><h2 id="pkg-h">{phead}</h2><p>{pintro}</p>
+        pkg = f'''<section class="pkg" id="package" aria-labelledby="pkg-h"><h2 id="pkg-h">{phead}</h2><p>{pintro}</p>{orig_line}
 <div class="pblock"><div class="ph"><span>{E(k['title'])} (full text)</span><span class="pb"><button class="copy" type="button" data-target="p-package" aria-label="Copy the whole package">Copy all</button><a class="dl" href="/downloads/{k['slug']}.pdf" download="{E(dlname)}">Download PDF</a></span></div><pre id="p-package" class="pkgtext">{E(ptext)}</pre></div></section>{guide}'''
         art = f'''<article class="prose">
 {pkg}<h2 id="overview">Overview</h2><p>{E(k['summary'])}</p><p>{E(k['why'])}</p>
@@ -240,7 +244,7 @@ def build():
 <noscript><p>The builder needs JavaScript. You can still copy the framework from any kit page.</p></noscript></form>
 <div class="card glow out" aria-live="polite"><div class="nb-head"><span>Your prompt</span><span>3 parts</span></div>
 <div class="part on"><b>01 · ROLE</b><p id="o1"></p></div><div class="part on"><b>02 · CONTEXT</b><p id="o2"></p></div><div class="part on"><b>03 · OUTPUT</b><p id="o3"></p></div>
-{pblock('built', 'Full prompt', '')}<p class="muted" style="font-size:13px">{NOTICE}</p></div></div></section>'''
+{pblock('built', 'Full prompt', '')}<p class="muted" style="font-size:14px">{NOTICE}</p></div></div></section>'''
     layout('builder/', 'Prompt Builder: Make a 3 Part AI Prompt', 'Free prompt builder that turns your topic, audience and format into a clear Role, Context and Output prompt. Runs in your browser, saves nothing.', body, crumbs=[('builder/', 'Builder')], og_slug='builder', og_kicker='Tool')
     # ABOUT / PRIVACY / 404
     layout('about/', 'About Prompt Kit PH', 'Prompt Kit PH is a free library of original AI prompt kits and guides for Filipino creators, built to teach clear prompts and careful fact-checking.',
