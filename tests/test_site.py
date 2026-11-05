@@ -42,13 +42,24 @@ for p in pages:
         check('heading order', int(b) <= int(a) + 1, f'{rel} h{a}->h{b}')
     if '/kits/' in rel and rel.count('/') == 3:
         check('kit notice', 'AI-assisted content. Check facts before you publish.' in s, rel)
-        check('kit features', all(x in s for x in ['class="toc"', 'class="copy"', 'data-print', 'class="pager"', 'Related kits', 'crumbs', 'min read', '"HowTo"']), rel)
-from build import KITS
+        check('kit features', all(x in s for x in ['class="toc"', 'class="copy"', 'data-print', 'class="pager"', 'crumbs', 'min read', '"HowTo"']), rel)
+from build import KITS, NICHE, ALL_KITS
+check('10 pdf kits', len(KITS) == 10 and len(NICHE) == 3)
+home = (D/'index.html').read_text(); kidx = (D/'kits/index.html').read_text(); nidx = (D/'niche-ideas/index.html').read_text()
+for k in NICHE:
+    check('niche not on home/kits', f"/kits/{k['slug']}/" not in home and f"/kits/{k['slug']}/" not in kidx, k['slug'])
+    check('niche on niche page', f"/kits/{k['slug']}/" in nidx, k['slug'])
+    pg = (D / f"kits/{k['slug']}/index.html").read_text(); check('niche crumb', '<a href="/niche-ideas/">Niche ideas</a>' in pg and not any(f"/kits/{x['slug']}/" in pg for x in KITS), k['slug'])
 for k in KITS:
+    pg = (D / f"kits/{k['slug']}/index.html").read_text(); check('pdf kit links only pdf kits', 'Related kits' in pg and not any(f"/kits/{x['slug']}/" in pg for x in NICHE), k['slug'])
+check('10 kits shown', '10 kits shown' in kidx and 'See all 10 kits' in home)
+for f in D.rglob('*'):
+    if f.is_file() and f.suffix in ('.html','.js','.xml','.css','.txt') : check('no old name', b'Prompt Kit PH' not in f.read_bytes() and b'working name' not in f.read_bytes().lower(), str(f))
+for k in ALL_KITS:
     for part in ('cover', 'inside'):
         f = D / f"assets/kits/{k['slug']}-{part}.jpg"; check('kit preview images', f.exists() and f.stat().st_size > 5000, str(f))
         pg = (D / f"kits/{k['slug']}/index.html").read_text(); check('kit page shows preview', f"{k['slug']}-{part}.jpg" in pg, k['slug'])
-    for idx in ['kits/index.html']: check('kit card uses cover', f"{k['slug']}-cover.jpg" in (D / idx).read_text(), k['slug'])
+    for idx in ['niche-ideas/index.html' if k in NICHE else 'kits/index.html']: check('kit card uses cover', f"{k['slug']}-cover.jpg" in (D / idx).read_text(), k['slug'])
 check('sitemap count', len(locs) == len(pages) - 1, f'{len(locs)} vs {len(pages)-1}')
 check('robots', 'Sitemap:' in (D / 'robots.txt').read_text())
 for js in D.rglob('*.js'): check('no network in js', not re.search(r'fetch\(|XMLHttpRequest|sendBeacon|https?://', js.read_text()), str(js))

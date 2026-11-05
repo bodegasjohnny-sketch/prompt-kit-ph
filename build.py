@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Build Prompt Kit PH: site/ (content.py, css, js) -> docs/. Change BASE_URL before deploying."""
+"""Build Open Source Prompt PH: site/ (content.py, css, js) -> docs/. Change BASE_URL before deploying."""
 import json, shutil, pathlib, html, sys
 from previews import render
 from PIL import Image, ImageDraw, ImageFont
 BASE_URL = 'https://mjd.johnnybodegas.com'   # <- single config value for canonical, OG, sitemap
-SITE_NAME = 'Prompt Kit PH'
+SITE_NAME = 'Open Source Prompt PH'
 SRC = pathlib.Path('site'); OUT = pathlib.Path('docs')
-sys.path.insert(0, str(SRC)); from content import KITS, GUIDES, DATE
+sys.path.insert(0, str(SRC)); from content import KITS as ALL_KITS, GUIDES, DATE
+KITS = [k for k in ALL_KITS if (SRC/'pdfs'/f"{k['slug']}.pdf").exists()]
+NICHE = [k for k in ALL_KITS if k not in KITS]
 E = html.escape
 NOTICE = 'AI-assisted content. Check facts before you publish.'
 PAGES = []  # (path, title) for sitemap
@@ -39,8 +41,8 @@ def og(slug, title, kicker):
     p = OUT / 'og' / f'{slug}.png'; p.parent.mkdir(exist_ok=True); im.save(p, optimize=True)
     return f'og/{slug}.png'
 
-NAV = [('', 'Home'), ('kits/', 'Kits'), ('guides/', 'Guides'), ('builder/', 'Builder'), ('about/', 'About')]
-def layout(path, title, desc, body, crumbs=None, ld=None, og_slug='home', og_kicker='Prompt Kit PH', mbar=True, robots=None, og_override=None):
+NAV = [('', 'Home'), ('kits/', 'Kits'), ('niche-ideas/', 'Niche ideas'), ('guides/', 'Guides'), ('builder/', 'Builder'), ('about/', 'About')]
+def layout(path, title, desc, body, crumbs=None, ld=None, og_slug='home', og_kicker='Open Source Prompt PH', mbar=True, robots=None, og_override=None):
     full = title if len(title) <= 40 else title
     t = f'{full} | {SITE_NAME}' if path else f'{SITE_NAME}: Free AI Prompt Kits for Creators'
     if len(t) > 64: t = full
@@ -55,7 +57,8 @@ def layout(path, title, desc, body, crumbs=None, ld=None, og_slug='home', og_kic
         crumbs_html = '<nav class="crumbs" aria-label="Breadcrumb"><ol>' + ''.join(
             (f'<li><a href="/{p}">{E(n)}</a></li>' if i < len(items) - 1 else f'<li aria-current="page">{E(n)}</li>') for i, (p, n) in enumerate(items)) + '</ol></nav>'
     body = body.replace('{{crumbs}}', crumbs_html)
-    navh = ''.join(f'<li><a href="/{p}"{" aria-current=page" if (p == path or (p and path.startswith(p))) else ""}>{n}</a></li>' for p, n in NAV)
+    cur = 'niche-ideas/' if any(path == f"kits/{k['slug']}/" for k in NICHE) else path
+    navh = ''.join(f'<li><a href="/{p}"{" aria-current=page" if (p == cur or (p and cur.startswith(p))) else ""}>{n}</a></li>' for p, n in NAV)
     lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
     mb = '<div class="mbar" aria-hidden="false"><a class="btn pri" href="/kits/">Browse kits</a><a class="btn" href="/builder/">Build a prompt</a></div>' if mbar else ''
     doc = f'''<!doctype html>
@@ -69,11 +72,11 @@ def layout(path, title, desc, body, crumbs=None, ld=None, og_slug='home', og_kic
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{E(t)}"><meta name="twitter:description" content="{E(desc)}"><meta name="twitter:image" content="{url(ogimg)}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/css/style.css">{lds}
 </head><body><a class="skip" href="#main">Skip to content</a>
-<header class="top"><div class="in"><a class="brand" href="/" aria-label="{SITE_NAME} home"><i aria-hidden="true"></i><span>Prompt Kit <em>PH</em></span><small>(working name)</small></a>
+<header class="top"><div class="in"><a class="brand" href="/" aria-label="{SITE_NAME} home"><i aria-hidden="true"></i><span>Open Source Prompt <em>PH</em></span></a>
 <nav class="main" aria-label="Main"><ul>{navh}</ul></nav></div></header>
 <main id="main">{body}</main>
-<footer class="site"><div class="wrap"><p>{SITE_NAME} (working name). Free, original prompt guides. No tracking, no accounts.</p>
-<ul><li><a href="/kits/">Kits</a></li><li><a href="/guides/">Guides</a></li><li><a href="/builder/">Builder</a></li><li><a href="/about/">About</a></li><li><a href="/privacy/">Privacy</a></li></ul></div></footer>
+<footer class="site"><div class="wrap"><p>{SITE_NAME}. A little direction. A better creation. Free, original prompt guides. No tracking, no accounts.</p>
+<ul><li><a href="/kits/">Kits</a></li><li><a href="/niche-ideas/">Niche ideas</a></li><li><a href="/guides/">Guides</a></li><li><a href="/builder/">Builder</a></li><li><a href="/about/">About</a></li><li><a href="/privacy/">Privacy</a></li></ul></div></footer>
 {mb}<script src="/js/app.js" defer></script></body></html>'''
     out = OUT / path / 'index.html' if path != '404.html' else OUT / '404.html'
     out.parent.mkdir(parents=True, exist_ok=True); out.write_text(doc)
@@ -96,7 +99,7 @@ STEPS = '''<ol class="steps"><li><span>STEP 1</span><strong>Get the idea</strong
 
 
 def package_text(k):
-    L=[k['title'].upper(), 'Prompt Kit PH | '+k['cat']+' kit', '', 'OVERVIEW', k['summary'], k['why'], '',
+    L=[k['title'].upper(), SITE_NAME+' | '+k['cat']+' kit', '', 'OVERVIEW', k['summary'], k['why'], '',
        'PROMPT FRAMEWORK (replace anything in square brackets)', '', '01 ROLE', k['role'], '', '02 CONTEXT', k['context'], '', '03 OUTPUT', k['output'], '',
        'FULL PROMPT (copy and paste this)', k['role'], k['context'], k['output'], '', 'EXAMPLE PROMPTS']
     for t,x in k['examples']: L+=['', t, x]
@@ -122,7 +125,7 @@ def make_pdf(k, path):
         pre=Paragraph(_h.escape(t).replace('\n','<br/>'),ParagraphStyle('b',fontName='Courier',fontSize=9.5,leading=13))
         tb=Table([[pre]],colWidths=[170*mm]); tb.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),colors.HexColor('#f1f3f7')),('BOX',(0,0),(-1,-1),0.5,colors.HexColor('#c9ced8')),('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),('TOPPADDING',(0,0),(-1,-1),6),('BOTTOMPADDING',(0,0),(-1,-1),6)])); return tb
     full=f"{k['role']}\n{k['context']}\n{k['output']}"
-    st=[Paragraph(_h.escape(k['title']),H),Paragraph('Prompt Kit PH | '+_h.escape(k['cat'])+' kit',S),
+    st=[Paragraph(_h.escape(k['title']),H),Paragraph(SITE_NAME+' | '+_h.escape(k['cat'])+' kit',S),
         Paragraph('Overview',H2),para(k['summary']),para(k['why']),
         Paragraph('Prompt framework (replace anything in square brackets)',H2),
         Paragraph('01 Role',P),box(k['role']),Spacer(1,4),Paragraph('02 Context',P),box(k['context']),Spacer(1,4),Paragraph('03 Output',P),box(k['output']),
@@ -132,14 +135,14 @@ def make_pdf(k, path):
     st+=[Paragraph('Fact check checklist',H2)]+[para('- '+c) for c in k['checks']]
     st+=[Spacer(1,10),Paragraph(_h.escape(NOTICE),S),Paragraph('Free at mjd.johnnybodegas.com',S)]
     def foot(c,d):
-        c.setFont('Helvetica',8); c.setFillColor(colors.grey); c.drawString(20*mm,10*mm,'Prompt Kit PH | '+k['title']); c.drawRightString(190*mm,10*mm,'Page %d'%d.page)
-    SimpleDocTemplate(str(path),pagesize=A4,leftMargin=20*mm,rightMargin=20*mm,topMargin=18*mm,bottomMargin=18*mm,title=k['title'],author='Prompt Kit PH').build(st,onFirstPage=foot,onLaterPages=foot)
+        c.setFont('Helvetica',8); c.setFillColor(colors.grey); c.drawString(20*mm,10*mm,SITE_NAME+' | '+k['title']); c.drawRightString(190*mm,10*mm,'Page %d'%d.page)
+    SimpleDocTemplate(str(path),pagesize=A4,leftMargin=20*mm,rightMargin=20*mm,topMargin=18*mm,bottomMargin=18*mm,title=k['title'],author=SITE_NAME).build(st,onFirstPage=foot,onLaterPages=foot)
 
 def build():
     if OUT.exists(): shutil.rmtree(OUT)
     OUT.mkdir(); (OUT / 'CNAME').write_text('mjd.johnnybodegas.com\n'); (OUT / '.nojekyll').write_text(''); shutil.copytree(SRC / 'css', OUT / 'css'); shutil.copytree(SRC / 'js', OUT / 'js')
     (OUT / 'favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#c41e3a"/><text x="16" y="22" font-family="monospace" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">&gt;_</text></svg>')
-    for k in KITS: render(k, SRC / 'assets/kits')
+    for k in ALL_KITS: render(k, SRC / 'assets/kits')
     shutil.copytree(SRC / 'assets', OUT / 'assets')
     cats = sorted({k['cat'] for k in KITS})
     # HOME
@@ -163,16 +166,23 @@ def build():
     # KITS INDEX
     chips = '<button class="chip" type="button" data-cat="All" aria-pressed="true">All</button>' + ''.join(f'<button class="chip" type="button" data-cat="{E(c)}" aria-pressed="false">{E(c)}</button>' for c in cats)
     body = hero('Creator kits', 'Original prompt frameworks for explainers, scripts and image series. Search by topic or filter by category.', 'Kits library') + f'''
-<section class="sec" style="padding-top:44px"><div class="wrap"><label class="lbl" for="q">Search kits</label><input class="search" id="q" type="search" placeholder="Try: space, food, jeepney" autocomplete="off">
+<section class="sec" style="padding-top:44px"><div class="wrap"><label class="lbl" for="q">Search kits</label><input class="search" id="q" type="search" placeholder="Try: space, dog, logo" autocomplete="off">
 <div class="filters" role="group" aria-label="Filter by category">{chips}</div><p class="count" id="count" aria-live="polite">{len(KITS)} kits shown</p>
 <div class="grid">{''.join(kitcard(k, 'h2') for k in KITS)}</div></div></section>'''
     il = {"@context": "https://schema.org", "@type": "ItemList", "name": "Creator kits", "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": url(f"kits/{k['slug']}/"), "name": k['title']} for i, k in enumerate(KITS)]}
     layout('kits/', 'Creator Kits: Free AI Prompt Frameworks', f'Browse {len(KITS)} free, original AI prompt kits for explainers on animals, space, history, tech and Filipino culture. Search and filter by topic.', body, crumbs=[('kits/', 'Kits')], ld=[il], og_slug='kits', og_kicker='Kits library')
     # KIT PAGES
-    for i, k in enumerate(KITS):
-        prev, nxt = KITS[i - 1], KITS[(i + 1) % len(KITS)]
-        rel = [x for x in KITS if x['cat'] == k['cat'] and x is not k][:3]
-        rel += [x for x in KITS if x not in rel and x is not k and x not in (prev, nxt)][:3 - len(rel)]
+    nbody = hero('Niche ideas', 'Starter niche ideas written for this site. These are not from the original PDF kits.', 'Other niche options') + f'''
+<section class="sec" style="padding-top:44px"><div class="wrap"><p class="muted">Each idea has a site-written prompt framework, examples and a fact check list you can adapt. For the original kits with PDFs, see <a href="/kits/">Kits</a>.</p>
+<div class="grid">{''.join(kitcard(k, 'h2') for k in NICHE)}</div></div></section>'''
+    nil = {"@context": "https://schema.org", "@type": "ItemList", "name": "Niche ideas", "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": url(f"kits/{k['slug']}/"), "name": k['title']} for i, k in enumerate(NICHE)]}
+    layout('niche-ideas/', 'Niche Ideas: Starter Prompt Ideas', 'Starter niche ideas written for this site: jeepney history, Filipino street food and Philippine festivals. Not from the original PDF kits.', nbody, crumbs=[('niche-ideas/', 'Niche ideas')], ld=[nil], og_slug='niche-ideas', og_kicker='Niche ideas')
+    for GROUP in (KITS, NICHE):
+      isn = GROUP is NICHE
+      for i, k in enumerate(GROUP):
+        prev, nxt = GROUP[i - 1], GROUP[(i + 1) % len(GROUP)]
+        rel = [x for x in GROUP if x['cat'] == k['cat'] and x is not k][:3]
+        rel += [x for x in GROUP if x not in rel and x is not k and x not in (prev, nxt)][:3 - len(rel)]
         n = words(k['summary'], k['why'], k['role'], k['context'], k['output'], *[e[1] for e in k['examples']], *k['adapt'], *k['checks']) + 150
         toc = [('package', 'Full package'), ('overview', 'Overview'), ('framework', 'Prompt framework'), ('examples', 'Example prompts'), ('adapt', 'How to adapt it'), ('fact-check', 'Fact check checklist')]
         full = f"{k['role']}\n{k['context']}\n{k['output']}"
@@ -208,8 +218,8 @@ def build():
 <h2 id="fact-check">Fact check checklist</h2><ul class="checklist">{''.join(f'<li>{E(c)}</li>' for c in k['checks'])}</ul>
 <p>See the full method in <a href="/guides/fact-check-ai-output/">how to fact-check AI output</a>.</p>
 <p class="notice" role="note">{NOTICE}</p>
-<nav class="pager" aria-label="More kits"><a class="card prev" href="/kits/{prev['slug']}/"><small>Previous kit</small>{E(prev['title'])}</a><a class="card next" href="/kits/{nxt['slug']}/"><small>Next kit</small>{E(nxt['title'])}</a></nav>
-<section class="related" aria-labelledby="rel"><h2 id="rel">Related kits</h2><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">{''.join(kitcard(x) for x in rel)}</div></section>
+<nav class="pager" aria-label="More kits"><a class="card prev" href="/kits/{prev['slug']}/"><small>{"Previous idea" if isn else "Previous kit"}</small>{E(prev['title'])}</a><a class="card next" href="/kits/{nxt['slug']}/"><small>{"Next idea" if isn else "Next kit"}</small>{E(nxt['title'])}</a></nav>
+<section class="related" aria-labelledby="rel"><h2 id="rel">{"More niche ideas" if isn else "Related kits"}</h2><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">{''.join(kitcard(x) for x in rel)}</div></section>
 </article>'''
         banner = f'''<div class="artbanner"><img src="/assets/kits/{k['slug']}-art.jpg" alt="Illustration for the {E(k['title'])}" width="1152" height="864" fetchpriority="high" decoding="async"></div>'''
         prev_html = f'''<figure class="preview"><div class="pv"><img src="/assets/kits/{k['slug']}-cover.jpg" alt="Preview of the printable cover page for the {E(k['title'])}, showing the illustration, title and section list" width="1200" height="800" loading="lazy" decoding="async"><img src="/assets/kits/{k['slug']}-inside.jpg" alt="Preview of an inside page of the {E(k['title'])}, showing the Role, Context and Output prompt framework and the fact check checklist" width="1200" height="800" loading="lazy" decoding="async"></div><figcaption>Preview of the printable kit. Use Download PDF for the full kit.</figcaption></figure>'''
@@ -221,7 +231,7 @@ def build():
                           {"@type": "HowToStep", "position": 3, "name": "Ask for the output", "text": k['output']}, {"@type": "HowToStep", "position": 4, "name": "Fact check", "text": ' '.join(k['checks'])}]}
         desc = k['summary'] if len(k['summary']) <= 158 else k['summary'][:155].rsplit(' ', 1)[0] + '...'
         if len(desc) < 75: desc += ' Free prompt framework and fact check list.'
-        layout(f"kits/{k['slug']}/", k['title'], desc, body, crumbs=[('kits/', 'Kits'), (f"kits/{k['slug']}/", k['title'])], ld=[howto], og_slug='kit-' + k['slug'], og_kicker=k['cat'] + ' kit', og_override=f"assets/kits/{k['slug']}-cover.jpg")
+        layout(f"kits/{k['slug']}/", k['title'], desc, body, crumbs=[('niche-ideas/', 'Niche ideas') if isn else ('kits/', 'Kits'), (f"kits/{k['slug']}/", k['title'])], ld=[howto], og_slug='kit-' + k['slug'], og_kicker=k['cat'] + ' kit', og_override=f"assets/kits/{k['slug']}-cover.jpg")
     # GUIDES
     gcards = ''.join(f'<div class="rv"><a class="card kitcard" href="/guides/{g["slug"]}/"><img src="/og/guide-{g["slug"]}.png" alt="Cover card for the guide {E(g["title"])}" width="1200" height="630" loading="lazy" decoding="async"><span class="tag">Guide</span><h2 style="font-size:20px;margin:0">{E(g["title"])}</h2><p>{E(g["summary"])}</p></a></div>' for g in GUIDES)
     for g in GUIDES: og('guide-' + g['slug'], g['title'], 'Guide')
@@ -247,13 +257,13 @@ def build():
 {pblock('built', 'Full prompt', '')}<p class="muted" style="font-size:14px">{NOTICE}</p></div></div></section>'''
     layout('builder/', 'Prompt Builder: Make a 3 Part AI Prompt', 'Free prompt builder that turns your topic, audience and format into a clear Role, Context and Output prompt. Runs in your browser, saves nothing.', body, crumbs=[('builder/', 'Builder')], og_slug='builder', og_kicker='Tool')
     # ABOUT / PRIVACY / 404
-    layout('about/', 'About Prompt Kit PH', 'Prompt Kit PH is a free library of original AI prompt kits and guides for Filipino creators, built to teach clear prompts and careful fact-checking.',
-           hero('About Prompt Kit PH', 'A free library of original prompt kits and guides, made for first time and busy creators.', 'Working name') + f'<div class="wrap narrow"><article class="prose" style="padding:40px 0"><h2>What this site is</h2><p>Each kit is a web page with a prompt framework, examples, tips to adapt it and a fact check checklist. You can print any kit or save it as a PDF from your browser.</p><h2>How the content is made</h2><p>Kits and guides are written for this site and drafted with AI assistance, then reviewed. They do not contain verified facts about their topics. The prompts ask you to check facts yourself before publishing.</p><p>Cover illustrations are AI generated.</p><p class="notice" role="note">{NOTICE}</p><h2>What we do not do</h2><ul><li>No accounts, no sign ups.</li><li>No analytics, ads or trackers.</li><li>No collection of what you type in the builder.</li></ul><p>Read the <a href="/privacy/">privacy page</a> for details.</p></article></div>',
+    layout('about/', 'About Open Source Prompt PH', 'Open Source Prompt PH is a free library of original AI prompt kits and guides for Filipino creators, built to teach clear prompts and careful fact-checking.',
+           hero('About Open Source Prompt PH', 'Better prompts. More possibilities. A free library of prompt kits and guides for first time and busy creators.', 'About') + f'<div class="wrap narrow"><article class="prose" style="padding:40px 0"><h2>What this site is</h2><p>Each kit is a web page with a prompt framework, examples, tips to adapt it and a fact check checklist. You can print any kit or save it as a PDF from your browser.</p><h2>How the content is made</h2><p>Kits and guides are written for this site and drafted with AI assistance, then reviewed. They do not contain verified facts about their topics. The prompts ask you to check facts yourself before publishing.</p><p>Cover illustrations are AI generated.</p><p class="notice" role="note">{NOTICE}</p><h2>What we do not do</h2><ul><li>No accounts, no sign ups.</li><li>No analytics, ads or trackers.</li><li>No collection of what you type in the builder.</li></ul><p>Read the <a href="/privacy/">privacy page</a> for details.</p></article></div>',
            crumbs=[('about/', 'About')], og_slug='about')
-    layout('privacy/', 'Privacy', 'Prompt Kit PH uses no cookies, analytics or trackers. The prompt builder runs in your browser and nothing you type is saved or sent.',
+    layout('privacy/', 'Privacy', 'Open Source Prompt PH uses no cookies, analytics or trackers. The prompt builder runs in your browser and nothing you type is saved or sent.',
            hero('Privacy', 'Short version: we do not collect anything.', '') + '<div class="wrap narrow"><article class="prose" style="padding:40px 0"><h2>No tracking</h2><p>This site has no analytics, ads, cookies or third party scripts. Fonts and scripts load from this site only.</p><h2>The prompt builder</h2><p>The builder runs in your browser. What you type is not stored or sent to any server. Copying uses your browser clipboard.</p><h2>Hosting</h2><p>Like any website, the host server may keep standard access logs. Check the hosting provider for its policy once the site is live.</p></article></div>',
            crumbs=[('privacy/', 'Privacy')], og_slug='privacy')
-    layout('404.html', 'Page not found', 'This page could not be found. Browse the free prompt kits or guides on Prompt Kit PH instead.', hero('Page not found', 'That link does not lead anywhere. Try one of these instead.', '', '<div class="ctas"><a class="btn pri" href="/kits/">Browse kits</a><a class="btn" href="/">Go home</a></div>'), robots='noindex', mbar=False)
+    layout('404.html', 'Page not found', 'This page could not be found. Browse the free prompt kits or guides on Open Source Prompt PH instead.', hero('Page not found', 'That link does not lead anywhere. Try one of these instead.', '', '<div class="ctas"><a class="btn pri" href="/kits/">Browse kits</a><a class="btn" href="/">Go home</a></div>'), robots='noindex', mbar=False)
     # SITEMAP / ROBOTS
     (OUT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'<url><loc>{url(p)}</loc><lastmod>{DATE}</lastmod></url>\n' for p in PAGES) + '</urlset>\n')
     (OUT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {url("sitemap.xml")}\n')

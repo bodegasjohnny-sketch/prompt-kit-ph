@@ -1,4 +1,4 @@
-"""Original content for Prompt Kit PH. Written from scratch; no text taken from other sites."""
+"""Original content for Open Source Prompt PH. Written from scratch; no text taken from other sites."""
 DATE = "2026-11-04"
 
 def kit(slug, title, cat, summary, why, role, context, output, examples, adapt, checks):

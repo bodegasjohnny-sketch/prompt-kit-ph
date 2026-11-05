@@ -1,4 +1,4 @@
-// Prompt Kit PH: vanilla JS. No network requests, nothing stored.
+// Open Source Prompt PH: vanilla JS. No network requests, nothing stored.
 (function(){
 var d=document, rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 d.documentElement.classList.add('js');

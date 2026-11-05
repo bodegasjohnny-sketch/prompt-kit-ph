@@ -40,7 +40,7 @@ def render(k, outdir):
     for i, s in enumerate(['Prompt framework', 'Example prompts', 'How to adapt it', 'Fact check checklist']):
         xx = x + 36 + (i % 2) * 270; yy = y + h - 104 + (i // 2) * 32
         d.ellipse([xx, yy + 6, xx + 11, yy + 17], fill='#ff4d66'); d.text((xx + 22, yy), s, font=F(FR, 17), fill='#f4f6fa')
-    d.text((x + 36, y + h - 34), 'Prompt Kit PH  |  AI-assisted. Check facts.', font=F(FR, 14), fill='#9aa8bf')
+    d.text((x + 36, y + h - 34), 'Open Source Prompt PH  |  AI-assisted. Check facts.', font=F(FR, 14), fill='#9aa8bf')
     badge(d); d.text((40, 750), 'Sample cover', font=F(FR, 18), fill='#9aa8bf')
     im.save(outdir / f"{k['slug']}-cover.jpg", quality=82, optimize=True, progressive=True)
     im, d = bg(); x, y, w, h = 150, 50, 900, 700; page(d, x, y, w, h)
