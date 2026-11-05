@@ -94,6 +94,47 @@ def pblock(id_, label, text):
 
 STEPS = '''<ol class="steps"><li><span>STEP 1</span><strong>Get the idea</strong><p>Pick a kit or a topic you care about.</p></li><li><span>STEP 2</span><strong>Make it yours</strong><p>Swap the placeholders for your topic and audience.</p></li><li><span>STEP 3</span><strong>Review the output</strong><p>Read it, then check every fact.</p></li><li><span>STEP 4</span><strong>Refine and repeat</strong><p>Ask for changes to only the parts you want.</p></li></ol>'''
 
+
+def package_text(k):
+    L=[k['title'].upper(), 'Prompt Kit PH | '+k['cat']+' kit', '', 'OVERVIEW', k['summary'], k['why'], '',
+       'PROMPT FRAMEWORK (replace anything in square brackets)', '', '01 ROLE', k['role'], '', '02 CONTEXT', k['context'], '', '03 OUTPUT', k['output'], '',
+       'FULL PROMPT (copy and paste this)', k['role'], k['context'], k['output'], '', 'EXAMPLE PROMPTS']
+    for t,x in k['examples']: L+=['', t, x]
+    L+=['', 'HOW TO ADAPT IT']+[f'{i+1}. {a}' for i,a in enumerate(k['adapt'])]
+    L+=['', 'FACT CHECK CHECKLIST']+['- '+c for c in k['checks']]
+    L+=['', NOTICE, 'Free at mjd.johnnybodegas.com']
+    return '\n'.join(L)
+
+def make_pdf(k, path):
+    from reportlab.lib.pagesizes import A4
+    from reportlab.lib.styles import ParagraphStyle
+    from reportlab.lib.units import mm
+    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Preformatted
+    from reportlab.lib import colors
+    H=ParagraphStyle('h',fontName='Helvetica-Bold',fontSize=20,leading=24,textColor=colors.HexColor('#0a1628'),spaceAfter=4)
+    S=ParagraphStyle('s',fontName='Helvetica',fontSize=10,textColor=colors.grey,spaceAfter=10)
+    H2=ParagraphStyle('h2',fontName='Helvetica-Bold',fontSize=12,leading=15,textColor=colors.HexColor('#b3202a'),spaceBefore=12,spaceAfter=4)
+    P=ParagraphStyle('p',fontName='Helvetica',fontSize=10.5,leading=14.5,spaceAfter=4)
+    import html as _h, textwrap
+    def para(t): return Paragraph(_h.escape(t).replace('\n','<br/>'),P)
+    def box(t):
+        from reportlab.platypus import Table, TableStyle
+        pre=Paragraph(_h.escape(t).replace('\n','<br/>'),ParagraphStyle('b',fontName='Courier',fontSize=9.5,leading=13))
+        tb=Table([[pre]],colWidths=[170*mm]); tb.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,-1),colors.HexColor('#f1f3f7')),('BOX',(0,0),(-1,-1),0.5,colors.HexColor('#c9ced8')),('LEFTPADDING',(0,0),(-1,-1),8),('RIGHTPADDING',(0,0),(-1,-1),8),('TOPPADDING',(0,0),(-1,-1),6),('BOTTOMPADDING',(0,0),(-1,-1),6)])); return tb
+    full=f"{k['role']}\n{k['context']}\n{k['output']}"
+    st=[Paragraph(_h.escape(k['title']),H),Paragraph('Prompt Kit PH | '+_h.escape(k['cat'])+' kit',S),
+        Paragraph('Overview',H2),para(k['summary']),para(k['why']),
+        Paragraph('Prompt framework (replace anything in square brackets)',H2),
+        Paragraph('01 Role',P),box(k['role']),Spacer(1,4),Paragraph('02 Context',P),box(k['context']),Spacer(1,4),Paragraph('03 Output',P),box(k['output']),
+        Paragraph('Full prompt (copy and paste this)',H2),box(full),Paragraph('Example prompts',H2)]
+    for t,x in k['examples']: st+=[Paragraph(_h.escape(t),P),box(x),Spacer(1,4)]
+    st+=[Paragraph('How to adapt it',H2)]+[para(f'{i+1}. {a}') for i,a in enumerate(k['adapt'])]
+    st+=[Paragraph('Fact check checklist',H2)]+[para('- '+c) for c in k['checks']]
+    st+=[Spacer(1,10),Paragraph(_h.escape(NOTICE),S),Paragraph('Free at mjd.johnnybodegas.com',S)]
+    def foot(c,d):
+        c.setFont('Helvetica',8); c.setFillColor(colors.grey); c.drawString(20*mm,10*mm,'Prompt Kit PH | '+k['title']); c.drawRightString(190*mm,10*mm,'Page %d'%d.page)
+    SimpleDocTemplate(str(path),pagesize=A4,leftMargin=20*mm,rightMargin=20*mm,topMargin=18*mm,bottomMargin=18*mm,title=k['title'],author='Prompt Kit PH').build(st,onFirstPage=foot,onLaterPages=foot)
+
 def build():
     if OUT.exists(): shutil.rmtree(OUT)
     OUT.mkdir(); (OUT / 'CNAME').write_text('mjd.johnnybodegas.com\n'); (OUT / '.nojekyll').write_text(''); shutil.copytree(SRC / 'css', OUT / 'css'); shutil.copytree(SRC / 'js', OUT / 'js')
@@ -115,7 +156,7 @@ def build():
 <div class="ctas"><a class="btn pri" href="/kits/">Browse the kits</a><a class="btn" href="/builder/">Try the prompt builder</a></div></div>{nb}</div></section>
 <section class="sec"><div class="wrap"><p class="eyebrow">How it works</p><h2 class="rv">Four steps from idea to a checked draft</h2>{STEPS}</div></section>
 <section class="sec" style="padding-top:0"><div class="wrap"><p class="eyebrow">Latest creator kits</p><h2 class="rv">Ready to adapt, free to read and print</h2>
-<p class="muted">Every kit is a full web page with a prompt framework, worked examples and a fact check list. Use the print button on any kit to save it as a PDF.</p>
+<p class="muted">Every kit is a full web page with a prompt framework, worked examples and a fact check list. Every kit has a Copy all button and a Download PDF button.</p>
 <div class="grid">{''.join(kitcard(k) for k in KITS[-6:][::-1])}</div><div class="ctas"><a class="btn" href="/kits/">See all {len(KITS)} kits</a></div></div></section>
 <section class="sec" style="padding-top:0"><div class="wrap"><div class="cta-box rv"><p class="eyebrow">Prompt builder</p><h2>Build a 3 part prompt in seconds</h2><p class="muted">Type a topic, pick a format and copy the result. Nothing is saved or sent anywhere.</p><div class="ctas"><a class="btn pri" href="/builder/">Open the builder</a><a class="btn" href="/guides/write-a-prompt-in-3-parts/">Read the 3 part guide</a></div></div></div></section>'''
     layout('', SITE_NAME, 'Free, original AI prompt kits and guides for Filipino creators. Copy a framework, adapt it to your topic and fact-check before you publish.', body, og_slug='home')
@@ -133,10 +174,13 @@ def build():
         rel = [x for x in KITS if x['cat'] == k['cat'] and x is not k][:3]
         rel += [x for x in KITS if x not in rel and x is not k and x not in (prev, nxt)][:3 - len(rel)]
         n = words(k['summary'], k['why'], k['role'], k['context'], k['output'], *[e[1] for e in k['examples']], *k['adapt'], *k['checks']) + 150
-        toc = [('overview', 'Overview'), ('framework', 'Prompt framework'), ('examples', 'Example prompts'), ('adapt', 'How to adapt it'), ('fact-check', 'Fact check checklist')]
+        toc = [('package', 'Full package'), ('overview', 'Overview'), ('framework', 'Prompt framework'), ('examples', 'Example prompts'), ('adapt', 'How to adapt it'), ('fact-check', 'Fact check checklist')]
         full = f"{k['role']}\n{k['context']}\n{k['output']}"
+        (OUT/'downloads').mkdir(exist_ok=True); make_pdf(k, OUT/'downloads'/f"{k['slug']}.pdf")
+        pkg = f'''<section class="pkg" id="package" aria-labelledby="pkg-h"><h2 id="pkg-h">Full package</h2><p>The whole kit as one block of text. Copy it all, or download the PDF.</p>
+<div class="pblock"><div class="ph"><span>{E(k['title'])} (full text)</span><span class="pb"><button class="copy" type="button" data-target="p-package" aria-label="Copy the whole package">Copy all</button><a class="dl" href="/downloads/{k['slug']}.pdf" download>Download PDF</a></span></div><pre id="p-package" class="pkgtext">{E(package_text(k))}</pre></div></section>'''
         art = f'''<article class="prose">
-<h2 id="overview">Overview</h2><p>{E(k['summary'])}</p><p>{E(k['why'])}</p>
+{pkg}<h2 id="overview">Overview</h2><p>{E(k['summary'])}</p><p>{E(k['why'])}</p>
 <h2 id="framework">Prompt framework</h2><p>Copy each part, or copy the full prompt. Replace anything in square brackets.</p>
 <h3>01 Role</h3>{pblock('p-role', 'Role', k['role'])}<h3>02 Context</h3>{pblock('p-context', 'Context', k['context'])}<h3>03 Output</h3>{pblock('p-output', 'Output', k['output'])}
 <h3>Full prompt</h3>{pblock('p-full', 'Full prompt', full)}
@@ -150,8 +194,8 @@ def build():
 <section class="related" aria-labelledby="rel"><h2 id="rel">Related kits</h2><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">{''.join(kitcard(x) for x in rel)}</div></section>
 </article>'''
         banner = f'''<div class="artbanner"><img src="/assets/kits/{k['slug']}-art.jpg" alt="Illustration for the {E(k['title'])}" width="1152" height="864" fetchpriority="high" decoding="async"></div>'''
-        prev_html = f'''<figure class="preview"><div class="pv"><img src="/assets/kits/{k['slug']}-cover.jpg" alt="Preview of the printable cover page for the {E(k['title'])}, showing the illustration, title and section list" width="1200" height="800" loading="lazy" decoding="async"><img src="/assets/kits/{k['slug']}-inside.jpg" alt="Preview of an inside page of the {E(k['title'])}, showing the Role, Context and Output prompt framework and the fact check checklist" width="1200" height="800" loading="lazy" decoding="async"></div><figcaption>Preview of the printable kit. Use Print / Save as PDF to get the full version of this page as a PDF.</figcaption></figure>'''
-        tools = '<div class="tools"><button class="btn pri" type="button" data-print>Print / Save as PDF</button><a class="btn" href="/builder/">Open the builder</a></div>'
+        prev_html = f'''<figure class="preview"><div class="pv"><img src="/assets/kits/{k['slug']}-cover.jpg" alt="Preview of the printable cover page for the {E(k['title'])}, showing the illustration, title and section list" width="1200" height="800" loading="lazy" decoding="async"><img src="/assets/kits/{k['slug']}-inside.jpg" alt="Preview of an inside page of the {E(k['title'])}, showing the Role, Context and Output prompt framework and the fact check checklist" width="1200" height="800" loading="lazy" decoding="async"></div><figcaption>Preview of the printable kit. Use Download PDF for the full kit.</figcaption></figure>'''
+        tools = f'<div class="tools"><a class="btn pri" href="/downloads/{k['slug']}.pdf" download>Download PDF</a><button class="btn" type="button" data-print>Print</button><a class="btn" href="/builder/">Open the builder</a></div>'
         body = hero(E(k['title']), E(k['summary']), E(k['cat']) + ' kit', f'<div class="meta"><span>{rtime(n)} min read</span><span>Updated {DATE}</span><span>Original content</span></div><p class="notice" role="note">{NOTICE}</p>{banner}{tools}{prev_html}') + \
             f'<div class="wrap layout"><nav class="toc" aria-label="On this page"><strong>On this page</strong><ol>{"".join(f"<li><a href=\"#{a}\">{b}</a></li>" for a, b in toc)}</ol></nav>{art}</div>'
         howto = {"@context": "https://schema.org", "@type": "HowTo", "name": k['title'], "description": k['summary'], "inLanguage": "en", "image": [url(f"assets/kits/{k['slug']}-cover.jpg"), url(f"assets/kits/{k['slug']}-inside.jpg")], "totalTime": f"PT{rtime(n) + 10}M",

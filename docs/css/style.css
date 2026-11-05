@@ -131,3 +131,8 @@ footer.site a{color:var(--muted)}footer.site ul{list-style:none;display:flex;gap
 @media print{.preview{display:none}}
 @media(max-width:600px){nav.main li:first-child{display:none}nav.main{max-width:none}nav.main a{padding:7px 8px;font-size:13px}.brand span{font-size:15px}.top .in{gap:8px;padding:0 12px}}
 .artbanner{margin:20px 0;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}.artbanner img{display:block;width:100%;aspect-ratio:16/6;height:auto;object-fit:cover}@media(max-width:640px){.artbanner img{aspect-ratio:4/3}}@media print{.artbanner{display:none}}
+
+.pkg{margin:0 0 28px}.pkgtext{max-height:420px;overflow:auto}
+.pblock .pb{display:flex;gap:8px;align-items:center}
+.pblock .dl{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--red2);color:#fff;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:none}
+@media print{.pkg{display:none}}
