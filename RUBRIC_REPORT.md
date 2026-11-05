@@ -146,3 +146,91 @@ PDF **bytes/text were never altered**.
 | PDFs untouched / package text | PASS | cmp site/pdfs vs docs/downloads and live: identical (10/10); #package text identical to previous build (10/10). |
 | Tests | PASS | tests/test_site.py: 24 html files, 0 failures (new checks: counts, niche isolation, no old name). |
 | Live | PASS | Pages build `built`; /, /kits/, /niche-ideas/, PDF kit, 3 niche kit URLs, PDF download all 200. |
+
+
+## Change 2026-11-05: import of all remaining OSP PDF posts (commit 42b765d)
+
+Source: `wp-json/wp/v2/posts` returned **72 posts** (page 2 = "invalid page number"; not 73). Every post links exactly **1 PDF**; no post has 0 or several. 13 posts map to the existing 10 kits (3 older Advance duplicates). **57 new kits** imported; 2 more posts skipped as byte-identical duplicates. No post has a featured image, so covers are generated cards (`previews.cover_card`), self-hosted. All 57 PDFs have extractable text (no scanned/no-text PDFs; fallback note implemented anyway).
+
+### Duplicates by sha256 (listed once)
+- `3d6c49ac…`: **Human Neuroanatomy-v1 Creator Kit- AI Prompt Framework.pdf** (post 357, used) == Human Neuroanatomy Creator Kit- AI Prompt Framework (post 203, skipped)
+- `3482928d…`: **Geo Boundiries-v1 Creator Kit- AI Prompt Framework** (post 191, used) == Border Legend Creator Kit- AI Prompt Framework (post 164, skipped; different title, same PDF `Border-Legend.pdf` vs `Geo-Boundiries-1.pdf`)
+- Existing: Liquor/Dog/Cat Advance (posts 458/455/452) == posts 490/487/484 (already on the site).
+
+### Rubric for all 67 PDF kits (10 existing + 57 new)
+| Check | Result | Evidence |
+|---|---|---|
+| R1 source (post -> exactly one PDF) | PASS | 72/72 posts have 1 PDF link; mapping in `site/osp_kits.json` / `site/osp_existing.json` |
+| R2 original name | PASS | H1 = exact OSP title for new kits; "Original title" line + `download=` original filename on 67/67 |
+| R3 byte-identical PDF | PASS | live sha256 == fresh OSP sha256 for 67/67 |
+| R4 text/pages verbatim | PASS | `pdftotext -layout` of served PDF == Full package text for 57/57 new; existing 10 package text unchanged vs prior build |
+| R5 Copy all + Download | PASS | Copy all button + Download PDF with original filename on 67/67 |
+| R6 existing 10 unaltered | PASS | PDFs cmp-identical; package text identical (only pager/related neighbours changed) |
+| R7 visual | PASS | screenshots 360/390/1280 of home, /kits/, niche, OSP kit, existing kit |
+| R8 site (tests, sitemap, JSON-LD) | PASS | 81 HTML files, 0 failures; sitemap 80 URLs; ItemList 67; CreativeWork JSON-LD on new kits |
+| R9 mobile 360/390 | PASS | scrollWidth == viewport on all pages; /kits/ shows 24 cards + "Show more kits" (24 per click); 12 category chips wrap, 44px; filter/search work |
+| Live | PASS | Pages built 42b765d; 67 kit pages 200 and contain their PDF text; niche pages 200 |
+| Size/build | PASS | docs/ 15 MB (downloads 6.1 MB, assets 6.0 MB); build ~3 s |
+
+Notes: `<title>` for new kits uses the title minus " Creator Kit- AI Prompt Framework(.pdf)" to stay under 65 chars; H1 and Original title are exact. Home shows 6 latest by OSP post date (all Nov 3 existing kits). Full package box is a fixed-height scroll box (max 420px), max 26 KB text, no JS rendering cost.
+
+### New kits (title -> slug -> PDF -> pages -> category -> post date)
+| OSP title | Slug | PDF URL | Pages | Cat | Date |
+|---|---|---|---|---|---|
+| World Military Weapon (map paper cut animation)-v8 Creator Kit- AI Prompt Framework.pdf | `world-military-weapon-map-paper-cut-animation-v8` | https://opensourcepromptph.com/wp-content/uploads/2026/10/World-Military-Weapon-map-paper-cut-animation-v8.pdf | 4 | Military | 2026-10-29 |
+| World Military Weapon-v7 Creator Kit- AI Prompt Framework.pdf | `world-military-weapon-v7` | https://opensourcepromptph.com/wp-content/uploads/2026/10/World-Military-Weapon-v7.pdf | 3 | Military | 2026-10-29 |
+| World Military Weapon-v6 Creator Kit- AI Prompt Framework.pdf | `world-military-weapon-v6` | https://opensourcepromptph.com/wp-content/uploads/2026/10/World-Military-Weapon-v6.pdf | 3 | Military | 2026-10-29 |
+| World Military Weapon-v5 Creator Kit- AI Prompt Framework.pdf | `world-military-weapon-v5` | https://opensourcepromptph.com/wp-content/uploads/2026/10/World-Military-Weapon-v5.pdf | 3 | Military | 2026-10-29 |
+| World Military Weapon-v4 Creator Kit- AI Prompt Framework.pdf | `world-military-weapon-v4` | https://opensourcepromptph.com/wp-content/uploads/2026/10/World-Military-Weapon-v4.pdf | 4 | Military | 2026-10-29 |
+| World Military Weapon-v3 Creator Kit- AI Prompt Framework.pdf | `world-military-weapon-v3` | https://opensourcepromptph.com/wp-content/uploads/2026/10/World-Military-Weapon-v3.pdf | 5 | Military | 2026-10-29 |
+| World Military Weapon-v2 Creator Kit- AI Prompt Framework.pdf | `world-military-weapon-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/World-Military-Weapon-v2.pdf | 4 | Military | 2026-10-29 |
+| World Military Weapon-v1 Creator Kit- AI Prompt Framework.pdf | `world-military-weapon-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/World-Military-Weapon-v1.pdf | 4 | Military | 2026-10-29 |
+| Virus & Diseases Creator Kit- AI Prompt Framework.pdf | `virus-and-diseases` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Virus-Diseases-Creator-Kit.pdf | 5 | Health | 2026-10-29 |
+| Tagalog Drama Episode Creator Kit- AI Prompt Framework.pdf | `tagalog-drama-episode` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Tagalog-Drama-Episode.pdf | 4 | Philippines | 2026-10-27 |
+| Racing Engine Explainers-v2 Creator Kit- AI Prompt Framework.pdf | `racing-engine-explainers-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Racing-Engine-Explainers-v2.pdf | 3 | Tech | 2026-10-27 |
+| Racing Engine Explainers-v1 Creator Kit- AI Prompt Framework.pdf | `racing-engine-explainers-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Racing-Engine-Explainers-v1.pdf | 5 | Tech | 2026-10-27 |
+| Plant Science Botany Explainers-v4 Creator Kit- AI Prompt Framework.pdf | `plant-science-botany-explainers-v4` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Plant-Science-Botany-Explainers-v4.pdf | 6 | Science | 2026-10-27 |
+| Plant Science Botany Explainers-v3 Creator Kit- AI Prompt Framework.pdf | `plant-science-botany-explainers-v3` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Plant-Science-Botany-Explainers-v3.pdf | 6 | Science | 2026-10-27 |
+| Plant Science Botany Explainers-v2 Creator Kit- AI Prompt Framework.pdf | `plant-science-botany-explainers-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Plant-Science-Botany-Explainers-v2.pdf | 6 | Science | 2026-10-27 |
+| Plant Science Botany Explainers-v1 Creator Kit- AI Prompt Framework.pdf | `plant-science-botany-explainers-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Plant-Science-Botany-Explainers-v1.pdf | 5 | Science | 2026-10-27 |
+| Human Neuroanatomy-v1 Creator Kit- AI Prompt Framework.pdf | `human-neuroanatomy-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Human-Neuroanatomy-v1.pdf | 3 | Health | 2026-10-27 |
+| [Country]’s Trillion Dollar Secret “Paper Cut Animation-v1 Creator Kit- AI Prompt Framework.pdf | `countrys-trillion-dollar-secret-paper-cut-animation-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Countrys-Trillion-Dollar-Secret-22Paper-Cut-Animation-v1-Creator-Kit-AI-Prompt-Framework.pdf | 4 | Maps | 2026-10-27 |
+| [Country]’s Trillion Dollar Secret-v1 Creator Kit- AI Prompt Framework | `countrys-trillion-dollar-secret-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Countrys-Trillion-Dollar-Secret-v1.pdf | 4 | Maps | 2026-10-27 |
+| Everyday  Origins Country-v2 Creator Kit- AI Prompt Framework | `everyday-origins-country-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Everyday-Origins-Country-v1.pdf | 4 | History | 2026-10-25 |
+| Elements & Metals -v2 Creator Kit- AI Prompt Framework | `elements-and-metals-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Elements-Metals-v2.pdf | 4 | Science | 2026-10-25 |
+| Elements & Metals -v1 Creator Kit- AI Prompt Framework | `elements-and-metals-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Elements-Metals-v1.pdf | 3 | Science | 2026-10-25 |
+| Logo Dark Story -v2 Creator Kit- AI Prompt Framework | `logo-dark-story-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Logo-Dark-Story-2.pdf | 3 | Brands | 2026-10-25 |
+| Logo Dark Story -v1 Creator Kit- AI Prompt Framework | `logo-dark-story-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Logo-Dark-Story-1.pdf | 4 | Brands | 2026-10-25 |
+| Dog Breed-v2 Creator Kit- AI Prompt Framework | `dog-breed-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Dog-Breed-2.pdf | 3 | Animals | 2026-10-24 |
+| Dog Breed-v1 Creator Kit- AI Prompt Framework | `dog-breed-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Dog-Breed-1.pdf | 3 | Animals | 2026-10-24 |
+| Coronary Stenting-v2 Creator Kit- AI Prompt Framework | `coronary-stenting-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Coronary-Stenting-2.pdf | 3 | Health | 2026-10-23 |
+| Coronary Stenting-v1 Creator Kit- AI Prompt Framework | `coronary-stenting-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Coronary-Stenting-1.pdf | 3 | Health | 2026-10-23 |
+| Cat Breeds-v2 Creator Kit- AI Prompt Framework | `cat-breeds-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Best_Cat-Breeds_V2-2.pdf | 4 | Animals | 2026-10-23 |
+| Cat Breeds-v1 Creator Kit- AI Prompt Framework | `cat-breeds-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Best_Cat-Breeds_V1.pdf | 3 | Animals | 2026-10-23 |
+| Geopolitics vs Country Borders Creator Kit- AI Prompt Framework | `geopolitics-vs-country-borders` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Geopolitics-vs-Country-Borders.pdf | 6 | Maps | 2026-10-23 |
+| Bird Nest Builder Creator Kit- AI Prompt Framework | `bird-nest-builder` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Bird-Nest-Builder.pdf | 4 | Animals | 2026-10-23 |
+| Word of GOD Creator Kit- AI Prompt Framework | `word-of-god` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Word-of-GOD-Kit.pdf | 3 | Faith | 2026-10-23 |
+| Genesis Creation Cinematic Creator Kit- AI Prompt Framework | `genesis-creation-cinematic` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Genesis-Creation-Cinematic.pdf | 4 | Faith | 2026-10-23 |
+| Geopolitical and territorial dispute Creator Kit- AI Prompt Framework | `geopolitical-and-territorial-dispute` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Geopolitical-and-territorial-dispute-1.pdf | 8 | Maps | 2026-10-23 |
+| Liquor Creator Creator Kit- AI Prompt Framework | `liquor-creator` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Liquor-Creator-Kit.pdf | 4 | History | 2026-10-23 |
+| Anatomy & Biology Creator Kit- AI Prompt Framework | `anatomy-and-biology` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Anatomy-Biology-Creator-Kit.pdf | 3 | Health | 2026-10-23 |
+| Human Anatomy-v3 Creator Kit- AI Prompt Framework | `human-anatomy-v3` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Human-Anatomy-3.pdf | 4 | Health | 2026-10-23 |
+| Human Anatomy-v2 Creator Kit- AI Prompt Framework | `human-anatomy-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Human-Anatomy-2.pdf | 4 | Health | 2026-10-23 |
+| Human Anatomy-v1 Creator Kit- AI Prompt Framework | `human-anatomy-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Human-Anatomy-1.pdf | 4 | Health | 2026-10-23 |
+| Geo Boundiries-v4 Creator Kit- AI Prompt Framework | `geo-boundiries-v4` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Geo-Boundiries-4.pdf | 5 | Maps | 2026-10-23 |
+| Geo Boundiries-v3 Creator Kit- AI Prompt Framework | `geo-boundiries-v3` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Geo-Boundiries-3.pdf | 5 | Maps | 2026-10-23 |
+| Geo Boundiries-v2 Creator Kit- AI Prompt Framework | `geo-boundiries-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Geo-Boundiries-2.pdf | 5 | Maps | 2026-10-23 |
+| Geo Boundiries-v1 Creator Kit- AI Prompt Framework | `geo-boundiries-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Geo-Boundiries-1.pdf | 5 | Maps | 2026-10-23 |
+| Healthy Food-v3 Creator Kit- AI Prompt Framework | `healthy-food-v3` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Healthy-Food-3.pdf | 4 | Health | 2026-10-23 |
+| Healthy Food-v2 Creator Kit- AI Prompt Framework | `healthy-food-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Healthy-Food-2.pdf | 5 | Health | 2026-10-23 |
+| Healthy Food-v1 Creator Kit- AI Prompt Framework | `healthy-food-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Healthy-Food-1.pdf | 4 | Health | 2026-10-23 |
+| Historical Landmarks-v5 Creator Kit- AI Prompt Framework | `historical-landmarks-v5` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Historical-Landmarks-5.pdf | 6 | History | 2026-10-23 |
+| Historical Landmarks-v4 Creator Kit- AI Prompt Framework | `historical-landmarks-v4` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Historical-Landmarks-4.pdf | 7 | History | 2026-10-23 |
+| Historical Landmarks-v3 Creator Kit- AI Prompt Framework | `historical-landmarks-v3` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Historical-Landmarks-3.pdf | 5 | History | 2026-10-23 |
+| Historical Landmarks-v2 Creator Kit- AI Prompt Framework | `historical-landmarks-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Historical-Landmarks-2.pdf | 5 | History | 2026-10-23 |
+| Historical Landmarks-v1 Creator Kit- AI Prompt Framework | `historical-landmarks-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Historical-Landmarks-1.pdf | 5 | History | 2026-10-23 |
+| Earth Mysteries Geological Facts Creator Kit- AI Prompt Framework | `earth-mysteries-geological-facts` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Earth-Mysteries-Geological-Facts.pdf | 7 | Science | 2026-10-23 |
+| Ammunition-v4  Creator Kit- AI Prompt Framework | `ammunition-v4` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Ammunition-4.pdf | 3 | Military | 2026-10-23 |
+| Ammunition-v3  Creator Kit- AI Prompt Framework | `ammunition-v3` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Ammunition-3-1.pdf | 4 | Military | 2026-10-23 |
+| Ammunition-v2  Creator Kit- AI Prompt Framework | `ammunition-v2` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Ammunition-2.pdf | 3 | Military | 2026-10-23 |
+| Ammunition-v1  Creator Kit- AI Prompt Framework | `ammunition-v1` | https://opensourcepromptph.com/wp-content/uploads/2026/10/Ammunition-1-1.pdf | 6 | Military | 2026-10-23 |
