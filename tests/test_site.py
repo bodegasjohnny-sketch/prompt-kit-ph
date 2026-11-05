@@ -27,7 +27,8 @@ for p in pages:
     for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', s, re.S):
         try: json.loads(j); check('json-ld valid', True)
         except Exception as e: check('json-ld valid', False, f'{rel} {e}')
-    check('no em dash', '\u2014' not in body and '&mdash;' not in body, rel)
+    nb = re.sub(r'<pre id="p-package" class="pkgtext">.*?</pre>', '', body, flags=re.S)  # verbatim original PDF text is exempt
+    check('no em dash', '\u2014' not in nb and '&mdash;' not in nb, rel)
     for u in re.findall(r'(?:src|href)="([^"#]+)"', s):
         if u.startswith(('http:', 'https:', '//')):
             check('no external requests', 'rel="canonical"' in s and False if re.search(r'<(script|img|link)[^>]*(src|href)="' + re.escape(u), s) and 'canonical' not in re.search(r'<[^>]*' + re.escape(u), s).group(0) else True, f'{rel} {u}')

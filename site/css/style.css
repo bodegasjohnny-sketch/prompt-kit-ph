@@ -136,3 +136,4 @@ footer.site a{color:var(--muted)}footer.site ul{list-style:none;display:flex;gap
 .pblock .pb{display:flex;gap:8px;align-items:center}
 .pblock .dl{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--red2);color:#fff;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:none}
 @media print{.pkg{display:none}}
+.pkgtext{white-space:pre!important;overflow-x:auto!important;word-break:normal!important;overflow-wrap:normal!important;font-size:12px}

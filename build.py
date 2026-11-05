@@ -176,9 +176,23 @@ def build():
         n = words(k['summary'], k['why'], k['role'], k['context'], k['output'], *[e[1] for e in k['examples']], *k['adapt'], *k['checks']) + 150
         toc = [('package', 'Full package'), ('overview', 'Overview'), ('framework', 'Prompt framework'), ('examples', 'Example prompts'), ('adapt', 'How to adapt it'), ('fact-check', 'Fact check checklist')]
         full = f"{k['role']}\n{k['context']}\n{k['output']}"
-        (OUT/'downloads').mkdir(exist_ok=True); make_pdf(k, OUT/'downloads'/f"{k['slug']}.pdf")
-        pkg = f'''<section class="pkg" id="package" aria-labelledby="pkg-h"><h2 id="pkg-h">Full package</h2><p>The whole kit as one block of text. Copy it all, or download the PDF.</p>
-<div class="pblock"><div class="ph"><span>{E(k['title'])} (full text)</span><span class="pb"><button class="copy" type="button" data-target="p-package" aria-label="Copy the whole package">Copy all</button><a class="dl" href="/downloads/{k['slug']}.pdf" download>Download PDF</a></span></div><pre id="p-package" class="pkgtext">{E(package_text(k))}</pre></div></section>'''
+        (OUT/'downloads').mkdir(exist_ok=True)
+        orig = SRC/'pdfs'/f"{k['slug']}.pdf"
+        if orig.exists():
+            shutil.copyfile(orig, OUT/'downloads'/f"{k['slug']}.pdf")
+            dlname = (SRC/'pdfs'/f"{k['slug']}.name").read_text().strip()
+            ptext = (SRC/'pdf_text'/f"{k['slug']}.txt").read_text(encoding='utf-8')
+            phead = 'Full package: complete text of the PDF'
+            pintro = 'This is the complete text of the PDF; downloading gives you the original file.'
+            guide = '<p class="note"><strong>Simplified starter guide.</strong> The sections below are a simplified starter guide written for this site, not the PDF. The full PDF text is above.</p>'
+        else:
+            make_pdf(k, OUT/'downloads'/f"{k['slug']}.pdf")
+            dlname = f"{k['slug']}.pdf"; ptext = package_text(k)
+            phead = 'Full package (site-written)'
+            pintro = 'This kit has no original PDF yet. This text and PDF were written for this site from the guide below; they are not an original kit PDF.'
+            guide = ''
+        pkg = f'''<section class="pkg" id="package" aria-labelledby="pkg-h"><h2 id="pkg-h">{phead}</h2><p>{pintro}</p>
+<div class="pblock"><div class="ph"><span>{E(k['title'])} (full text)</span><span class="pb"><button class="copy" type="button" data-target="p-package" aria-label="Copy the whole package">Copy all</button><a class="dl" href="/downloads/{k['slug']}.pdf" download="{E(dlname)}">Download PDF</a></span></div><pre id="p-package" class="pkgtext">{E(ptext)}</pre></div></section>{guide}'''
         art = f'''<article class="prose">
 {pkg}<h2 id="overview">Overview</h2><p>{E(k['summary'])}</p><p>{E(k['why'])}</p>
 <h2 id="framework">Prompt framework</h2><p>Copy each part, or copy the full prompt. Replace anything in square brackets.</p>
@@ -195,7 +209,7 @@ def build():
 </article>'''
         banner = f'''<div class="artbanner"><img src="/assets/kits/{k['slug']}-art.jpg" alt="Illustration for the {E(k['title'])}" width="1152" height="864" fetchpriority="high" decoding="async"></div>'''
         prev_html = f'''<figure class="preview"><div class="pv"><img src="/assets/kits/{k['slug']}-cover.jpg" alt="Preview of the printable cover page for the {E(k['title'])}, showing the illustration, title and section list" width="1200" height="800" loading="lazy" decoding="async"><img src="/assets/kits/{k['slug']}-inside.jpg" alt="Preview of an inside page of the {E(k['title'])}, showing the Role, Context and Output prompt framework and the fact check checklist" width="1200" height="800" loading="lazy" decoding="async"></div><figcaption>Preview of the printable kit. Use Download PDF for the full kit.</figcaption></figure>'''
-        tools = f'<div class="tools"><a class="btn pri" href="/downloads/{k['slug']}.pdf" download>Download PDF</a><button class="btn" type="button" data-print>Print</button><a class="btn" href="/builder/">Open the builder</a></div>'
+        tools = f'<div class="tools"><a class="btn pri" href="/downloads/{k['slug']}.pdf" download="{E(dlname)}">Download PDF</a><button class="btn" type="button" data-print>Print</button><a class="btn" href="/builder/">Open the builder</a></div>'
         body = hero(E(k['title']), E(k['summary']), E(k['cat']) + ' kit', f'<div class="meta"><span>{rtime(n)} min read</span><span>Updated {DATE}</span><span>Original content</span></div><p class="notice" role="note">{NOTICE}</p>{banner}{tools}{prev_html}') + \
             f'<div class="wrap layout"><nav class="toc" aria-label="On this page"><strong>On this page</strong><ol>{"".join(f"<li><a href=\"#{a}\">{b}</a></li>" for a, b in toc)}</ol></nav>{art}</div>'
         howto = {"@context": "https://schema.org", "@type": "HowTo", "name": k['title'], "description": k['summary'], "inLanguage": "en", "image": [url(f"assets/kits/{k['slug']}-cover.jpg"), url(f"assets/kits/{k['slug']}-inside.jpg")], "totalTime": f"PT{rtime(n) + 10}M",

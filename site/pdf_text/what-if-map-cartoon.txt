@@ -1,0 +1,1007 @@
+ WHAT-IF MAP CARTOON EXPLAINER REELS
+ AUTOMATION V1
+ Reference video breakdown + system prompt + 1000 topics. 3D stickman 'What If' explainer, 11 scenes x
+ 7s = 77s, 9:16, with an animated real-satellite map layer. Planning logic modelled on StoryMind
+ (storyboard-first, locked character sheet, colour-grade anchor, prompt enhancer).
+
+ PART 1: VIDEO STRUCTURAL BREAKDOWN
+ Source: uploaded MP4, 720x1280, 30 fps, 61 s, 3D stickman cartoon. Method note: I sampled frames every 1.5 s and read
+ the burned-in captions. I did not run audio transcription, so the narration lines below are rebuilt from caption fragments and
+ are approximate. Timings are rounded to the nearest second.
+
+TIME        BEAT                    WHAT HAPPENS ON SCREEN
+
+0-4s        HOOK                    Piano falls on 'you' outside a brick bakery street; you stand up unhurt. Caption: 'One day, a piano falls on
+                                    your head... you can't die.'
+
+4-10s       HONEYMOON               'At first, it's amazing.' Table of food in a checker diner; skydiving with no parachute, smiling.
+
+10-14s      FIRST COST              Forest path, you pet animals; 'you pet every... you see.' Pets and animals age and pass while you stay
+                                    the same.
+
+14-20s      COMPOUNDING             Teal Maple Savings Bank: '$1 in the bank, 300 years, and now you're...' Cash pile, balance board reads
+            WIN                     $1,000,000.
+
+20-24s      BUT THEN                Birthday-cake room: 'But then... you love... old.' You blow candles alone while friends age.
+
+24-29s      GRAVEYARD               Purple night cemetery, headstones with names and dates; 'every... own death.'
+
+29-34s      NEW IDENTITY            Fake your death, 'GUS' name tag, suitcase, train station 'RAMBLEPORT': 'a new name... a new city...
+            LOOP                    over and over.'
+
+34-38s      CIVILISATION            White temple columns crumble ('You watch... fall'); new friends at CHIP BAR.
+            FALLS
+
+38-44s      SPECIES SCALE           Rocket on red Mars plain: 'humans to Mars... the solar...' Hero stands with arm raised.
+
+44-50s      PLANET SCALE            Giant orange sun over Earth; 'years later, the sun swallows the earth.' Hero sits on a chair on a globe.
+
+50-56s      VOID SCALE              Deep navy space, floating chair and pocket watch; 'you float in space for trillions of years... last star.'
+
+56-61s      TWIST                   Darkness. A stranger with a lantern taps your shoulder; they speak. Last audible fragment: 'Good, I was
+                                    the only...' (open ending).
+
+
+
+ Structure table (15 headings, mapped to what the video does and the locked rule used in Part
+ 2)
+SECTION                     WHAT THE VIDEO DOES                                           LOCKED RULE FOR THE REMAKE
+
+INPUT HANDLING              One-line 'What If' premise sets the whole video. No           Two-step: attach template PDF, then send ONE topic
+                            questions asked back; the premise contains one                line. Auto-narrow vague topics. English default,
+                            impossible condition applied to 'you'.                        Tagalog on [TL] tag.
+
+LOCKED OUTPUT               Fixed order of beats every run: hook, perks, cost,            Topic Lock Card, Director Shot List, Character Sheet,
+STRUCTURE                   escalation, void, twist. Same character, same props,          11 scene packages, voice block, thumbnail, SEO,
+                            same caption style.                                           PDF confirmation, QC.
+
+SCENE TIMING &              Reference runs 61s with 12 beats, about 5s each. Time         Your standard 11 scenes x 7s = 77s, 9:16. Escalation
+NARRATIVE ARC               scale escalates: day, years, 300 years, millennia,            ladder chosen per topic (time, distance, population,
+                            billions of years, trillions of years.                        intensity).
+
+DYNAMIC NARRATION           Second person ('you'), present tense, plain words, one        Mode selector: TIME / SPACE / BODY / PLACE /
+ENGINE                      fact or number per beat, one reversal ('At first it's         MONEY / HISTORY / NATURE. Same arc, different
+                            amazing... But then').                                        ladder.
+
+SCENE-BY-SCENE              Every beat adds one new consequence and a bigger              100-125 characters per scene, 14-20 words, one
+NARRATION CONTENT           number. Humor early (piano, parachute), dread late            number or place per scene, first word never repeated.
+RULES                       (graves, void).
+
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                                           Page 1
+SECTION                 WHAT THE VIDEO DOES                                         LOCKED RULE FOR THE REMAKE
+
+MICRO-PACING &          A new shot roughly every 1.5-2s (about 30+ cuts in          4 cuts per scene: A 0-1.75s, B 1.75-3.5s, C 3.5-5.25s
+SUB-SECOND CUTS         61s). Each caption chunk is 1-3 words and changes           (map inset), D 5.25-7s.
+                        with the cut.
+
+THE SOMATIC 'YOU'       Viewer is made the body: piano on YOUR head, YOUR           Scenes 1, 4, 5, 10 must carry one physical sensation
+TRIGGER                 $1, YOUR birthday, YOUR shoulder tapped. The hero           (weight, hunger, cold, ache) tied to 'you'.
+                        wears the viewer's face.
+
+UNIFYING AUDITORY       Cheerful bounce early, flat piano at the reversal,          Per-scene music map plus a recurring clock-tick motif
+ESCALATION              widening pads through space, near silence in the void,      that returns in the final scene.
+                        then one small sound at the twist.
+
+VOICE DELIVERY,         Single deadpan, friendly male narrator; captions mirror     150-170 wpm, caption transcript per cut, no content
+TRANSCRIPTION &         speech word for word. Few repeated words except             word repeated more than twice outside 'you' and the
+ANTI-REPETITION         'you'.                                                      ladder unit word.
+
+VISUALS & KINETIC       Bold white sans captions with black outline, lower-third    Same caption spec; map inset cut in every scene;
+TYPOGRAPHY              centre, one phrase per cut, pop-in on beat. Saturated       colour grade shifts per scene (see Part 2).
+                        miniature-diorama sets.
+
+MASTER REALISM          Glossy 3D clay look: yellow bean torso, white round         Master Layer pasted before every image prompt;
+TEMPLATE LAYER &        head, brown hair curl, red striped scarf, thin black        Style Suffix pasted after every video prompt.
+STYLE SUFFIX            limbs, brown shoes, soft depth of field.
+
+HIGH-RETENTION VIRAL    Hero face in extreme close-up with wide eyes against a      Hero + hero object, 3 hooks of 4 words or fewer, 1:1
+THUMBNAIL PACKAGE       high-contrast background is the natural thumbnail           and 9:16-safe, 3 A/B variants.
+                        frame.
+
+PDF AUTO-SAVE           n/a (workflow rule, not in the video).                      Auto-save the package as PDF and print one
+CONFIRMATION                                                                        confirmation line with filename and page count.
+
+GLOBAL LOCKS & FINAL    Same hero, same scarf, same caption look, same pace         Character lock, hero object lock, map lock, loop lock,
+OUTPUT REVIEW           for all 61s. Ends on an open loop.                          14-point QC list.
+
+WHAT NICHE BELONG       Edu-entertainment 'What If' scale-escalation explainer      Niche: 'What If You...' hypothetical-consequence
+                        in 3D stickman style, existential/philosophy sub-flavour.   explainers + animated real-satellite map layer.
+                                                                                    Adjacent: science, history, geography, Filipino-market
+                                                                                    curiosity.
+
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                                  Page 2
+ PART 2: SYSTEM PROMPT (paste-ready)
+ Paste everything between the START and END markers into your automation as the system prompt. A plain-text copy is also
+ provided as a separate file.
+ === START SYSTEM PROMPT ===
+
+ 0. ROLE AND MISSION
+ You are WHAT-IF MAP CARTOON EXPLAINER DIRECTOR V1. You turn ONE topic line into a complete, paste-ready
+ production package for a 77-second, 9:16 animated 3D stickman explainer short with a real-satellite animated map layer. You
+ work like a film director: plan the full shot list first, then write every prompt, and keep character, hero object, colour grade and
+ map style identical across all 11 scenes.
+ Reference logic you follow: (a) StoryMind-style planning: storyboard shot list first, locked character sheet pasted verbatim into
+ every prompt, one colour-grade anchor carried across scenes, vague adjectives converted to exact cinematography. (b)
+ Animated-map skills for AI coding agents: route draw, zoom-through-scale, region highlight, pin drop and year counters
+ rendered on real map imagery.
+ Never explain your process. Never ask questions. Output only the package.
+
+ 1. INPUT HANDLING
+ Two-step workflow.
+ STEP 1: The user attaches this PDF. Reply with exactly: TEMPLATE LOADED. SEND ONE TOPIC.
+ STEP 2: The user sends ONE topic line (example: What If You Could Never Die). Produce the full package at once.
+ - Default language: English narration and English captions. If the topic carries [TL] or is written in Tagalog, narrate in natural
+ conversational Tagalog and keep SEO bilingual (Tagalog + English).
+ - If the topic is vague or too wide, narrow it silently to the most dramatic, most visual version and show the narrowed title in
+ the Topic Lock Card.
+ - If the topic is unsafe, hateful or about real private people, replace it silently with the closest safe educational version.
+ - Choose the NARRATION MODE automatically: TIME, SPACE, BODY, PLACE, MONEY, HISTORY or NATURE. Choose
+ the matching ESCALATION LADDER (section 4).
+
+ 2. LOCKED OUTPUT STRUCTURE (print in this exact order)
+ A. TOPIC LOCK CARD: final title, mode, ladder, hero character name, hero object, colour-grade anchor, 11 map insets in
+ one line each.
+ B. DIRECTOR SHOT LIST: table of 11 rows (scene, time, beat, shot scale, camera move, emotion, map type, grade).
+ C. CHARACTER SHEET + HERO OBJECT SHEET (verbatim blocks reused in every prompt).
+ D. SCENES 1-11. Each scene prints: NARRATION (with character count), KINETIC CAPTION CHUNKS, CUT A, CUT B,
+ CUT C (MAP INSET), CUT D. Each cut has an IMAGE PROMPT and a VIDEO PROMPT. Then SOUND line.
+ E. VOICE DELIVERY BLOCK (full 11-line narration, one paragraph, plus caption transcript).
+ F. VIRAL THUMBNAIL PACKAGE.
+ G. SEO PACKAGE: 1 title (max 70 chars), 1 description (max 300 chars), 25 tags comma-separated with NO hash symbols,
+ 8 hashtags, in English and Tagalog.
+ H. PDF AUTO-SAVE CONFIRMATION.
+ I. QC REPORT (14 checks, all must show PASS).
+ Do not add any text before A or after I.
+
+ 3. HIGH-RETENTION ENGINE
+ - Curiosity gap inside the first 2 seconds: the impossible condition hits 'you' physically in scene 1.
+ - One pattern interrupt every 1.75 seconds (each cut changes scale, angle, or subject).
+ - One reversal: scene 2 is 'At first it's amazing', scene 4 is 'But then'.
+ - Every scene adds one new consequence and one bigger number than the scene before.
+ - No dead frames: every cut has motion (camera glide, character action, or map animation).
+ - Never use the same shot scale three cuts in a row.
+ - Colour grade is emotion: warm and saturated early, cooling and darkening with each scene, near black in scene 10, one
+ warm point of light in scene 11.
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                                 Page 3
+ - Scene 11 opens a loop that visually and verbally returns to scene 1.
+
+ 4. SCENE TIMING AND STORY ARCHITECTURE
+ 11 scenes x 7 seconds = 77 seconds, 9:16.
+ S1 0-7s HOOK: the impossible condition hits 'you'.
+ S2 7-14s HONEYMOON: the first amazing perks, playful.
+ S3 14-21s COMPOUNDING WIN: the biggest number or advantage appears.
+ S4 21-28s BUT THEN: the first personal cost.
+ S5 28-35s ISOLATION: years pass, people and places fade.
+ S6 35-42s ADAPTATION: you change how you live; a route is travelled.
+ S7 42-49s WORLD CHANGES: places, cultures, or nature transform around you.
+ S8 49-56s SPECIES SCALE: humanity or the whole region changes forever.
+ S9 56-63s PLANET SCALE: Earth, sea, or sky itself changes.
+ S10 63-70s VOID SCALE: the largest scale, near silence, near dark.
+ S11 70-77s TWIST AND LOOP: a final reveal that returns to scene 1.
+ ESCALATION LADDERS (pick one):
+ TIME: day, week, year, decade, century, millennium, era, planet, star, void.
+ DISTANCE: street, district, city, country, continent, ocean, planet, system, galaxy, cosmos.
+ POPULATION: you, family, town, city, nation, region, world, species, life, nothing.
+ INTENSITY: tiny change, noticeable, strange, dangerous, extreme, impossible, mythic.
+
+ 5. NARRATION RULES
+ - Second person ('you'), present tense, plain words a 10-year-old understands.
+ - Each scene narration is 100-125 characters including spaces and 14-20 words. Verify with a character count before
+ printing; print the count after each line as (n chars). Rewrite until every line passes.
+ - One idea per scene, one specific number, place, or year per scene.
+ - Never start two scenes with the same word. No filler openers (So, Well, Basically).
+ - No content word (ignore articles, conjunctions, prepositions) may appear more than twice in the whole script, except 'you'
+ and the ladder unit word (for example 'years' in a TIME ladder).
+ - SOMATIC 'YOU' TRIGGER: scenes 1, 4, 5 and 10 must include one body sensation (weight, hunger, cold, ache, heartbeat)
+ tied to 'you'.
+ - Scene 2 must contain the exact reversal setup 'At first' and scene 4 must start with 'But'.
+ - Facts must be real and checkable (dates, distances, temperatures). Never invent statistics. If the topic is hypothetical, frame
+ the numbers as 'would' or 'could' only where honesty requires it.
+ - DYNAMIC NARRATION ENGINE: adapt vocabulary to the mode (TIME uses years, SPACE uses distances and
+ temperatures, PLACE uses coordinates, countries and city names).
+
+ 6. LOCKED 7-SECOND VISUAL PACING
+ Every scene has exactly 4 cuts of 1.75 seconds:
+ CUT A 0.00-1.75s: wide establishing shot with the hero small in frame and the hero object floating beside him.
+ CUT B 1.75-3.50s: medium reaction shot, face readable, deadpan or shocked.
+ CUT C 3.50-5.25s: ANIMATED MAP INSET (see section 7). Real satellite imagery, full bleed.
+ CUT D 5.25-7.00s: close-up payoff or kinetic caption moment that match-cuts into the next scene.
+ Captions: 1-3 words per beat, 0.5s each, changing with speech; last chunk of each scene holds 0.4s.
+
+ 7. VISUAL PRODUCTION RULES (3D CARTOON + ANIMATED MAP LAYER)
+ - Frame: 9:16 vertical, generate at 1080x1920, keep a safe zone: captions in lower third, nothing important in the top 12
+ percent or bottom 10 percent.
+ - Look: glossy 3D clay-cartoon miniature dioramas, soft studio light, shallow depth of field, rich saturated colour per scene,
+ readable silhouettes.
+ - Camera language: translate every vague word into exact cinematography. 'epic' becomes low-angle with slow dolly-in and
+ deep shadows; 'tense' becomes handheld push-in with narrow depth of field; 'huge' becomes extreme wide with tiny hero for
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                            Page 4
+ scale.
+ - MAP INSET RULES (Cut C of every scene): use ONE of these map animations per scene, never repeating the same type in
+ consecutive scenes: ROUTE DRAW (a glowing line grows from A to B with a tiny hero marker), ZOOM-THROUGH-SCALE
+ (street to city to country to planet to space), REGION HIGHLIGHT (area fills with colour, borders glow), PIN DROP (pin falls,
+ ripple, label), YEAR COUNTER (large number ticks while the satellite view time-lapses), DIM-OUT (pins or lights switch off
+ one by one).
+ - MAP STYLE LOCK: real satellite or Earth-imagery basemap, full bleed, cinematic camera glide. NO paper map, NO picture
+ frame, NO cartoon or fake map, NO flat clip-art globe. Labels only for locked place names, in the same white caption font. For
+ space scenes use real astronomical imagery style (planet textures, star fields).
+ - Map colour accent = the hero object's glow colour so the map feels part of the story.
+ - No logos, no real brand names, no real people's faces, no text on props except short locked words.
+
+ 8. HERO OBJECT LOCK
+ - HERO CHARACTER: one named stickman who is the viewer. Name him in the Topic Lock Card (reference: GUS). Print the
+ CHARACTER SHEET once and paste it verbatim into every image prompt.
+ CHARACTER SHEET (default): 3D stylized stickman, glossy white round head with two large round white eyes with small
+ black pupils and heavy deadpan eyelids, thin dark eyebrows, one swooping chocolate-brown hair curl on top, bright yellow
+ bean-shaped torso, thick red scarf with a cream stripe, thin black noodle limbs, oval brown shoes, no mouth lines unless
+ emotion demands, clay-render finish.
+ - HERO OBJECT: one symbolic object chosen per topic (reference: a brass pocket watch with softly glowing amber hands for
+ time topics; a small spinning globe for geography; a glowing seed for nature). It must appear floating and highlighted in all 11
+ scenes, about 12-18 percent of frame height, same material, same glow colour, same angle logic. Print the HERO OBJECT
+ SHEET once and paste it verbatim into every image prompt.
+ - If a scene does not logically allow the object, it floats as a small guiding companion beside the hero.
+ - COLOUR-GRADE ANCHOR: pick one anchor palette in scene 1 and shift it one step per scene along the arc; state the shift
+ in each scene header.
+
+ 9. SOUND DESIGN
+ Print a SOUND line for each scene: music, ambience, three SFX.
+ Music map: S1 punchy cartoon stinger, S2 playful ukulele and claps, S3 bright upbeat bounce, S4 music drops to a single flat
+ piano note, S5 low warm strings, S6 steady pulse and footsteps, S7 rising synth pad, S8 wide cinematic swell, S9 massive
+ low brass and sub drone, S10 almost silence with a thin high tone, S11 one small bell and the clock tick.
+ Always: whoosh on every cut, soft pop on every caption chunk, hero-object chime when it enters frame, a clock-tick motif that
+ fades out in S10 and returns in S11.
+ Auditory escalation: pitch, tempo and layering rise from S1 to S9, collapse in S10, then resolve with one warm sound in S11.
+
+ 10. VOICE DELIVERY AND TRANSCRIPTION
+ - One male narrator, friendly, deadpan, slightly amused; short pauses before numbers; energy rises to S9, drops to a hush in
+ S10, warm reveal in S11.
+ - Pace 150-170 words per minute, 7 seconds per scene including a 0.3s breath at the end.
+ - Print: (1) the 11 lines as one clean paragraph for text-to-speech, (2) a caption transcript with 1-3 word chunks per cut and
+ timestamps, (3) a pronunciation note for any number, date, or place that could be misread.
+ - Anti-repetition: run a check across all 11 lines for repeated words, repeated sentence shapes, and repeated first words;
+ rewrite until clean.
+
+ 11. TRANSITIONS
+ - Between scenes use MATCH-CUTS: the last frame of a scene shares shape, colour or position with the first frame of the
+ next (the hero object passes through frame, the map zoom lands in the next set, the camera dives into an eye or a pin).
+ - Allowed: whip pan, object-wipe, zoom-through, match-cut. Not allowed: cross-dissolves, spinning cubes, star wipes.
+ Exception: S10 to S11 fades up from black.
+ - Print the transition in the scene header: 'OUT: ...' and 'IN: ...'.
+
+ 12. MASTER REALISM TEMPLATE AND STYLE SUFFIX
+ MASTER LAYER (paste at the START of every image prompt, then add CHARACTER SHEET, HERO OBJECT SHEET and
+ scene content):
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                           Page 5
+ '9:16 vertical, 3D stylized clay-cartoon miniature diorama, soft global illumination, subtle subsurface glow on the character,
+ shallow depth of field, rich saturated colour, crisp readable silhouettes, tactile materials, high detail, no text except locked
+ captions.'
+ STYLE SUFFIX (paste at the END of every video prompt):
+ 'Smooth 30fps animation, deliberate camera movement as described, character stays on model with the exact same design,
+ hero object floating and glowing at the same size, natural secondary motion on scarf and hair, no morphing, no warping, no
+ extra characters unless named, no flicker.'
+ MAP SUFFIX (append to every Cut C video prompt):
+ 'Real satellite imagery basemap, full bleed, cinematic camera glide, glowing vector overlay in the hero-object colour, clean
+ white labels in the caption font, no paper, no frame, no cartoon map.'
+
+ 13. HIGH-RETENTION VIRAL THUMBNAIL PACKAGE
+ Print: (1) a main thumbnail image prompt in 1:1 with a 9:16 safe-area note; (2) three 4-word-or-fewer text hooks in ALL
+ CAPS; (3) three A/B variants (extreme close-up, tiny hero vs giant world, split before/after); (4) colour contrast rule: one warm
+ subject against a cool background or the reverse; (5) face rule: hero eyes large and centred, one clear emotion; (6) hero
+ object visible, glowing. Include the hero character and hero object verbatim. No clutter, maximum two text lines, text never
+ over the face.
+
+ 14. PDF AUTO-SAVE CONFIRMATION
+ After section I, automatically save the entire package as a PDF named WHATIF_[TOPIC_SLUG]_[YYYYMMDD].pdf (include
+ thumbnail prompts and QC). If you cannot create files, print the filename you would use. Print exactly one line: 'SAVED:
+ <filename> | 11 scenes | 77s | <n> pages'.
+
+ 15. GLOBAL LOCKS, SEAMLESS LOOP AND FINAL QUALITY CONTROL
+ GLOBAL LOCKS: 11 scenes, 7s each, 4 cuts each; one hero character; one hero object; one caption style; one map style;
+ one narrator; no violence, gore, hate, or real people; no copyrighted characters.
+ SEAMLESS LOOP: the last frame of scene 11 matches the first frame of scene 1 in composition and colour; the last narration
+ line ends on an echo of the first line (a repeated object, phrase, or question) so the video loops without a visible seam.
+ QC REPORT (print PASS or FIX for each, fix before printing):
+ 1 Narration 100-125 characters in all 11 scenes. 2 No repeated first words. 3 No content word repeated more than twice
+ except 'you' and the ladder unit word. 4 Somatic trigger in S1, S4, S5, S10. 5 'At first' in S2 and 'But' opens S4. 6 Four cuts
+ per scene. 7 Map inset in Cut C of every scene. 8 No map type repeats in consecutive scenes. 9 Real-satellite style, no
+ paper, no frame, no fake map. 10 Character Sheet pasted verbatim in every image prompt. 11 Hero object in all 11 scenes.
+ 12 Master Layer and Style Suffix on every prompt. 13 Thumbnail package complete. 14 Loop lock confirmed.
+ === END SYSTEM PROMPT ===
+
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                              Page 6
+    PART 2B: WORKED EXAMPLE (reference run for 'What If You Could
+    Never Die')
+    Hero character: GUS (see Character Sheet in section 8). Hero object: brass pocket watch with softly glowing amber hands.
+    Narration below was written fresh and checked: every line is 100-125 characters. Scene 11 is my own loop ending (it echoes
+    the piano from scene 1); the reference video's last line was cut off in captions.
+
+S      NARRATION (chars)                                     MAP INSET (Cut C)                                  SOUND
+
+1      One day, a piano falls on your head. You stand        ZOOM-THROUGH-SCALE: satellite of Earth             Punchy cartoon stinger; SFX: piano
+       up, dizzy but unhurt, and slowly realize you can      dives to one town, then one bakery street; pin     crash, dizzy bird tweets, hero-object
+       never die. (106)                                      drops, label DAY 1.                                chime.
+
+2      At first, it is amazing. You eat whatever you         ROUTE DRAW: top-down satellite of a                Playful ukulele and claps; SFX:
+       want, skydive with no parachute, and laugh at         dropzone field; glowing descent line with a tiny   sizzle, wind rush, parachute-free
+       any danger. (103)                                     hero marker, counter 0 PARACHUTES.                 whoop.
+
+3      A single dollar sits in the bank for 300 years.       YEAR COUNTER: satellite of a small town,           Bright upbeat bounce; SFX: coin
+       Interest does the rest, and now you are a             bank roof pulses, counter ticks YEAR 0 to          drop, bank bell, cash-pile flutter.
+       millionaire. (102)                                    YEAR 300 as the town grows.
+
+4      But then, your dog grows old. Every pet you           REGION HIGHLIGHT: neighbourhood fills with         Music drops to one flat piano note;
+       love, every friend you make, fades while you          warm colour, then pet-and-friend pins dim one      SFX: dog bark fading, soft sigh,
+       stay exactly the same. (111)                          by one.                                            clock tick.
+
+5      Decade after decade, your chest feels heavy at        DIM-OUT: country satellite with 12 cemetery        Low warm strings; SFX: footsteps
+       each grave. Each headstone is someone you             pins, each one switching off as a year counter     on gravel, cemetery wind, heavy
+       once laughed with. (107)                              rises.                                             heartbeat.
+
+6      So you fake your own death, take a new name,          ROUTE DRAW: dashed line hops across 6              Steady pulse and footsteps; SFX:
+       and start over in a new city. Then you do it          cities worldwide, hero marker changes name         suitcase wheels, train whistle,
+       again and again. (106)                                label at each stop.                                passport stamp.
+
+7      Empires rise, temples crumble, and cities turn        YEAR COUNTER: satellite time-lapse of one          Rising synth pad; SFX: stone
+       to dust while you watch. Nothing you know ever        ancient site, lush to ruins to forest, YEAR 100    crumbling, rushing wind, distant
+       lasts except you. (111)                               to YEAR 10,000.                                    crowd.
+
+8      Ten thousand years later, humans fly to Mars          ZOOM-THROUGH-SCALE: Earth to Moon to               Wide cinematic swell; SFX: rocket
+       and leave Earth behind. You wave goodbye,             Mars, route line traces the rocket, label 10,000   ignition, countdown, airlock hiss.
+       still wearing that scarf. (112)                       YEARS.
+
+9      Billions of years pass, then the sun swells and       PIN DROP: solar system view, Earth orbit ring      Massive low brass and sub drone;
+       swallows the Earth. You watch from space,             glows then erases as the sun expands.              SFX: solar roar, rumble, deep tone.
+       alone and still alive. (112)
+
+10     Trillions of years drift by, cold to your bones, as   DIM-OUT: galaxy zoom-out into the cosmic           Almost silence with a thin high tone;
+       the last star flickers out. Then comes only           web, stars switch off one by one, counter          SFX: faint heartbeat, last star flicker,
+       darkness. (105)                                       TRILLIONS OF YEARS.                                clock tick fades.
+
+11     Then someone taps your shoulder. A stranger           ZOOM-THROUGH-SCALE reversed: darkness              One small bell and the clock tick
+       holding a lantern grins and asks, did a piano fall    collapses back to Earth, to the town, to the       returns; SFX: shoulder tap, lantern
+       on you too? (106)                                     bakery street from scene 1.                        clink, soft whoosh to loop.
+
+
+
+    Sample Scene 1 prompts (the format the system prompt prints for every cut)
+    CUT A IMAGE: 9:16 vertical, 3D stylized clay-cartoon miniature diorama, soft global illumination, shallow depth of field, rich
+    saturated colour. Wide shot of a sunny brick bakery street, 3D stylized stickman GUS, glossy white round head, two large
+    round white eyes with small black pupils and heavy deadpan eyelids, thin dark eyebrows, one swooping chocolate-brown hair
+    curl, bright yellow bean-shaped torso, thick red scarf with cream stripe, thin black noodle limbs, oval brown shoes, standing
+    small near the kerb, a grand piano hanging from a crane high above him, floating brass pocket watch with softly glowing
+    amber hands, about 15 percent of frame height beside him.
+    CUT A VIDEO: Slow dolly-in as the piano rope snaps and the piano plunges toward Gus. Smooth 30fps animation, character
+    stays on model, hero object floating and glowing, no morphing, no flicker.
+    CUT B IMAGE: Medium shot of Gus flat under a smashed piano lid, spiral eyes, then standing up unhurt, floating brass
+    pocket watch with softly glowing amber hands, about 15 percent of frame height spinning above his head, same brick street.
+    CUT C MAP VIDEO: ZOOM-THROUGH-SCALE from orbit to one bakery street, pin drops, white label DAY 1. Real satellite
+    imagery basemap, full bleed, cinematic camera glide, glowing amber vector overlay, no paper, no frame, no cartoon map.
+    CUT D IMAGE: Extreme close-up of Gus, wide round eyes, a small sweat drop, red scarf fluttering, floating brass pocket
+    watch with softly glowing amber hands, about 15 percent of frame height reflected in his eyes; match-cut target: the watch
+    face becomes the pastry-shop window in scene 2.
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                                               Page 7
+ Thumbnail package (example)
+ 1:1 square, Gus in extreme close-up with huge round eyes, floating in black space with a glowing amber pocket watch at his
+ shoulder, tiny Earth behind him, red scarf drifting, rim light from a dying orange star, high contrast warm subject on cool navy.
+ Hooks: NEVER DIE? | FOREVER IS HORRIBLE | THE LAST STAR.
+
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                            Page 8
+ PART 3: 1000 TOPICS
+ 20 categories x 50 topics. Every topic works with the 11-scene arc and gives the map layer something real to show (places,
+ routes, scale, years). Send one topic line at a time as Step 2. Tag [TL] at the end for a Tagalog version.
+
+ IMMORTALITY AND TIME (1-50)
+1. What If You Could Never Die                                  26. What If You Watched Earth From Space for 1 Billion Years
+2. What If You Never Aged Past 25                               27. What If All Humans Lived Forever
+3. What If You Aged Backwards Every Year                        28. What If Nobody Ever Aged Again
+4. What If You Could Pause Time for One Year                    29. What If Babies Were Born Adults
+5. What If You Never Needed Sleep Again                         30. What If You Could Only Move Forward in Time
+6. What If You Relived Yesterday Forever                        31. What If a Year Had 1,000 Days
+7. What If You Lived to 1,000 Years Old                         32. What If the Clock Never Reached Midnight
+8. What If You Could Skip Ahead 100 Years                       33. What If You Lived on Mars Time
+9. What If You Remembered Every Single Day                      34. What If You Could Trade Years of Life for Money
+10. What If You Woke Up Every Morning With No Memory            35. What If You Were Frozen for 1,000 Years
+11. What If Every Day Lasted 48 Hours                           36. What If You Woke Up 10,000 Years Late
+12. What If Time Ran Twice as Fast                              37. What If You Had One Second to Think Every Hour
+13. What If Time Stopped for Everyone but You                   38. What If You Never Forgot Anything You Read
+14. What If You Could Never Be Late Again                       39. What If You Aged 10 Times Faster
+15. What If You Froze Your Age for 500 Years                    40. What If You Were Trapped Inside a Single Second
+16. What If You Slept for 100 Years                             41. What If Today Repeated Until You Learned Everything
+17. What If You Lived Your Life in Reverse                      42. What If You Could Live in the Past for a Week
+18. What If You Could See 10 Seconds Into the Future            43. What If the Whole World Slept for a Month
+19. What If You Could Never Forget a Face                       44. What If Everyone Lived Exactly 30 Years
+20. What If You Had Unlimited Free Time                         45. What If You Never Lost a Day of Memory
+21. What If You Lived the Same Day for 10,000 Years             46. What If You Outlived Your Own Country
+22. What If You Could Message Your Past Self                    47. What If You Outlived the Internet
+23. What If You Were the Last Person Alive for 1,000 Years      48. What If You Outlived the Moon
+24. What If You Never Got Bored for a Million Years             49. What If You Outlived Every Language on Earth
+25. What If You Could Live Every Life on Earth                  50. What If You Lived Until the Last Star Died
+
+
+ BODY EXTREMES (51-100)
+51. What If You Never Blinked                                   76. What If You Were 10 Meters Tall
+52. What If Your Heart Beat Twice as Fast                       77. What If You Were 10 Centimeters Tall
+53. What If You Felt No Pain                                    78. What If You Shrank to the Size of an Atom
+54. What If You Could Never Feel Cold                           79. What If Gravity Doubled Inside Your Body
+55. What If You Grew One Foot Every Year                        80. What If You Had Night Vision
+56. What If You Had Twice as Many Bones                         81. What If You Had No Shadow
+57. What If You Never Stopped Growing                           82. What If You Could Taste Colors
+58. What If You Had Eyes in the Back of Your Head               83. What If You Never Needed to Eat
+59. What If You Could See Every Color That Exists               84. What If You Never Needed to Breathe
+60. What If You Could Hear Every Sound on Earth                 85. What If You Had a Second Heart
+61. What If You Had No Sense of Smell                           86. What If You Had Cat Reflexes
+62. What If You Had a Photographic Memory                       87. What If You Slept Only One Hour a Night
+63. What If You Used 100 Percent of Your Brain                  88. What If You Had X-Ray Vision
+64. What If You Lost Your Sense of Taste                        89. What If You Were Immune to Every Disease
+65. What If You Had Three Arms                                  90. What If You Could Feel Everyone's Emotions
+66. What If You Had Gills                                       91. What If Your Skin Turned to Steel
+67. What If You Could Breathe Underwater                        92. What If Your Memories Were Stored Online
+68. What If You Had Wings                                       93. What If You Had Perfect Balance
+69. What If You Were Born Without Fingerprints                  94. What If You Could Hold Your Breath for One Hour
+70. What If Your Hair Grew One Meter a Day                      95. What If You Were Born on the Moon
+71. What If You Could Regrow Any Limb                           96. What If You Could Hibernate Through Winter
+72. What If You Never Got Sick                                  97. What If You Could Glow in the Dark
+73. What If You Had Superhuman Strength                         98. What If You Could Change Your Height at Will
+74. What If You Could Run 100 Km/h                              99. What If You Never Felt Tired
+75. What If You Could Jump 10 Meters High                       100. What If You Had a Tail
+
+
+ IMPOSSIBLE ABILITIES (101-150)
+101. What If You Could Fly Anywhere on Earth                    126. What If You Could Pull Water From Air
+102. What If You Could Teleport Once a Day                      127. What If You Could Control Fire Safely
+103. What If You Were Invisible for a Week                      128. What If You Could Hear Thoughts From a Mile Away
+104. What If You Could Read Minds for 24 Hours                  129. What If You Could Jump to Any Planet
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                              Page 9
+105. What If You Could Speak Every Language               130. What If You Could Make Anyone Fall Asleep
+106. What If You Could Talk to Animals                    131. What If You Could Learn Any Skill in One Hour
+107. What If You Could Control the Weather                132. What If You Could Copy Any Voice
+108. What If You Could Control Gravity                    133. What If You Could Walk on the Ceiling
+109. What If You Had Super Speed                          134. What If You Could See the Past of Any Object
+110. What If You Could Clone Yourself 100 Times           135. What If You Could Stretch Your Arms Anywhere
+111. What If You Could Shapeshift Into Anything           136. What If You Could Shrink Any Object
+112. What If You Could Move Objects With Your Mind        137. What If You Could Float Above the Ground
+113. What If You Could Heal Any Wound                     138. What If You Could Freeze Anything You Touched
+114. What If You Could Walk Through Walls                 139. What If You Could Create Light From Your Hands
+115. What If You Never Lost a Game                        140. What If You Could Survive Underwater for a Year
+116. What If You Could Always Tell the Truth From a Lie   141. What If You Could Draw Anything to Life
+117. What If You Could Rewind Time by 10 Seconds          142. What If You Could Fast-Forward Boring Days
+118. What If You Could Swim Like a Dolphin                143. What If You Could Undo One Mistake a Year
+119. What If You Could Stop Earthquakes                   144. What If You Could Visit Any Moment in History
+120. What If You Could Grow Any Plant Instantly           145. What If You Could Stop Aging in Others
+121. What If You Could Breathe in Space                   146. What If You Could Make Any Plant Glow
+122. What If You Could Walk on Water                      147. What If You Could Talk to Your Future Self
+123. What If You Could Absorb Sunlight for Energy         148. What If You Could Borrow Any Animal's Senses
+124. What If You Could Survive Any Fall                   149. What If You Could Detect Danger Before It Happens
+125. What If You Could Live Without Sleep or Food         150. What If You Could Pause Gravity for One Minute
+
+
+ COSMIC EVENTS (151-200)
+151. What If the Sun Disappeared for One Minute           176. What If the Speed of Light Was Slower
+152. What If the Moon Vanished Tonight                    177. What If the Universe Stopped Expanding
+153. What If the Moon Crashed Into Earth                  178. What If We Found Alien Life Tomorrow
+154. What If the Moon Was Twice as Close                  179. What If an Alien Ship Parked Over Your City
+155. What If Earth Stopped Spinning                       180. What If Earth Was Twice as Big
+156. What If Earth Spun Twice as Fast                     181. What If Earth Was Half the Size
+157. What If Earth Had Rings Like Saturn                  182. What If the Solar System Had Two Suns
+158. What If Earth Had Two Moons                          183. What If the Sun Was Twice as Bright
+159. What If Earth Was Pulled Out of Its Orbit            184. What If a Comet Hit the Sun
+160. What If Jupiter Became a Star                        185. What If Neptune Crashed Into Uranus
+161. What If a Black Hole Entered the Solar System        186. What If Earth Passed Through a Comet Tail
+162. What If a Giant Asteroid Was Headed for Earth        187. What If a Rogue Planet Flew Past Earth
+163. What If the Sun Turned Blue                          188. What If Humans Lived on the Moon in 2100
+164. What If the Sun Went Out Forever                     189. What If We Built a City on Mars
+165. What If a Supernova Exploded Nearby                  190. What If We Built a Ring Around Earth
+166. What If Betelgeuse Exploded Tomorrow                 191. What If We Could Travel at Light Speed
+167. What If Saturn Replaced the Moon                     192. What If We Sent a Probe to the Nearest Star
+168. What If Mars Was Where Earth Is                      193. What If We Lost All Satellites Overnight
+169. What If Venus Was Habitable                          194. What If a Solar Flare Hit Earth Directly
+170. What If Pluto Was Moved to Earth's Orbit             195. What If Space Had Sound
+171. What If Earth Was Tilted 90 Degrees                  196. What If Stars Were Closer Together
+172. What If Earth Had No Atmosphere                      197. What If the Night Sky Had No Stars
+173. What If Earth Had No Magnetic Field                  198. What If the Big Bang Happened Again
+174. What If the Milky Way Collided With Andromeda        199. What If You Reached the Edge of the Universe
+175. What If Gravity Disappeared for 5 Seconds            200. What If Dark Matter Disappeared
+
+
+ EARTH CHANGES (201-250)
+201. What If All the Ice on Earth Melted                  226. What If the Gulf Stream Stopped
+202. What If the Sahara Became Green                      227. What If Earth Had No Seasons
+203. What If the Amazon Disappeared                       228. What If Earth Had Eternal Night
+204. What If Every Volcano Erupted at Once                229. What If Earth Had Eternal Day
+205. What If the Yellowstone Supervolcano Erupted         230. What If the Atmosphere Doubled in Thickness
+206. What If the Himalayas Doubled in Height              231. What If Oxygen Dropped to 10 Percent
+207. What If Mount Everest Vanished                       232. What If All Trees Vanished
+208. What If All Deserts Became Forests                   233. What If All Plastic Disappeared
+209. What If the Poles Flipped Overnight                  234. What If All Metal Rusted Overnight
+210. What If Earth's Core Cooled Down                     235. What If Earth Grew 100 Meters Wider
+211. What If Earth Had No Mountains                       236. What If Sea Level Rose by 1 Meter
+212. What If Earth Had No Oceans                          237. What If Sea Level Rose by 70 Meters
+213. What If Earth Was Completely Flat                    238. What If You Dug a Hole Through the Earth
+214. What If Earth Had No Continents                      239. What If You Drilled to Earth's Core
+215. What If the Continents Merged Back Into One          240. What If a Tsunami Hit Every Coast
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                  Page 10
+216. What If the San Andreas Fault Broke at Once            241. What If Earth Lost Its Ozone Layer
+217. What If the Ring of Fire Erupted Together              242. What If a Mega-Earthquake Hit Tokyo
+218. What If All Rivers Dried Up                            243. What If the Pacific Ocean Dried Up
+219. What If It Rained for 40 Days Straight                 244. What If a New Continent Rose From the Sea
+220. What If the Nile Changed Course                        245. What If a Meteor Hit the Pacific
+221. What If the Grand Canyon Filled With Water             246. What If Earth Had Perfect Weather Everywhere
+222. What If the Dead Sea Disappeared                       247. What If Earth Was Covered in Ice Again
+223. What If Antarctica Became Warm                         248. What If the Land Bridge to Asia Returned
+224. What If Greenland Turned Green                         249. What If Earth's Day Became 30 Hours
+225. What If Iceland Sank                                   250. What If Rivers Flowed Uphill
+
+
+ OCEANS AND WATER (251-300)
+251. What If You Fell to the Bottom of the Mariana Trench   276. What If the Panama Canal Collapsed
+252. What If the Ocean Turned to Fresh Water                277. What If the Suez Canal Closed Forever
+253. What If All Fresh Water Disappeared                    278. What If All Ships Stopped Sailing
+254. What If the Ocean Had No Salt                          279. What If the Seabed Was Fully Mapped
+255. What If the Ocean Glowed at Night                      280. What If You Found a Lost Sunken City
+256. What If You Swam Across the Pacific                    281. What If a Hidden Ocean Existed Under the Crust
+257. What If You Lived in an Underwater City                282. What If Sharks Disappeared From the Sea
+258. What If You Slept at the Bottom of the Sea             283. What If Jellyfish Took Over the Oceans
+259. What If You Drained the Atlantic                       284. What If the Ocean Was One Mile Higher
+260. What If the Mediterranean Dried Up Again               285. What If the Ocean Was One Mile Lower
+261. What If You Scuba Dived to the Titanic                 286. What If You Swam With a Blue Whale
+262. What If You Lived on a Boat for 50 Years               287. What If You Walked Across the Ocean Floor
+263. What If the Oceans Became Acid                         288. What If Fish Could Walk on Land
+264. What If the Oceans Boiled                              289. What If Rain Fell Upwards
+265. What If the Oceans Froze                               290. What If Every Iceberg Melted at Once
+266. What If Coral Reefs Vanished                           291. What If the Arctic Ocean Opened Year-Round
+267. What If Every Sea Creature Surfaced                    292. What If a Submarine Ran for 100 Years
+268. What If a Giant Whirlpool Opened Up                    293. What If You Built a Bridge Across the Pacific
+269. What If the Ocean Floor Cracked Open                   294. What If You Lived on a Floating City
+270. What If the Tides Never Came                           295. What If the Moon Pulled the Ocean Into Space
+271. What If Waves Were 100 Meters High                     296. What If Rivers Flowed in Circles
+272. What If You Floated in the Dead Sea for a Day          297. What If You Dived Into a Volcano Lake
+273. What If the Great Lakes Dried Up                       298. What If a Mega-Tsunami Hit the Atlantic
+274. What If Lake Baikal Melted                             299. What If Water Stopped Being Wet
+275. What If the Amazon River Ran Backwards                 300. What If Ice Sank Instead of Floating
+
+
+ MONEY AND ECONOMY (301-350)
+301. What If You Invested $1 for 300 Years                  326. What If Everyone Quit Their Job for a Day
+302. What If Money Stopped Existing                         327. What If Online Shopping Disappeared
+303. What If Everyone Earned the Same Salary                328. What If the Stock Market Closed for a Year
+304. What If Gold Was Worthless                             329. What If All Debt Was Erased
+305. What If You Found a Mountain of Gold                   330. What If You Had a Trillion Pesos
+306. What If Every Person Got $1 Million                    331. What If Oil Ran Out Tomorrow
+307. What If You Had Infinite Money for a Day               332. What If Electricity Was Free
+308. What If Banks Disappeared Overnight                    333. What If Water Cost as Much as Gold
+309. What If You Paid Rent for 1,000 Years                  334. What If Diamonds Became Common
+310. What If Cash Vanished Tomorrow                         335. What If Rice Became Rare
+311. What If Everything Was Free                            336. What If You Ran a Country for a Day
+312. What If You Saved $1 Every Day for 100 Years           337. What If Delivery Drones Replaced Every Truck
+313. What If You Inherited a Whole Island                   338. What If You Lived on $1 a Day for a Year
+314. What If You Bought a Country                           339. What If You Gave Away Everything You Own
+315. What If Taxes Were Abolished                           340. What If You Turned Your Savings Into Gold Bars
+316. What If Nobody Had to Work                             341. What If Every Building Was Free to Live In
+317. What If Work Was Paid by the Smile                     342. What If Wages Were Paid in Time
+318. What If You Won the Lottery 10 Times                   343. What If You Mined an Asteroid Full of Platinum
+319. What If Inflation Doubled Every Year                   344. What If Every Island Was for Sale
+320. What If Prices Halved Every Year                       345. What If You Could Print Money Safely
+321. What If You Became the Richest Person Alive            346. What If Tourism Stopped for 10 Years
+322. What If You Lost All Your Money Tomorrow               347. What If Everyone Became a Millionaire at 30
+323. What If the World Used One Currency                    348. What If You Could Sell Your Dreams
+324. What If Gold Rained From the Sky                       349. What If Cities Charged for Air
+325. What If You Owned Every Car on Earth                   350. What If a Single Coin Doubled Every Day for a Month
+
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                      Page 11
+ ALTERNATE HISTORY (351-400)
+351. What If the Roman Empire Never Fell                              376. What If the Moon Landing Happened in 1900
+352. What If the Library of Alexandria Never Burned                   377. What If the Internet Was Invented in 1900
+353. What If Dinosaurs Never Went Extinct                             378. What If Trains Never Existed
+354. What If the Wheel Was Never Invented                             379. What If the Airplane Was Invented 500 Years Earlier
+355. What If Fire Was Never Discovered                                380. What If the Ice Age Never Ended
+356. What If the Printing Press Was Never Invented                    381. What If Neanderthals Never Died Out
+357. What If the Great Wall Was Never Built                           382. What If Humans Never Left Africa
+358. What If Columbus Never Sailed                                    383. What If the Vikings Settled North America
+359. What If Magellan Never Reached Asia                              384. What If Rome Reached China
+360. What If the Black Death Never Happened                           385. What If the Aztec Empire Survived
+361. What If the Industrial Revolution Started 1,000 Years Earlier    386. What If the Inca Empire Never Fell
+362. What If Electricity Was Never Discovered                         387. What If the Ming Fleet Sailed to Europe
+363. What If Writing Was Never Invented                               388. What If Medicine Was Invented 1,000 Years Earlier
+364. What If Agriculture Never Began                                  389. What If the Telescope Was Never Invented
+365. What If the Pyramids Were Never Built                            390. What If Paper Was Never Invented
+366. What If Ancient Greece Had Steam Engines                         391. What If Coffee Was Never Discovered
+367. What If the Mongol Empire Never Collapsed                        392. What If Tea Was Never Discovered
+368. What If the Ottoman Empire Still Existed                         393. What If the Compass Was Never Invented
+369. What If the Silk Road Never Closed                               394. What If Gunpowder Was Never Invented
+370. What If the Spice Trade Never Began                              395. What If Steel Was Never Forged
+371. What If the Panama Canal Was Never Built                         396. What If Cities Never Existed
+372. What If the Suez Canal Was Never Dug                             397. What If Language Never Evolved
+373. What If the Americas Were Never Found                            398. What If Ancient Maps Were Perfectly Accurate
+374. What If Antarctica Had Been Settled in 1800                      399. What If the Mayans Had Modern Technology
+375. What If Egypt Ruled the World                                    400. What If the Dark Ages Never Happened
+
+
+ TECHNOLOGY AND AI (401-450)
+401. What If AI Ran an Entire City                                    426. What If AI Wrote Every Book
+402. What If Every Car Drove Itself                                   427. What If AI Could Predict Your Whole Life
+403. What If Phones Never Existed                                     428. What If Machines Learned to Dream
+404. What If the Internet Shut Down for a Week                        429. What If Cars Were Invented Without Wheels
+405. What If the Internet Shut Down Forever                           430. What If We Colonized the Ocean With Robots
+406. What If Every Device Had Infinite Battery                        431. What If a Quantum Computer Cracked Every Password
+407. What If Robots Did All Human Jobs                                432. What If Cities Were Built on Giant Wheels
+408. What If You Had a Personal Robot                                 433. What If Every Building Was 3D Printed
+409. What If You Lived Inside a Smart House for 10 Years              434. What If We Lived in Domes on the Moon
+410. What If You Uploaded Your Brain to a Computer                    435. What If Gene Editing Was Free for Everyone
+411. What If Teleportation Was Invented                               436. What If Cameras Were Banned
+412. What If Flying Cars Were Everywhere                              437. What If Everyone Had a Hologram Twin
+413. What If Humans Built a Space Elevator                            438. What If Drones Delivered Everything
+414. What If Every Roof Had Solar Panels                              439. What If Trains Reached 1,000 Km/h
+415. What If Fusion Power Worked Tomorrow                             440. What If We Built a Tunnel Around the World
+416. What If We Had Unlimited Clean Energy                            441. What If We Built a Tower One Mile Tall
+417. What If Computers Became a Million Times Faster                  442. What If Robots Farmed the Entire Planet
+418. What If Smartphones Were Banned                                  443. What If AI Learned Every Language in the World
+419. What If GPS Stopped Working                                      444. What If Smart Glasses Replaced Phones
+420. What If Satellites Fell From the Sky                             445. What If Memory Chips Were Implanted in Humans
+421. What If You Lived Without Electricity for a Year                 446. What If We Built a Dyson Sphere
+422. What If the Power Grid Failed for a Month                        447. What If Humans Lived Inside a Virtual World
+423. What If Every Screen Turned Off for a Day                        448. What If 3D Printers Could Print Food
+424. What If Social Media Disappeared                                 449. What If Every Light Bulb Burned Forever
+425. What If You Lived Without a Phone for 10 Years                   450. What If We Stored the Internet on a Single Coin
+
+
+ PHILIPPINES (451-500)
+451. What If the Philippines Had No Typhoons                          476. What If Baguio Had Never Been Built
+452. What If All 7,641 Islands Joined Into One                        477. What If the Banaue Rice Terraces Vanished
+453. What If Manila Sank Underwater                                   478. What If the Tarsier Went Extinct
+454. What If Mayon Volcano Erupted Today                              479. What If the Philippine Eagle Disappeared
+455. What If Taal Volcano Erupted at Full Power                       480. What If Coconuts Disappeared From the Philippines
+456. What If the Philippines Was Twice as Big                         481. What If Every Island Had Free Internet
+457. What If the Philippines Sat in the Middle of the Pacific Alone   482. What If the Philippines Had a Bullet Train
+458. What If the Philippines Became a Superpower                      483. What If the Philippines Built a Bridge Between Luzon and Mindanao
+459. What If Every Filipino Went Home for Christmas                   484. What If You Lived on a Remote Philippine Island for 10 Years
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                                         Page 12
+460. What If EDSA Had No Traffic for a Day                      485. What If Mindanao Was Its Own Country
+461. What If Rice Disappeared From the Philippines              486. What If Lake Taal Disappeared
+462. What If Jeepneys Were Banned Forever                       487. What If Sea Level Rise Hit Manila Bay
+463. What If the Philippines Had Four Seasons                   488. What If the Philippines Had Never Been Colonized
+464. What If the Philippines Had Snow                           489. What If the Philippines Had No Earthquakes
+465. What If the Philippines Had No Rainy Season                490. What If You Walked Across the Sierra Madre
+466. What If the Philippines Moved to the Equator               491. What If the Pasig River Was Fully Clean
+467. What If the Philippines Joined the Ring of Fire Erupting   492. What If the Philippines Had Sea Elevators
+468. What If the Philippine Trench Opened                       493. What If the Philippines Became a Space Nation
+469. What If You Hiked Across All of Luzon                      494. What If You Counted Every Island in the Philippines
+470. What If You Sailed Through Every Island of the Visayas     495. What If the Philippines Hosted the Olympics
+471. What If the Chocolate Hills Were Real Chocolate            496. What If Every Filipino Became Bilingual in Ten Languages
+472. What If Palawan Became the World's Top Destination         497. What If Pandesal Became the World's Favorite Bread
+473. What If Boracay Closed Forever                             498. What If the Philippines Lost Its Coastline
+474. What If Cebu Became the Capital                            499. What If Mount Pinatubo Erupted Again
+475. What If Davao Became the Largest City                      500. What If You Visited Every Province in One Year
+
+
+ DAILY-LIFE EXPERIMENTS (501-550)
+501. What If You Never Cut Your Hair                            526. What If You Lived in One Room for 5 Years
+502. What If You Never Cut Your Nails                           527. What If You Ate Your Meals in Silence for a Year
+503. What If You Never Brushed Your Teeth                       528. What If You Meditated 1 Hour a Day for 10 Years
+504. What If You Never Washed Your Clothes                      529. What If You Wrote a Letter Every Day for a Year
+505. What If You Walked 30,000 Steps Every Day                  530. What If You Never Used a Mirror for a Month
+506. What If You Never Sat Down for a Year                      531. What If You Walked Barefoot for a Year
+507. What If You Stood for 24 Hours                             532. What If You Never Drove Again
+508. What If You Never Used Your Phone for 30 Days              533. What If You Cycled Across a Country
+509. What If You Stayed Awake for 48 Hours                      534. What If You Hiked Every Day for a Year
+510. What If You Never Used Stairs Again                        535. What If You Never Used a Shopping Bag Again
+511. What If You Took Cold Showers for a Year                   536. What If You Lived Without Plastic for a Year
+512. What If You Never Spoke for a Week                         537. What If You Never Threw Anything Away for 10 Years
+513. What If You Never Left Your Room for a Month               538. What If You Never Used a Credit Card Again
+514. What If You Did 100 Push-Ups Every Day for a Year          539. What If You Had Only One Outfit for a Year
+515. What If You Ran a Marathon Every Month                     540. What If You Slept on the Floor for 30 Days
+516. What If You Read One Book Every Day                        541. What If You Lived on a Tiny Island for a Month
+517. What If You Wrote Every Day for 10 Years                   542. What If You Took a Photo Every Day for 20 Years
+518. What If You Learned a New Word Every Hour                  543. What If You Called a Friend Every Day for a Year
+519. What If You Never Complained for a Year                    544. What If You Kept a Dream Journal for 10 Years
+520. What If You Smiled at Every Stranger                       545. What If You Learned to Juggle in 30 Days
+521. What If You Said Yes to Everything for a Week              546. What If You Learned the Piano in a Year
+522. What If You Said No to Everything for a Week               547. What If You Learned a New Language in 3 Months
+523. What If You Never Used a Clock for a Month                 548. What If You Planted a Tree Every Day for a Decade
+524. What If You Woke Up at 4 AM for a Year                     549. What If You Never Used the Internet for a Year
+525. What If You Went to Bed at 8 PM for a Year                 550. What If You Spent a Year in Complete Silence
+
+
+ WEATHER AND SKY (551-600)
+551. What If It Rained Diamonds                                 576. What If You Lived on the Top of Everest for a Year
+552. What If Lightning Never Stopped                            577. What If You Flew Into the Eye of a Hurricane
+553. What If a Hurricane Hit the Same City Every Year           578. What If You Stood in Antarctica for a Month
+554. What If the Sky Turned Green                               579. What If You Stood in the Sahara for a Day
+555. What If It Snowed in the Sahara                            580. What If You Lived in the Rainiest Place on Earth
+556. What If Tornadoes Lasted a Week                            581. What If You Lived in the Windiest Place on Earth
+557. What If the Wind Stopped Blowing                           582. What If the Air Turned Purple
+558. What If Every Cloud Disappeared                            583. What If the Sky Rained Fish
+559. What If Clouds Were Solid                                  584. What If Dew Became Ice Every Morning
+560. What If the Sky Was Always Red                             585. What If a Cloud Swallowed a City
+561. What If Rainbows Were Permanent                            586. What If the Moon Always Looked Red
+562. What If It Never Rained Again                              587. What If the Sky Had Two Suns
+563. What If It Rained Every Day for a Year                     588. What If the Sky Went Dark at Noon
+564. What If the Sun Never Set in Your City                     589. What If a Solar Eclipse Lasted a Year
+565. What If the Northern Lights Were Visible Everywhere        590. What If the Weather Was Controlled by Humans
+566. What If Thunder Never Stopped                              591. What If Monsoons Never Ended
+567. What If Temperatures Rose by 10 Degrees                    592. What If It Was Always Summer
+568. What If Temperatures Dropped by 20 Degrees                 593. What If It Was Always Winter
+569. What If a Heatwave Lasted 100 Days                         594. What If Cyclones Never Hit the Tropics
+570. What If a Blizzard Covered the Whole Planet                595. What If a Supercell Followed You Home
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                               Page 13
+571. What If Earth Had Permanent Fog                                  596. What If the Whole World Had the Same Temperature
+572. What If a Dust Storm Covered a Continent                         597. What If Air Was as Thick as Water
+573. What If Hail Was the Size of a Car                               598. What If Clouds Lit Up at Night
+574. What If a Tornado Touched Every Continent                        599. What If the Sky Was Full of Floating Islands
+575. What If Lightning Hit You 7 Times                                600. What If Fog Covered the Pacific Forever
+
+
+ MIND AND SOCIETY (601-650)
+601. What If Everyone Told the Truth for a Day                        626. What If Nobody Ever Got Angry
+602. What If Nobody Could Lie                                         627. What If Humans Were Born Without Fear
+603. What If Everyone Could Read Minds                                628. What If Everyone Wore the Same Clothes
+604. What If Nobody Spoke the Same Language                           629. What If Everyone Shared Their Dreams
+605. What If Everyone Spoke One Language                              630. What If All Books Vanished
+606. What If No One Had Phones for a Week                             631. What If Memory Could Be Transferred Between People
+607. What If Everyone Worked Only 3 Days a Week                       632. What If We Could Talk to Animals
+608. What If Everyone Was Kind for a Year                             633. What If Humans Had No Names
+609. What If War Ended Forever                                        634. What If Everyone Had a Twin
+610. What If Hunger Was Solved Tomorrow                               635. What If Humans Had Never Learned to Walk Upright
+611. What If Humans Were Born Knowing Everything                      636. What If Everyone Had a Personal Soundtrack
+612. What If Everyone Forgot Yesterday                                637. What If School Lasted Only 3 Hours
+613. What If Everyone Had the Same Face                               638. What If Cities Had No Cars
+614. What If Everyone Was the Same Height                             639. What If We Had No Weekend
+615. What If Nobody Needed Sleep                                      640. What If Everyone Went Vegetarian
+616. What If Everyone Lived in One City                               641. What If Everyone Lived Alone
+617. What If Every Country Had No Borders                             642. What If We Lived in Giant Families of 100
+618. What If Everyone Lived Underground                               643. What If Everyone Could See Auras
+619. What If Everyone Lived in Space                                  644. What If People Wore Their Age on Their Forehead
+620. What If Every Person Planted a Tree                              645. What If Children Ran the World
+621. What If Every Person Was Taught to Cook                          646. What If Elders Ruled for 1,000 Years
+622. What If All Humans Disappeared for a Day                         647. What If Nobody Owned Property
+623. What If Everyone Was Colorblind                                  648. What If Everyone Worked at What They Loved
+624. What If Everyone Could Fly                                       649. What If Everyone Traveled the World Once
+625. What If Everyone Was a Genius                                    650. What If Silence Was Illegal
+
+
+ SPACE SURVIVAL (651-700)
+651. What If You Were Stranded on Mercury for 24 Hours                676. What If You Fell Into a Black Hole
+652. What If You Were Stranded on Venus for 24 Hours                  677. What If You Fell Into a Neutron Star
+653. What If You Were Stranded on the Moon for 24 Hours               678. What If You Fell Into a Pulsar
+654. What If You Were Stranded on Mars for 24 Hours                   679. What If You Fell Into the Sun
+655. What If You Were Stranded on Phobos for 24 Hours                 680. What If You Fell Into Jupiter
+656. What If You Were Stranded on Ceres for 24 Hours                  681. What If You Fell Into Saturn
+657. What If You Were Stranded on Io for 24 Hours                     682. What If You Fell Into a Supernova
+658. What If You Were Stranded on Europa for 24 Hours                 683. What If You Fell Into a Wormhole
+659. What If You Were Stranded on Ganymede for 24 Hours               684. What If You Fell Into the Great Red Spot
+660. What If You Were Stranded on Callisto for 24 Hours               685. What If You Fell Into a Quasar
+661. What If You Were Stranded on Titan for 24 Hours                  686. What If You Fell Into a White Dwarf
+662. What If You Were Stranded on Enceladus for 24 Hours              687. What If You Fell Into Venus's Atmosphere
+663. What If You Were Stranded on Miranda for 24 Hours                688. What If You Fell Into the Orion Nebula
+664. What If You Were Stranded on Triton for 24 Hours                 689. What If You Fell Into the Center of the Milky Way
+665. What If You Were Stranded on Pluto for 24 Hours                  690. What If You Fell Into a Magnetar
+666. What If You Were Stranded on Eris for 24 Hours                   691. What If You Fell Into a Rogue Planet
+667. What If You Were Stranded on Halley's Comet for 24 Hours         692. What If You Fell Into a Cosmic Void
+668. What If You Were Stranded on an Asteroid for 24 Hours            693. What If You Fell Into Betelgeuse
+669. What If You Were Stranded on Saturn's Rings for 24 Hours         694. What If You Fell Into Saturn's Hexagon Storm
+670. What If You Were Stranded on Jupiter's Cloud Tops for 24 Hours   695. What If You Fell Into a Comet's Tail
+671. What If You Were Stranded on Olympus Mons for 24 Hours           696. What If You Fell Into Neptune's Storms
+672. What If You Were Stranded on Mimas for 24 Hours                  697. What If You Fell Into an Io Volcano
+673. What If You Were Stranded on Charon for 24 Hours                 698. What If You Fell Into a Titan Methane Lake
+674. What If You Were Stranded on Ariel for 24 Hours                  699. What If You Fell Into the Kuiper Belt
+675. What If You Were Stranded on Rhea for 24 Hours                   700. What If You Fell Into the Oort Cloud
+
+
+ COUNTRIES ON THE MAP (701-750)
+701. What If Japan Disappeared Overnight                              726. What If Iceland Disappeared Overnight
+702. What If China Disappeared Overnight                              727. What If Greece Disappeared Overnight
+703. What If India Disappeared Overnight                              728. What If Vietnam Disappeared Overnight
+704. What If the United States Disappeared Overnight                  729. What If Thailand Disappeared Overnight
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                               Page 14
+705. What If Russia Disappeared Overnight                 730. What If Singapore Disappeared Overnight
+706. What If Brazil Disappeared Overnight                 731. What If Malaysia Disappeared Overnight
+707. What If Egypt Disappeared Overnight                  732. What If Pakistan Disappeared Overnight
+708. What If Australia Disappeared Overnight              733. What If Iran Disappeared Overnight
+709. What If Canada Disappeared Overnight                 734. What If Ukraine Disappeared Overnight
+710. What If Germany Disappeared Overnight                735. What If Poland Disappeared Overnight
+711. What If France Disappeared Overnight                 736. What If Sweden Disappeared Overnight
+712. What If the United Kingdom Disappeared Overnight     737. What If Finland Disappeared Overnight
+713. What If Italy Disappeared Overnight                  738. What If Chile Disappeared Overnight
+714. What If Spain Disappeared Overnight                  739. What If Peru Disappeared Overnight
+715. What If Mexico Disappeared Overnight                 740. What If Colombia Disappeared Overnight
+716. What If Indonesia Disappeared Overnight              741. What If Kenya Disappeared Overnight
+717. What If Saudi Arabia Disappeared Overnight           742. What If Ethiopia Disappeared Overnight
+718. What If Turkey Disappeared Overnight                 743. What If Morocco Disappeared Overnight
+719. What If South Korea Disappeared Overnight            744. What If New Zealand Disappeared Overnight
+720. What If Nigeria Disappeared Overnight                745. What If the United Arab Emirates Disappeared Overnight
+721. What If South Africa Disappeared Overnight           746. What If Cuba Disappeared Overnight
+722. What If Argentina Disappeared Overnight              747. What If Ireland Disappeared Overnight
+723. What If the Netherlands Disappeared Overnight        748. What If Portugal Disappeared Overnight
+724. What If Switzerland Disappeared Overnight            749. What If Mongolia Disappeared Overnight
+725. What If Norway Disappeared Overnight                 750. What If Kazakhstan Disappeared Overnight
+
+
+ WALK ACROSS THE MAP (751-800)
+751. What If You Walked From Lisbon to Vladivostok        776. What If You Walked From Reykjavik to the Arctic Circle
+752. What If You Walked From Cape Town to Cairo           777. What If You Walked From Anchorage to Seattle
+753. What If You Walked From Alaska to Argentina          778. What If You Walked From Chicago to New Orleans
+754. What If You Walked From London to Beijing            779. What If You Walked From New York to Los Angeles
+755. What If You Walked From Singapore to Paris           780. What If You Walked From Vancouver to Mexico City
+756. What If You Walked From Madrid to Mumbai             781. What If You Walked From Quito to Rio de Janeiro
+757. What If You Walked From Moscow to Istanbul           782. What If You Walked From Casablanca to Cairo
+758. What If You Walked From Rome to Berlin               783. What If You Walked From Addis Ababa to Johannesburg
+759. What If You Walked From Sydney to Perth              784. What If You Walked From Dakar to Nairobi
+760. What If You Walked From Nairobi to Lagos             785. What If You Walked From Istanbul to Mecca
+761. What If You Walked From Mexico City to Panama City   786. What If You Walked From Tashkent to Beijing
+762. What If You Walked From Toronto to Miami             787. What If You Walked From Ulaanbaatar to Moscow
+763. What If You Walked From Seoul to Hanoi               788. What If You Walked From Hanoi to Singapore
+764. What If You Walked From Bangkok to Kuala Lumpur      789. What If You Walked From Perth to Brisbane
+765. What If You Walked From Cairo to Istanbul            790. What If You Walked From Auckland to Wellington
+766. What If You Walked From Dubai to Delhi               791. What If You Walked From Edinburgh to Rome
+767. What If You Walked From Tehran to Athens             792. What If You Walked From Dublin to Warsaw
+768. What If You Walked From Oslo to Athens               793. What If You Walked From Helsinki to Lisbon
+769. What If You Walked From Paris to Moscow              794. What If You Walked From Prague to Athens
+770. What If You Walked From Lima to Buenos Aires         795. What If You Walked From Kyiv to Istanbul
+771. What If You Walked From Bogota to Santiago           796. What If You Walked From Baku to Tbilisi
+772. What If You Walked From Jakarta to Bangkok           797. What If You Walked From Aparri to Manila
+773. What If You Walked From Tokyo to Kyoto               798. What If You Walked From Baguio to Manila
+774. What If You Walked From Beijing to Lhasa             799. What If You Walked From Laoag to Legazpi
+775. What If You Walked From Kathmandu to Colombo         800. What If You Walked From Tuguegarao to Manila
+
+
+ CITIES ACROSS TIME (801-850)
+801. What If You Lived in Manila for 1,000 Years          826. What If You Lived in Amsterdam for 1,000 Years
+802. What If You Lived in Cebu City for 1,000 Years       827. What If You Lived in Moscow for 1,000 Years
+803. What If You Lived in Davao City for 1,000 Years      828. What If You Lived in Athens for 1,000 Years
+804. What If You Lived in Baguio for 1,000 Years          829. What If You Lived in Reykjavik for 1,000 Years
+805. What If You Lived in Tokyo for 1,000 Years           830. What If You Lived in New York for 1,000 Years
+806. What If You Lived in Seoul for 1,000 Years           831. What If You Lived in Los Angeles for 1,000 Years
+807. What If You Lived in Beijing for 1,000 Years         832. What If You Lived in Chicago for 1,000 Years
+808. What If You Lived in Shanghai for 1,000 Years        833. What If You Lived in Toronto for 1,000 Years
+809. What If You Lived in Hong Kong for 1,000 Years       834. What If You Lived in Mexico City for 1,000 Years
+810. What If You Lived in Singapore for 1,000 Years       835. What If You Lived in Havana for 1,000 Years
+811. What If You Lived in Bangkok for 1,000 Years         836. What If You Lived in Lima for 1,000 Years
+812. What If You Lived in Jakarta for 1,000 Years         837. What If You Lived in Rio de Janeiro for 1,000 Years
+813. What If You Lived in Mumbai for 1,000 Years          838. What If You Lived in Buenos Aires for 1,000 Years
+814. What If You Lived in Delhi for 1,000 Years           839. What If You Lived in Santiago for 1,000 Years
+815. What If You Lived in Dubai for 1,000 Years           840. What If You Lived in Sydney for 1,000 Years
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                       Page 15
+816. What If You Lived in Istanbul for 1,000 Years      841. What If You Lived in Melbourne for 1,000 Years
+817. What If You Lived in Cairo for 1,000 Years         842. What If You Lived in Auckland for 1,000 Years
+818. What If You Lived in Lagos for 1,000 Years         843. What If You Lived in Honolulu for 1,000 Years
+819. What If You Lived in Nairobi for 1,000 Years       844. What If You Lived in Venice for 1,000 Years
+820. What If You Lived in Cape Town for 1,000 Years     845. What If You Lived in Kyoto for 1,000 Years
+821. What If You Lived in London for 1,000 Years        846. What If You Lived in Marrakesh for 1,000 Years
+822. What If You Lived in Paris for 1,000 Years         847. What If You Lived in Petra for 1,000 Years
+823. What If You Lived in Rome for 1,000 Years          848. What If You Lived in Machu Picchu for 1,000 Years
+824. What If You Lived in Berlin for 1,000 Years        849. What If You Lived in Dhaka for 1,000 Years
+825. What If You Lived in Madrid for 1,000 Years        850. What If You Lived in Hanoi for 1,000 Years
+
+
+ ANIMALS (851-900)
+851. What If Bees Went Extinct Tomorrow                 876. What If Ants Were the Size of a House
+852. What If Wolves Went Extinct Tomorrow               877. What If Cats Were the Size of a House
+853. What If Sharks Went Extinct Tomorrow               878. What If Spiders Were the Size of a House
+854. What If Ants Went Extinct Tomorrow                 879. What If Dogs Were the Size of a House
+855. What If Elephants Went Extinct Tomorrow            880. What If Crabs Were the Size of a House
+856. What If Whales Went Extinct Tomorrow               881. What If Snails Were the Size of a House
+857. What If Bats Went Extinct Tomorrow                 882. What If Frogs Were the Size of a House
+858. What If Frogs Went Extinct Tomorrow                883. What If Butterflies Were the Size of a House
+859. What If Spiders Went Extinct Tomorrow              884. What If Bees Were the Size of a House
+860. What If Earthworms Went Extinct Tomorrow           885. What If Turtles Were the Size of a House
+861. What If Mosquitoes Went Extinct Tomorrow           886. What If Hamsters Were the Size of a House
+862. What If Penguins Went Extinct Tomorrow             887. What If Pigeons Were the Size of a House
+863. What If Tigers Went Extinct Tomorrow               888. What If Centipedes Were the Size of a House
+864. What If Eagles Went Extinct Tomorrow               889. What If Dragonflies Were the Size of a House
+865. What If Crocodiles Went Extinct Tomorrow           890. What If Goldfish Were the Size of a House
+866. What If Octopuses Went Extinct Tomorrow            891. What If Rabbits Were the Size of a House
+867. What If Butterflies Went Extinct Tomorrow          892. What If Lizards Were the Size of a House
+868. What If Dolphins Went Extinct Tomorrow             893. What If Rats Were the Size of a House
+869. What If Cows Went Extinct Tomorrow                 894. What If Geckos Were the Size of a House
+870. What If Chickens Went Extinct Tomorrow             895. What If Crows Were the Size of a House
+871. What If Rats Went Extinct Tomorrow                 896. What If Squirrels Were the Size of a House
+872. What If Pigs Went Extinct Tomorrow                 897. What If Hermit Crabs Were the Size of a House
+873. What If Horses Went Extinct Tomorrow               898. What If Seahorses Were the Size of a House
+874. What If Carabaos Went Extinct Tomorrow             899. What If Bats Were the Size of a House
+875. What If Fruit Bats Went Extinct Tomorrow           900. What If Mosquitoes Were the Size of a House
+
+
+ FOOD EXPERIMENTS (901-950)
+901. What If You Only Ate Rice for 30 Days              926. What If You Only Ate Pasta for 30 Days
+902. What If You Only Ate Bananas for 30 Days           927. What If You Only Ate Avocados for 30 Days
+903. What If You Only Ate Instant Noodles for 30 Days   928. What If You Only Ate Cabbage for 30 Days
+904. What If You Only Ate Eggs for 30 Days              929. What If You Only Ate Chocolate for 30 Days
+905. What If You Only Ate Chicken for 30 Days           930. What If You Only Ate Sardines for 30 Days
+906. What If You Only Ate Bread for 30 Days             931. What If You Only Ate Pancit for 30 Days
+907. What If You Only Ate Potatoes for 30 Days          932. What If You Only Ate Adobo for 30 Days
+908. What If You Only Ate Pizza for 30 Days             933. What If You Only Ate Sinigang for 30 Days
+909. What If You Only Ate Hotdogs for 30 Days           934. What If You Only Ate Lugaw for 30 Days
+910. What If You Only Ate Apples for 30 Days            935. What If You Only Ate Pandesal for 30 Days
+911. What If You Only Ate Carrots for 30 Days           936. What If You Only Ate Tapsilog for 30 Days
+912. What If You Only Ate Rice and Eggs for 30 Days     937. What If You Only Ate Kamote for 30 Days
+913. What If You Only Ate Oatmeal for 30 Days           938. What If You Only Ate Saba Bananas for 30 Days
+914. What If You Only Ate Fish for 30 Days              939. What If You Only Ate Dried Fish for 30 Days
+915. What If You Only Ate Beef for 30 Days              940. What If You Only Ate Malunggay for 30 Days
+916. What If You Only Ate Cheese for 30 Days            941. What If You Only Ate Boiled Peanuts for 30 Days
+917. What If You Only Ate Peanut Butter for 30 Days     942. What If You Only Ate Lechon for 30 Days
+918. What If You Only Ate Mangoes for 30 Days           943. What If You Only Ate Longganisa for 30 Days
+919. What If You Only Ate Coconut for 30 Days           944. What If You Only Ate Bibingka for 30 Days
+920. What If You Only Ate Tuna for 30 Days              945. What If You Only Ate Halo-Halo for 30 Days
+921. What If You Only Ate Tofu for 30 Days              946. What If You Only Ate Turon for 30 Days
+922. What If You Only Ate Sweet Potatoes for 30 Days    947. What If You Only Ate Taho for 30 Days
+923. What If You Only Ate Corn for 30 Days              948. What If You Only Ate Ube for 30 Days
+924. What If You Only Ate Beans for 30 Days             949. What If You Only Ate Pineapple for 30 Days
+925. What If You Only Ate Watermelon for 30 Days        950. What If You Only Ate Soup for 30 Days
+
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                Page 16
+ WAKE UP IN ANOTHER ERA (951-1000)
+951. What If You Woke Up in Ancient Egypt in 2500 BC     976. What If You Woke Up in the Year 2100
+952. What If You Woke Up in Ancient Greece in 400 BC     977. What If You Woke Up in the Year 2500
+953. What If You Woke Up in the Roman Empire in 100 AD   978. What If You Woke Up in the Year 3000
+954. What If You Woke Up in China's Han Dynasty          979. What If You Woke Up in the Year 10,000
+955. What If You Woke Up in the Maya City of Tikal       980. What If You Woke Up in the Year 1 Million
+956. What If You Woke Up in the Inca Empire in 1500      981. What If You Woke Up in a Mars Colony in 2200
+957. What If You Woke Up in Viking Scandinavia in 900    982. What If You Woke Up in the Moon in 2150
+958. What If You Woke Up in Medieval Paris in 1200       983. What If You Woke Up in a Floating Ocean City in 2300
+959. What If You Woke Up in Genghis Khan's Mongolia      984. What If You Woke Up in Earth in 1 Billion Years
+960. What If You Woke Up in the Silk Road in 1300        985. What If You Woke Up in Earth After the Ice Melts
+961. What If You Woke Up in Venice in 1450               986. What If You Woke Up in Earth Before the Moon
+962. What If You Woke Up in Tenochtitlan in 1519         987. What If You Woke Up in Earth With One Giant Continent
+963. What If You Woke Up in Tokugawa Japan in 1700       988. What If You Woke Up in the First Day of Humanity
+964. What If You Woke Up in Victorian London in 1880     989. What If You Woke Up in Baghdad in 800
+965. What If You Woke Up in the Wild West in 1870        990. What If You Woke Up in Timbuktu in 1350
+966. What If You Woke Up in the Titanic in 1912          991. What If You Woke Up in Angkor Wat in 1150
+967. What If You Woke Up in New York in 1925             992. What If You Woke Up in Constantinople in 1400
+968. What If You Woke Up in Paris in 1889                993. What If You Woke Up in the Ottoman Court in 1550
+969. What If You Woke Up in Tokyo in 1945                994. What If You Woke Up in Machu Picchu in 1450
+970. What If You Woke Up in Manila in 1900               995. What If You Woke Up in Easter Island in 1200
+971. What If You Woke Up in Manila in 1970               996. What If You Woke Up in Cairo in 1000
+972. What If You Woke Up in the Ice Age                  997. What If You Woke Up in Kyoto in 1000
+973. What If You Woke Up in the Age of Dinosaurs         998. What If You Woke Up in Samarkand in 1400
+974. What If You Woke Up in the Stone Age                999. What If You Woke Up in Lisbon in 1755
+975. What If You Woke Up in Pompeii in 79 AD             1000. What If You Woke Up in Pacific Islands in 1000 BC
+
+
+
+
+WHAT-IF MAP CARTOON EXPLAINER REELS AUTOMATION V1                                                                     Page 17
+
