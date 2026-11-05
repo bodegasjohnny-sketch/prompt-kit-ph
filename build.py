@@ -49,11 +49,18 @@ def og(slug, title, kicker):
     p = OUT / 'og' / f'{slug}.png'; p.parent.mkdir(exist_ok=True); im.save(p, optimize=True)
     return f'og/{slug}.png'
 
-NAV = [('', 'Home'), ('kits/', 'Kits'), ('niche-ideas/', 'Niche ideas'), ('guides/', 'Guides'), ('builder/', 'Builder'), ('about/', 'About')]
-def layout(path, title, desc, body, crumbs=None, ld=None, og_slug='home', og_kicker='Open Source Prompt PH', mbar=True, robots=None, og_override=None):
+# Original OSP menu (same labels/order as opensourcepromptph.com), internal links rewritten to mjd; plus our Niche ideas tab
+NAV = [('https://ko-fi.com/opensourcepromptphpremium/shop', 'Premium niche'), ('50-chatgpt-video-editing-prompts-for-creators/', 'Video editing guide'),
+       ('how-to-use-this-2-step-ai-automation-prompt/', 'Instructions'), ('#guides', 'Explore prompts'), ('#workshop', 'Prompt workshop'),
+       ('https://www.google.com/search?q=site:+https://mjd.johnnybodegas.com', 'Search via google'), ('https://www.facebook.com/groups/890192480414598', 'Facebook community')]
+EXTRA_NAV = [('niche-ideas/', 'Niche ideas')]
+FOOT_EXTRA = [('kits/', 'Kits library'), ('niche-ideas/', 'Niche ideas'), ('guides/', 'Guides'), ('builder/', 'Builder'), ('about/', 'About'), ('privacy/', 'Privacy')]
+def href(p): return p if p.startswith('http') else '/' + p
+def layout(path, title, desc, body, crumbs=None, ld=None, og_slug='home', og_kicker='Open Source Prompt PH', mbar=True, robots=None, og_override=None, extra_js='', full_title=None):
     full = title if len(title) <= 40 else title
     t = f'{full} | {SITE_NAME}' if path else f'{SITE_NAME}: Free AI Prompt Kits for Creators'
     if len(t) > 64: t = full
+    if full_title: t = full_title
     ogimg = og_override or og(og_slug, title if path else 'Free AI prompt kits for Filipino creators', og_kicker)
     ld = list(ld or [])
     ld.insert(0, {"@context": "https://schema.org", "@type": "Organization", "name": SITE_NAME, "url": url(''), "logo": url('og/home.png')})
@@ -66,7 +73,9 @@ def layout(path, title, desc, body, crumbs=None, ld=None, og_slug='home', og_kic
             (f'<li><a href="/{p}">{E(n)}</a></li>' if i < len(items) - 1 else f'<li aria-current="page">{E(n)}</li>') for i, (p, n) in enumerate(items)) + '</ol></nav>'
     body = body.replace('{{crumbs}}', crumbs_html)
     cur = 'niche-ideas/' if any(path == f"kits/{k['slug']}/" for k in NICHE) else path
-    navh = ''.join(f'<li><a href="/{p}"{" aria-current=page" if (p == cur or (p and cur.startswith(p))) else ""}>{n}</a></li>' for p, n in NAV)
+    navh = ''.join(f'<li><a href="{href(p)}"{" aria-current=page" if (p == cur and not p.startswith(("http", "#"))) else ""}>{n}</a></li>' for p, n in NAV + EXTRA_NAV)
+    footh = ''.join(f'<li><a href="{href(p)}">{n}</a></li>' for p, n in NAV)
+    foot2 = ''.join(f'<li><a href="/{p}">{n}</a></li>' for p, n in FOOT_EXTRA)
     lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
     mb = '<div class="mbar" aria-hidden="false"><a class="btn pri" href="/kits/">Browse kits</a><a class="btn" href="/builder/">Build a prompt</a></div>' if mbar else ''
     doc = f'''<!doctype html>
@@ -80,12 +89,14 @@ def layout(path, title, desc, body, crumbs=None, ld=None, og_slug='home', og_kic
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{E(t)}"><meta name="twitter:description" content="{E(desc)}"><meta name="twitter:image" content="{url(ogimg)}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/css/style.css">{lds}
 </head><body><a class="skip" href="#main">Skip to content</a>
-<header class="top"><div class="in"><a class="brand" href="/" aria-label="{SITE_NAME} home"><i aria-hidden="true"></i><span>Open Source Prompt <em>PH</em></span></a>
-<nav class="main" aria-label="Main"><ul>{navh}</ul></nav></div></header>
+<header class="top"><div class="in"><a class="brand" href="/" aria-label="{SITE_NAME} home"><i aria-hidden="true"></i><span><b class="bn">Open Source Prompt <em>PH</em></b><small>THE CREATOR’S FIELD GUIDE</small></span></a>
+<button class="menubtn" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button>
+<nav class="main" id="mainnav" aria-label="Main navigation"><ul>{navh}</ul></nav></div></header>
 <main id="main">{body}</main>
-<footer class="site"><div class="wrap"><p>{SITE_NAME}. A little direction. A better creation. Free, original prompt guides. No tracking, no accounts.</p>
-<ul><li><a href="/kits/">Kits</a></li><li><a href="/niche-ideas/">Niche ideas</a></li><li><a href="/guides/">Guides</a></li><li><a href="/builder/">Builder</a></li><li><a href="/about/">About</a></li><li><a href="/privacy/">Privacy</a></li></ul></div></footer>
-{mb}<script src="/js/app.js" defer></script></body></html>'''
+<footer class="site"><div class="wrap"><a class="fbrand" href="/">Free AI Prompts &amp; Creator Kits | {SITE_NAME}</a>
+<nav aria-label="Footer navigation"><ul>{footh}</ul><ul class="foot2">{foot2}</ul></nav>
+<p>© 2026 Free AI Prompts &amp; Creator Kits | {SITE_NAME} · Practical ideas, thoughtfully explained.</p><p class="muted">Static copy hosted at mjd.johnnybodegas.com. No tracking, no accounts.</p></div></footer>
+{mb}<script src="/js/app.js" defer></script>{extra_js}</body></html>'''
     out = OUT / path / 'index.html' if path != '404.html' else OUT / '404.html'
     out.parent.mkdir(parents=True, exist_ok=True); out.write_text(doc)
     if not robots: PAGES.append(path)
@@ -146,6 +157,11 @@ def make_pdf(k, path):
         c.setFont('Helvetica',8); c.setFillColor(colors.grey); c.drawString(20*mm,10*mm,SITE_NAME+' | '+k['title']); c.drawRightString(190*mm,10*mm,'Page %d'%d.page)
     SimpleDocTemplate(str(path),pagesize=A4,leftMargin=20*mm,rightMargin=20*mm,topMargin=18*mm,bottomMargin=18*mm,title=k['title'],author=SITE_NAME).build(st,onFirstPage=foot,onLaterPages=foot)
 
+def attach_html(slug):
+    fs = [f for p in OSPS['posts'] if p['kit'] == slug for f in p['files'] if f['kind'] == 'file']
+    seen = {}; [seen.setdefault(f['path'], f) for f in fs]
+    if not seen: return ''
+    return '<p class="orig"><strong>Also attached to the original post:</strong> ' + ', '.join(f'<a href="{f["path"]}" download="{E(f["name"])}">{E(f["name"])}</a>' for f in seen.values()) + '</p>'
 def osp_page(k, prev, nxt, rel):
     (OUT/'downloads').mkdir(exist_ok=True)
     shutil.copyfile(SRC/'pdfs'/f"{k['slug']}.pdf", OUT/'downloads'/f"{k['slug']}.pdf")
@@ -157,7 +173,7 @@ def osp_page(k, prev, nxt, rel):
     else:
         box = '<pre id="p-package" class="pkgtext">This PDF has no extractable text (it may be scanned images). Use Download PDF for the original file.</pre>'; pintro = 'No text could be extracted from this PDF. The download is the original file.'
     n = words(ptext)
-    pkg = f'''<section class="pkg" id="package" aria-labelledby="pkg-h"><h2 id="pkg-h">Full package: complete text of the PDF</h2><p>{pintro}</p><p class="orig"><strong>Original title:</strong> {E(otitle)}<br><strong>Original:</strong> {E(otitle)} ({E(dlname)})</p>
+    pkg = f'''<section class="pkg" id="package" aria-labelledby="pkg-h"><h2 id="pkg-h">Full package: complete text of the PDF</h2><p>{pintro}</p><p class="orig"><strong>Original title:</strong> {E(otitle)}<br><strong>Original:</strong> {E(otitle)} ({E(dlname)})</p>{attach_html(k["slug"])}
 <div class="pblock"><div class="ph"><span>{E(k['short'])} (full text)</span><span class="pb"><button class="copy" type="button" data-target="p-package" aria-label="Copy the whole package">Copy all</button><a class="dl" href="/downloads/{k['slug']}.pdf" download="{E(dlname)}">Download PDF</a></span></div>{box}</div></section>'''
     art = f'''<article class="prose">{pkg}<p class="notice" role="note">{NOTICE}</p>
 <p>New to these kits? Read <a href="/guides/adapt-a-kit-to-your-project/">how to adapt a kit to your project</a> and <a href="/guides/fact-check-ai-output/">how to fact-check AI output</a>.</p>
@@ -169,32 +185,118 @@ def osp_page(k, prev, nxt, rel):
     cw = {"@context": "https://schema.org", "@type": "CreativeWork", "name": k['title'], "description": k['summary'], "inLanguage": "en", "datePublished": k['date'][:10], "image": url(f"assets/kits/{k['slug']}-cover.jpg"), "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": url(f"downloads/{k['slug']}.pdf")}, "isBasedOn": "https://opensourcepromptph.com/?p=" + str(k['post_id'])}
     layout(f"kits/{k['slug']}/", k['short'], k['summary'][:158], body, crumbs=[('kits/', 'Kits'), (f"kits/{k['slug']}/", k['short'])], ld=[cw], og_slug='kit-' + k['slug'], og_kicker=k['cat'] + ' kit', og_override=f"assets/kits/{k['slug']}-cover.jpg")
 
+
+# ---------- Original-site replica (opensourcepromptph.com structure) ----------
+OSPS = json.loads((SRC/'osp_site.json').read_text())
+OSP_POSTS = sorted(OSPS['posts'], key=lambda p: (p['date'], p['id']), reverse=True)
+OSP_CATS = sorted(OSPS['cats'], key=lambda c: c['name'])
+OSP_PAGES = json.loads((SRC/'osp_pages.json').read_text())
+_KN = {}
+def kit_pdf_name(slug): return (SRC/'pdfs'/f'{slug}.name').read_text().strip()
+import datetime as _dt
+def hdate(d): x = _dt.date.fromisoformat(d[:10]); return f'{x.strftime("%B")} {x.day}, {x.year}'
+def pshort(t): return short(t.replace('.pdf', '').strip())
+PER = 10
+
+def search_form(q=''):
+    return f'''<form role="search" method="get" class="search-form" action="/search/"><label class="vh" for="site-search">Search articles</label><input class="search" type="search" id="site-search" name="s" placeholder="Search articles…" value="{E(q)}"><button class="btn pri" type="submit">Search</button></form>
+<div class="filters">{''.join(f'<a class="chip" href="/category/{c["slug"]}/">{E(c["name"])}</a>' for c in OSP_CATS)}</div>'''
+
+def pcard(p, lvl='h3'):
+    return f'''<article class="card pcard" data-post><div class="kicker">{E(p['catname'])}</div><{lvl}><a href="/{p['slug']}/">{E(p['title'].strip())}</a></{lvl}><p></p><a class="more" href="/{p['slug']}/">Read article ↗</a><div class="pmeta"><span>Partee88</span><time datetime="{p['date']}">{hdate(p['date'])}</time></div></article>'''
+
+def pager(base, cur, total):
+    if total <= 1: return ''
+    u = lambda n: base if n == 1 else f'{base}page/{n}/'
+    show = sorted({1, total, cur - 1, cur, cur + 1} & set(range(1, total + 1))); out = []; last = 0
+    if cur > 1: out.append(f'<a href="{u(cur - 1)}">Previous</a>')
+    for n in show:
+        if n - last > 1: out.append('<span>…</span>')
+        out.append(f'<span aria-current="page">{n}</span>' if n == cur else f'<a href="{u(n)}">{n}</a>'); last = n
+    if cur < total: out.append(f'<a href="{u(cur + 1)}">Next</a>')
+    return f'<nav class="pnav" aria-label="Posts pagination"><h2 class="vh">Posts pagination</h2>{"".join(out)}</nav>'
+
+def reading_room(posts, base, cur, total, h='h2', head='Explore the latest articles.', q=''):
+    return f'''<section class="wrap sec" id="guides"><div class="kicker">The creator’s reading room</div><{h}>{E(head)}</{h}>{search_form(q)}
+<div class="grid pgrid">{''.join(pcard(p, 'h2' if h == 'h1' else 'h3') for p in posts)}</div>{pager(base, cur, total)}</section>'''
+
+def home_top():
+    sl = OSPS['slides']
+    slides = ''.join(f'''<a class="slide{' on' if i == 0 else ''}" href="/{x['post_slug']}/" aria-label="{E(x['title'])} — open AI prompt creator kit"{'' if i == 0 else ' aria-hidden="true" tabindex="-1" inert'}><img src="/assets/osp/{x['img']}" alt="{E(x['alt'])}" width="1280" height="720" {'fetchpriority="high"' if i == 0 else 'loading="lazy"'} decoding="async"><span class="scopy"><span class="slabel">{E(x['label'])}</span><h2>{E(x['title'])}</h2><span class="sdesc">{E(x['desc'])}</span><span class="scta">Explore this prompt <span aria-hidden="true">↗</span></span></span></a>''' for i, x in enumerate(sl))
+    car = f'''<section class="wrap featured" aria-label="Featured prompt creator kits"><div class="fhead"><span>Five featured creator kits</span><span>Find your next idea ↗</span></div>
+<div class="carousel" id="carousel" role="region" aria-roledescription="carousel" aria-label="Featured AI prompt creator kits"><div class="stage">{slides}</div>
+<div class="cctl"><span class="ccount" aria-live="polite">01 / {len(sl):02d}</span><button type="button" class="cbtn" data-c="pause">Pause</button><button type="button" class="cbtn" data-c="prev" aria-label="Previous slide">←</button><button type="button" class="cbtn" data-c="next" aria-label="Next slide">→</button></div></div>
+<p class="fnote">AI-generated artwork · Click any slide to open its prompt kit</p></section>'''
+    hero_ = f'''<section class="hero"><div class="gridbg" aria-hidden="true"></div><div class="orb o1" aria-hidden="true"></div><div class="orb o2" aria-hidden="true"></div><div class="wrap hgrid"><div class="rv"><span class="pill"><b></b>A little direction. A better creation.</span>
+<h1>Better prompts.<br><span class="grad">More possibilities.</span></h1><p class="lead">Practical AI guides for curious creators. Learn the process, understand the prompt, and make something of your own.</p>
+<div class="ctas"><a class="btn pri" href="#guides">Explore the guides ↗</a><a class="btn" href="/how-to-use-this-2-step-ai-automation-prompt/">Watch the 3-step guide ↗</a></div><p class="muted hnote">For beginners and makers · Clear examples · No sign-up</p></div>
+<div class="card glow rv" id="notebook"><div class="nb-head"><span>THE PROMPT NOTEBOOK</span><span>FIELD NOTE / 01</span></div><p class="kicker">From vague idea to clear brief</p><h2 style="margin:4px 0 12px;font-size:22px">Give your idea a little structure.</h2>
+<div class="part on"><span class="pl">01 / ROLE</span><br>Act as an educational content editor.</div><div class="part on"><span class="pl">02 / CONTEXT</span><br>Explain a topic to a curious beginner.</div><div class="part on"><span class="pl">03 / OUTPUT</span><br>One clear explanation. One useful example.</div><p class="nbfoot"><span>Make it specific. Make it yours.</span><span aria-hidden="true">↗</span></p></div></div></section>
+<div class="wrap principles"><span><b>01</b> Understand the process</span><span><b>02</b> Adapt the example</span><span><b>03</b> Check the result</span><span><b>04</b> Keep improving</span></div>'''
+    return car + hero_
+
+WORKSHOP = '''<section class="wrap sec" id="workshop"><div class="learn card"><div><div class="kicker">The prompt workshop</div><h2>Your idea.<br>A clearer starting point.</h2><p>A useful prompt explains the task, the audience, and what a good result should contain. Try the builder, then adapt the brief to your project.</p>
+<ol class="wsteps"><li><b>1</b><span>Choose one specific topic and an output format.</span></li><li><b>2</b><span>Copy the brief into your preferred AI tool.</span></li><li><b>3</b><span>Check accuracy and revise before you publish.</span></li></ol></div>
+<div class="wbuilder"><label for="topic">What are you creating about?</label><input class="search" id="topic" value="The history of the Philippine jeepney" maxlength="200"><label for="format">Choose your format</label><select class="search" id="format"><option>60-second video outline</option><option>beginner-friendly article outline</option><option>five-slide educational carousel</option></select><label for="prompt-output">Your editable prompt</label><textarea class="search" id="prompt-output" rows="8"></textarea><button class="btn pri" id="copy-prompt" type="button">Copy prompt ↗</button><span id="copy-status" class="status" role="status" aria-live="polite"></span><p class="muted" style="font-size:14px">Runs in your browser. Your topic is not sent to an AI service.</p></div></div></section>'''
+WJS = '<script src="/js/osp.js" defer></script>'
+HOME_DESC = 'Explore free AI prompts, video editing workflows, and downloadable PDF creator kits for image generation, storytelling, and educational content.'
+
+REPL = '<!-- osp-replica: text copied verbatim from opensourcepromptph.com -->'
+def osp_site():
+    total = (len(OSP_POSTS) + PER - 1) // PER
+    for n in range(1, total + 1):
+        posts = OSP_POSTS[(n - 1) * PER:n * PER]
+        body = REPL + home_top() + reading_room(posts, '/', n, total) + WORKSHOP
+        path = '' if n == 1 else f'page/{n}/'
+        ft = 'Free AI Prompts & Creator Kits | Open Source Prompt PH' + ('' if n == 1 else f' – Page {n}')
+        layout(path, 'Free AI Prompts & Creator Kits' + ('' if n == 1 else f' – Page {n}'), HOME_DESC, body, og_slug='home', extra_js=WJS, full_title=ft[:64] if n == 1 else f'Free AI Prompts & Creator Kits – Page {n} | OSP PH')
+    # categories
+    for c in OSP_CATS:
+        cp = [p for p in OSP_POSTS if p['cat'] == c['slug']]; tot = (len(cp) + PER - 1) // PER
+        for n in range(1, tot + 1):
+            base = f"category/{c['slug']}/"; path = base if n == 1 else f'{base}page/{n}/'
+            body = '<div class="sp"></div>' + reading_room(cp[(n - 1) * PER:n * PER], '/' + base, n, tot, 'h1', f"Category: {c['name']}")
+            layout(path, f"Category: {c['name']}" + ('' if n == 1 else f' – Page {n}'), f"Open Source Prompt PH articles in the {c['name']} category: {len(cp)} AI prompt creator kits with original PDF downloads.", body, crumbs=None, og_slug='cat-' + c['slug'], og_kicker='Category')
+    # search (client side; the original uses WordPress ?s=)
+    idx = [{"t": p['title'].strip(), "u": f"/{p['slug']}/", "c": p['catname'], "d": p['date'], "h": hdate(p['date'])} for p in OSP_POSTS]
+    body = '<div class="sp"></div>' + f'''<section class="wrap sec" id="guides"><div class="kicker">The creator’s reading room</div><h1 id="sh">Search</h1>{search_form()}<div class="grid pgrid" id="sresults">{''.join(pcard(p, 'h2') for p in OSP_POSTS)}</div><p id="noresults" hidden>No matching articles. Try another search or return to the <a href="/">homepage</a>.</p></section><script type="application/json" id="sindex">{json.dumps(idx, ensure_ascii=False)}</script>'''
+    layout('search/', 'Search Results', 'Search the Open Source Prompt PH articles: AI prompt creator kits, video editing guides and step by step instructions.', body, og_slug='search', extra_js=WJS)
+    # WP pages
+    for pg in OSP_PAGES:
+        html_ = (SRC/'osp_pages'/f"{pg['slug']}.html").read_text()
+        html_ = re.sub(r'<h1 class="wp-block-heading">(.*?)</h1>', r'<p class="lead"><strong>\1</strong></p>', html_, flags=re.S)
+        body = REPL + f'<div class="wrap narrow"><article class="article prose wpc"><a href="/">← Home</a><h1>{E(pg["title"])}</h1>{html_}</article></div>'
+        d = pg['excerpt'][:155].rsplit(' ', 1)[0] + '...'
+        layout(pg['slug'] + '/', pg['title'], d, body, og_slug='page-' + pg['slug'], og_kicker='Guide')
+    # posts (one page per original post; links into the kit page with full text)
+    chron = sorted(OSP_POSTS, key=lambda p: (p['date'], p['id']))
+    for i, p in enumerate(chron):
+        k = p['kit']; t = p['title'].strip(); nm = p['pdf_name']
+        fblocks = ''.join(f'''<div class="fileblock"><object class="pdfembed" data="/downloads/{k}.pdf" type="application/pdf" aria-label="Embed of {E(f['label'])}."></object><a href="/downloads/{k}.pdf">{E(f['label'])}</a> <a class="btn pri" href="/downloads/{k}.pdf" download="{E(nm)}">Download</a></div>''' if f['kind'] == 'pdf' else f'''<div class="fileblock"><a href="{f['path']}">{E(f['label'])}</a> <a class="btn" href="{f['path']}" download="{E(f['name'])}">Download</a></div>''' for f in p['files'])
+        prv = chron[i - 1] if i > 0 else None; nxt = chron[i + 1] if i + 1 < len(chron) else None
+        nav = '<nav class="postnav" aria-label="Posts"><h2 class="vh">Post navigation</h2>' + (f'<a class="card" rel="prev" href="/{prv["slug"]}/"><small>Previous</small>{E(prv["title"].strip())}</a>' if prv else '<span></span>') + (f'<a class="card" rel="next" href="/{nxt["slug"]}/"><small>Next</small>{E(nxt["title"].strip())}</a>' if nxt else '') + '</nav>'
+        body = f'''<div class="wrap narrow"><article class="article prose"><a href="/">← Home</a><h1>{E(t)}</h1><div class="pmeta">By <span>Partee88</span>{E(p['meta'].split('Partee88', 1)[1])}</div>
+{fblocks}
+<p class="note"><strong>Full package text and Copy all:</strong> <a href="/kits/{k}/">open the kit page</a> to read the complete PDF text in the browser.</p>
+{nav}<p class="muted">Comments are not available on this copy of the site.</p></article></div>'''
+        st = pshort(t); ft = (st if len(st) <= 40 else st[:40].rsplit(' ', 1)[0]) + ' | Open Source Prompt PH'
+        d = f'{st}: original AI prompt creator kit PDF from Open Source Prompt PH. Download the PDF or read its full text.'
+        if len(d) > 158: d = d[:155].rsplit(' ', 1)[0] + '...'
+        layout(p['slug'] + '/', st, d, body, og_slug='kit-' + k, og_kicker='Creator kit', og_override=f'assets/kits/{k}-cover.jpg', full_title=ft)
+
+def osp_404():
+    body = REPL + '''<section class="hero sm"><div class="gridbg" aria-hidden="true"></div><div class="wrap"><span class="pill"><b></b>PAGE NOT FOUND</span><p class="big404" aria-hidden="true">404</p><h1>This prompt led nowhere.</h1><p class="lead">The page may have moved, but your next idea is still here. Let’s get you back to creating.</p><div class="ctas"><a class="btn pri" href="/#guides">Explore AI Prompts →</a><a class="btn" href="/">Back to Home</a></div></div></section>'''
+    layout('404.html', 'Page not found', 'This page could not be found. Explore the free AI prompts on Open Source Prompt PH or go back to the homepage.', body, robots='noindex', mbar=False, full_title='404 — Page not found | Open Source Prompt PH')
+
 def build():
     if OUT.exists(): shutil.rmtree(OUT)
     OUT.mkdir(); (OUT / 'CNAME').write_text('mjd.johnnybodegas.com\n'); (OUT / '.nojekyll').write_text(''); shutil.copytree(SRC / 'css', OUT / 'css'); shutil.copytree(SRC / 'js', OUT / 'js')
     (OUT / 'favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#c41e3a"/><text x="16" y="22" font-family="monospace" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">&gt;_</text></svg>')
     for k in ALL_KITS: render(k, SRC / 'assets/kits')
     for k in OSP: cover_card(k, SRC / 'assets/kits')
-    shutil.copytree(SRC / 'assets', OUT / 'assets')
+    shutil.copytree(SRC / 'assets', OUT / 'assets'); shutil.copytree(SRC / 'files', OUT / 'files')
     cats = sorted({k['cat'] for k in PDFK})
-    # HOME
-    nb = '''<div class="card glow rv" id="notebook"><div class="nb-head"><span>Prompt notebook</span><span>Sample page</span></div>
-<div class="nb-tabs" role="group" aria-label="Show prompt parts"><button class="chip" type="button" aria-pressed="true">01 Role</button><button class="chip" type="button" aria-pressed="false">02 Context</button><button class="chip" type="button" aria-pressed="false">03 Output</button></div>
-<div class="part on"><b>01 · ROLE</b><p>You are a friendly science teacher for Grade 6 students.</p></div>
-<div class="part"><b>02 · CONTEXT</b><p>Topic: why the Philippines has a rainy season. Keep it under 90 seconds. Mark claims I should verify.</p></div>
-<div class="part"><b>03 · OUTPUT</b><p>Give me a 6 scene script with one image prompt per scene.</p></div>
-<p class="muted" style="font-size:14px;margin:14px 0 0">Example prompt for illustration. Results vary by tool.</p></div>'''
-    body = f'''<section class="hero"><div class="gridbg" aria-hidden="true"></div><div class="orb o1" aria-hidden="true"></div><div class="orb o2" aria-hidden="true"></div>
-<div class="wrap hgrid"><div class="rv"><span class="pill"><b></b>Free AI prompt kits for Filipino creators</span>
-<h1>Write it clearly. <span class="grad">Create it better.</span></h1>
-<p class="lead">Original, step by step prompt kits for videos, carousels and explainers. Read the framework, swap in your topic and check the facts before you publish.</p>
-<div class="ctas"><a class="btn pri" href="/kits/">Browse the kits</a><a class="btn" href="/builder/">Try the prompt builder</a></div></div>{nb}</div></section>
-<section class="sec"><div class="wrap"><p class="eyebrow">How it works</p><h2 class="rv">Four steps from idea to a checked draft</h2>{STEPS}</div></section>
-<section class="sec" style="padding-top:0"><div class="wrap"><p class="eyebrow">Latest creator kits</p><h2 class="rv">Ready to adapt, free to read and print</h2>
-<p class="muted">Every kit is a full web page with a prompt framework, worked examples and a fact check list. Every kit has a Copy all button and a Download PDF button.</p>
-<div class="grid">{''.join(kitcard(k) for k in PDFK[:6])}</div><div class="ctas"><a class="btn" href="/kits/">See all {len(PDFK)} kits</a></div></div></section>
-<section class="sec" style="padding-top:0"><div class="wrap"><div class="cta-box rv"><p class="eyebrow">Prompt builder</p><h2>Build a 3 part prompt in seconds</h2><p class="muted">Type a topic, pick a format and copy the result. Nothing is saved or sent anywhere.</p><div class="ctas"><a class="btn pri" href="/builder/">Open the builder</a><a class="btn" href="/guides/write-a-prompt-in-3-parts/">Read the 3 part guide</a></div></div></div></section>'''
-    layout('', SITE_NAME, 'Free, original AI prompt kits and guides for Filipino creators. Copy a framework, adapt it to your topic and fact-check before you publish.', body, og_slug='home')
+    osp_site()
     # KITS INDEX
     chips = '<button class="chip" type="button" data-cat="All" aria-pressed="true">All</button>' + ''.join(f'<button class="chip" type="button" data-cat="{E(c)}" aria-pressed="false">{E(c)}</button>' for c in cats)
     body = hero('Creator kits', 'Original prompt frameworks for explainers, scripts and image series. Search by topic or filter by category.', 'Kits library') + f'''
@@ -230,7 +332,7 @@ def build():
             pintro = 'This is the complete text of the PDF; downloading gives you the original file.'
             tfile = SRC/'pdfs'/f"{k['slug']}.title"
             osp_title = tfile.read_text(encoding='utf-8').strip() if tfile.exists() else dlname
-            orig_line = f'<p class="orig"><strong>Original title:</strong> {E(osp_title)}<br><strong>Original:</strong> {E(osp_title)} ({E(dlname)})</p>'
+            orig_line = f'<p class="orig"><strong>Original title:</strong> {E(osp_title)}<br><strong>Original:</strong> {E(osp_title)} ({E(dlname)})</p>' + attach_html(k['slug'])
             guide = '<p class="note"><strong>Simplified starter guide.</strong> The sections below are a simplified starter guide written for this site, not the PDF. The full PDF text is above.</p>'
         else:
             make_pdf(k, OUT/'downloads'/f"{k['slug']}.pdf")
@@ -297,7 +399,7 @@ def build():
     layout('privacy/', 'Privacy', 'Open Source Prompt PH uses no cookies, analytics or trackers. The prompt builder runs in your browser and nothing you type is saved or sent.',
            hero('Privacy', 'Short version: we do not collect anything.', '') + '<div class="wrap narrow"><article class="prose" style="padding:40px 0"><h2>No tracking</h2><p>This site has no analytics, ads, cookies or third party scripts. Fonts and scripts load from this site only.</p><h2>The prompt builder</h2><p>The builder runs in your browser. What you type is not stored or sent to any server. Copying uses your browser clipboard.</p><h2>Hosting</h2><p>Like any website, the host server may keep standard access logs. Check the hosting provider for its policy once the site is live.</p></article></div>',
            crumbs=[('privacy/', 'Privacy')], og_slug='privacy')
-    layout('404.html', 'Page not found', 'This page could not be found. Browse the free prompt kits or guides on Open Source Prompt PH instead.', hero('Page not found', 'That link does not lead anywhere. Try one of these instead.', '', '<div class="ctas"><a class="btn pri" href="/kits/">Browse kits</a><a class="btn" href="/">Go home</a></div>'), robots='noindex', mbar=False)
+    osp_404()
     # SITEMAP / ROBOTS
     (OUT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(f'<url><loc>{url(p)}</loc><lastmod>{DATE}</lastmod></url>\n' for p in PAGES) + '</urlset>\n')
     (OUT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {url("sitemap.xml")}\n')

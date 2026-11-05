@@ -1,0 +1,1073 @@
+1,000 ASTRONOMICAL NAMES AND CATALOG DESIGNATIONS
+Planets, dwarf planets, moons, stars, galaxies, and superclusters
+Compiled: 31 October 2026
+
+SCOPE
+This is a selected list of exactly 1,000 entries, not all objects in the universe.
+Catalog designations (such as NGC numbers) are valid astronomical identifiers,
+but are not descriptive proper names. Alternative names in parentheses refer
+to the same object and do not count as extra entries.
+
+Planets and moons occur within star systems and galaxies. Galaxies occur in
+groups and clusters, some of which form superclusters. This list does NOT assign
+every object to a specific supercluster. Supercluster boundaries and definitions
+vary between studies. The six large-scale structures listed at the end are
+identified as watershed superclusters in the cited 2023 cosmography study.
+
+Only the eight Solar System planets are listed; exoplanets are not included.
+Dwarf planets are kept separate. Moons use named entries from the JPL table;
+unnamed provisional satellites are omitted. The star selection uses a 2022
+IAU catalog snapshot plus the Sun; it is not a complete current named-star list.
+Galaxy entries are OpenNGC records classified as G (individual galaxy), excluding
+star clusters, nebulae, galaxy-pair records, and catalog duplicate records.
+
+COUNTS
+PLANETS — SOLAR SYSTEM: 8
+DWARF PLANETS: 5
+NAMED MOONS: 169
+STARS — COMMON AND IAU NAMES: 452
+GALAXIES — COMMON NAMES AND NGC DESIGNATIONS: 360
+SUPERCLUSTERS: 6
+Total: 1,000
+
+PLANETS — SOLAR SYSTEM
+======================
+0001. Mercury — Planet
+0002. Venus — Planet
+0003. Earth — Planet
+0004. Mars — Planet
+0005. Jupiter — Planet
+0006. Saturn — Planet
+0007. Uranus — Planet
+0008. Neptune — Planet
+
+DWARF PLANETS
+=============
+0009. Ceres — Dwarf planet
+0010. Pluto — Dwarf planet
+0011. Haumea — Dwarf planet
+0012. Makemake — Dwarf planet
+0013. Eris — Dwarf planet
+
+NAMED MOONS
+===========
+0014. Moon — Earth
+0015. Phobos — Moon of Mars
+0016. Deimos — Moon of Mars
+0017. Io — Moon of Jupiter
+0018. Europa — Moon of Jupiter
+0019. Ganymede — Moon of Jupiter
+0020. Callisto — Moon of Jupiter
+0021. Amalthea — Moon of Jupiter
+0022. Himalia — Moon of Jupiter
+0023. Elara — Moon of Jupiter
+0024. Pasiphae — Moon of Jupiter
+0025. Sinope — Moon of Jupiter
+0026. Lysithea — Moon of Jupiter
+0027. Carme — Moon of Jupiter
+0028. Ananke — Moon of Jupiter
+0029. Leda — Moon of Jupiter
+0030. Thebe — Moon of Jupiter
+0031. Adrastea — Moon of Jupiter
+0032. Metis — Moon of Jupiter
+0033. Callirrhoe — Moon of Jupiter
+0034. Themisto — Moon of Jupiter
+0035. Megaclite — Moon of Jupiter
+0036. Taygete — Moon of Jupiter
+0037. Chaldene — Moon of Jupiter
+0038. Harpalyke — Moon of Jupiter
+0039. Kalyke — Moon of Jupiter
+0040. Iocaste — Moon of Jupiter
+0041. Erinome — Moon of Jupiter
+0042. Isonoe — Moon of Jupiter
+0043. Praxidike — Moon of Jupiter
+0044. Autonoe — Moon of Jupiter
+0045. Thyone — Moon of Jupiter
+0046. Hermippe — Moon of Jupiter
+0047. Aitne — Moon of Jupiter
+0048. Eurydome — Moon of Jupiter
+0049. Euanthe — Moon of Jupiter
+0050. Euporie — Moon of Jupiter
+0051. Orthosie — Moon of Jupiter
+0052. Sponde — Moon of Jupiter
+0053. Kale — Moon of Jupiter
+0054. Pasithee — Moon of Jupiter
+0055. Hegemone — Moon of Jupiter
+0056. Mneme — Moon of Jupiter
+0057. Aoede — Moon of Jupiter
+0058. Thelxinoe — Moon of Jupiter
+0059. Arche — Moon of Jupiter
+0060. Kallichore — Moon of Jupiter
+0061. Helike — Moon of Jupiter
+0062. Carpo — Moon of Jupiter
+0063. Eukelade — Moon of Jupiter
+0064. Cyllene — Moon of Jupiter
+0065. Kore — Moon of Jupiter
+0066. Herse — Moon of Jupiter
+0067. Dia — Moon of Jupiter
+0068. Eirene — Moon of Jupiter
+0069. Philophrosyne — Moon of Jupiter
+0070. Eupheme — Moon of Jupiter
+0071. Valetudo — Moon of Jupiter
+0072. Pandia — Moon of Jupiter
+0073. Ersa — Moon of Jupiter
+0074. Mimas — Moon of Saturn
+0075. Enceladus — Moon of Saturn
+0076. Tethys — Moon of Saturn
+0077. Dione — Moon of Saturn
+0078. Rhea — Moon of Saturn
+0079. Titan — Moon of Saturn
+0080. Hyperion — Moon of Saturn
+0081. Iapetus — Moon of Saturn
+0082. Phoebe — Moon of Saturn
+0083. Janus — Moon of Saturn
+0084. Epimetheus — Moon of Saturn
+0085. Helene — Moon of Saturn
+0086. Telesto — Moon of Saturn
+0087. Calypso — Moon of Saturn
+0088. Atlas — Moon of Saturn
+0089. Prometheus — Moon of Saturn
+0090. Pandora — Moon of Saturn
+0091. Pan — Moon of Saturn
+0092. Ymir — Moon of Saturn
+0093. Paaliaq — Moon of Saturn
+0094. Tarvos — Moon of Saturn
+0095. Ijiraq — Moon of Saturn
+0096. Suttungr — Moon of Saturn
+0097. Kiviuq — Moon of Saturn
+0098. Mundilfari — Moon of Saturn
+0099. Albiorix — Moon of Saturn
+0100. Skathi — Moon of Saturn
+0101. Erriapus — Moon of Saturn
+0102. Siarnaq — Moon of Saturn
+0103. Thrymr — Moon of Saturn
+0104. Narvi — Moon of Saturn
+0105. Methone — Moon of Saturn
+0106. Pallene — Moon of Saturn
+0107. Polydeuces — Moon of Saturn
+0108. Daphnis — Moon of Saturn
+0109. Aegir — Moon of Saturn
+0110. Bebhionn — Moon of Saturn
+0111. Bergelmir — Moon of Saturn
+0112. Bestla — Moon of Saturn
+0113. Farbauti — Moon of Saturn
+0114. Fenrir — Moon of Saturn
+0115. Fornjot — Moon of Saturn
+0116. Hati — Moon of Saturn
+0117. Hyrrokkin — Moon of Saturn
+0118. Kari — Moon of Saturn
+0119. Loge — Moon of Saturn
+0120. Skoll — Moon of Saturn
+0121. Surtur — Moon of Saturn
+0122. Anthe — Moon of Saturn
+0123. Jarnsaxa — Moon of Saturn
+0124. Greip — Moon of Saturn
+0125. Tarqeq — Moon of Saturn
+0126. Aegaeon — Moon of Saturn
+0127. Gridr — Moon of Saturn
+0128. Angrboda — Moon of Saturn
+0129. Skrymir — Moon of Saturn
+0130. Gerd — Moon of Saturn
+0131. Eggther — Moon of Saturn
+0132. Beli — Moon of Saturn
+0133. Gunnlod — Moon of Saturn
+0134. Thiazzi — Moon of Saturn
+0135. Alvaldi — Moon of Saturn
+0136. Geirrod — Moon of Saturn
+0137. Ariel — Moon of Uranus
+0138. Umbriel — Moon of Uranus
+0139. Titania — Moon of Uranus
+0140. Oberon — Moon of Uranus
+0141. Miranda — Moon of Uranus
+0142. Cordelia — Moon of Uranus
+0143. Ophelia — Moon of Uranus
+0144. Bianca — Moon of Uranus
+0145. Cressida — Moon of Uranus
+0146. Desdemona — Moon of Uranus
+0147. Juliet — Moon of Uranus
+0148. Portia — Moon of Uranus
+0149. Rosalind — Moon of Uranus
+0150. Belinda — Moon of Uranus
+0151. Puck — Moon of Uranus
+0152. Caliban — Moon of Uranus
+0153. Sycorax — Moon of Uranus
+0154. Prospero — Moon of Uranus
+0155. Setebos — Moon of Uranus
+0156. Stephano — Moon of Uranus
+0157. Trinculo — Moon of Uranus
+0158. Francisco — Moon of Uranus
+0159. Margaret — Moon of Uranus
+0160. Ferdinand — Moon of Uranus
+0161. Perdita — Moon of Uranus
+0162. Mab — Moon of Uranus
+0163. Cupid — Moon of Uranus
+0164. Triton — Moon of Neptune
+0165. Nereid — Moon of Neptune
+0166. Naiad — Moon of Neptune
+0167. Thalassa — Moon of Neptune
+0168. Despina — Moon of Neptune
+0169. Galatea — Moon of Neptune
+0170. Larissa — Moon of Neptune
+0171. Proteus — Moon of Neptune
+0172. Halimede — Moon of Neptune
+0173. Psamathe — Moon of Neptune
+0174. Sao — Moon of Neptune
+0175. Laomedeia — Moon of Neptune
+0176. Neso — Moon of Neptune
+0177. Hippocamp — Moon of Neptune
+0178. Charon — Moon of Dwarf Planet Pluto
+0179. Nix — Moon of Dwarf Planet Pluto
+0180. Hydra — Moon of Dwarf Planet Pluto
+0181. Kerberos — Moon of Dwarf Planet Pluto
+0182. Styx — Moon of Dwarf Planet Pluto
+
+STARS — COMMON AND IAU NAMES
+============================
+0183. Sun — Star
+0184. Absolutno — Star
+0185. Acamar — Star
+0186. Achernar — Star
+0187. Achird — Star
+0188. Acrab — Star
+0189. Acrux — Star
+0190. Acubens — Star
+0191. Adhafera — Star
+0192. Adhara — Star
+0193. Adhil — Star
+0194. Ain — Star
+0195. Ainalrami — Star
+0196. Aladfar — Star
+0197. Alasia — Star
+0198. Albaldah — Star
+0199. Albali — Star
+0200. Albireo — Star
+0201. Alchiba — Star
+0202. Alcor — Star
+0203. Alcyone — Star
+0204. Aldebaran — Star
+0205. Alderamin — Star
+0206. Aldhanab — Star
+0207. Aldhibah — Star
+0208. Aldulfin — Star
+0209. Alfirk — Star
+0210. Algedi — Star
+0211. Algenib — Star
+0212. Algieba — Star
+0213. Algol — Star
+0214. Algorab — Star
+0215. Alhena — Star
+0216. Alioth — Star
+0217. Aljanah — Star
+0218. Alkaid — Star
+0219. Alkalurops — Star
+0220. Alkaphrah — Star
+0221. Alkarab — Star
+0222. Alkes — Star
+0223. Almaaz — Star
+0224. Almach — Star
+0225. Alnair — Star
+0226. Alnasl — Star
+0227. Alnilam — Star
+0228. Alnitak — Star
+0229. Alniyat — Star
+0230. Alphard — Star
+0231. Alphecca — Star
+0232. Alpheratz — Star
+0233. Alpherg — Star
+0234. Alrakis — Star
+0235. Alrescha — Star
+0236. Alruba — Star
+0237. Alsafi — Star
+0238. Alsciaukat — Star
+0239. Alsephina — Star
+0240. Alshain — Star
+0241. Alshat — Star
+0242. Altair — Star
+0243. Altais — Star
+0244. Alterf — Star
+0245. Aludra — Star
+0246. Alula Australis — Star
+0247. Alula Borealis — Star
+0248. Alya — Star
+0249. Alzirr — Star
+0250. Amadioha — Star
+0251. Amansinaya — Star
+0252. Anadolu — Star
+0253. Ancha — Star
+0254. Angetenar — Star
+0255. Aniara — Star
+0256. Ankaa — Star
+0257. Anser — Star
+0258. Antares — Star
+0259. Arcalis — Star
+0260. Arcturus — Star
+0261. Arkab Posterior — Star
+0262. Arkab Prior — Star
+0263. Arneb — Star
+0264. Ascella — Star
+0265. Asellus Australis — Star
+0266. Asellus Borealis — Star
+0267. Ashlesha — Star
+0268. Aspidiske — Star
+0269. Asterope — Star
+0270. Atakoraka — Star
+0271. Athebyne — Star
+0272. Atik — Star
+0273. Atlas — Star
+0274. Atria — Star
+0275. Avior — Star
+0276. Axolotl — Star
+0277. Ayeyarwady — Star
+0278. Azelfafage — Star
+0279. Azha — Star
+0280. Azmidi — Star
+0281. Baekdu — Star
+0282. Barnard's Star — Star
+0283. Baten Kaitos — Star
+0284. Beemim — Star
+0285. Beid — Star
+0286. Belel — Star
+0287. Belenos — Star
+0288. Bellatrix — Star
+0289. Berehynia — Star
+0290. Betelgeuse — Star
+0291. Bharani — Star
+0292. Bibha — Star
+0293. Biham — Star
+0294. Bosona — Star
+0295. Botein — Star
+0296. Brachium — Star
+0297. Bubup — Star
+0298. Buna — Star
+0299. Bunda — Star
+0300. Canopus — Star
+0301. Capella — Star
+0302. Caph — Star
+0303. Castor — Star
+0304. Castula — Star
+0305. Cebalrai — Star
+0306. Ceibo — Star
+0307. Celaeno — Star
+0308. Cervantes — Star
+0309. Chalawan — Star
+0310. Chamukuy — Star
+0311. Chaophraya — Star
+0312. Chara — Star
+0313. Chason — Star
+0314. Chechia — Star
+0315. Chertan — Star
+0316. Citadelle — Star
+0317. Citala — Star
+0318. Cocibolca — Star
+0319. Copernicus — Star
+0320. Cor Caroli — Star
+0321. Cujam — Star
+0322. Cursa — Star
+0323. Dabih — Star
+0324. Dalim — Star
+0325. Deneb — Star
+0326. Deneb Algedi — Star
+0327. Denebola — Star
+0328. Diadem — Star
+0329. Dingolay — Star
+0330. Diphda — Star
+0331. Diwo — Star
+0332. Diya — Star
+0333. Dofida — Star
+0334. Dombay — Star
+0335. Dschubba — Star
+0336. Dubhe — Star
+0337. Dziban — Star
+0338. Ebla — Star
+0339. Edasich — Star
+0340. Electra — Star
+0341. Elgafar — Star
+0342. Elkurud — Star
+0343. Elnath — Star
+0344. Eltanin — Star
+0345. Emiw — Star
+0346. Enif — Star
+0347. Errai — Star
+0348. Fafnir — Star
+0349. Fang — Star
+0350. Fawaris — Star
+0351. Felis — Star
+0352. Felixvarela — Star
+0353. Flegetonte — Star
+0354. Fomalhaut — Star
+0355. Formosa — Star
+0356. Franz — Star
+0357. Fulu — Star
+0358. Fumalsamakah — Star
+0359. Funi — Star
+0360. Furud — Star
+0361. Fuyue — Star
+0362. Gacrux — Star
+0363. Gakyid — Star
+0364. Geminga — Star
+0365. Giausar — Star
+0366. Gienah — Star
+0367. Ginan — Star
+0368. Gloas — Star
+0369. Gomeisa — Star
+0370. Grumium — Star
+0371. Gudja — Star
+0372. Gumala — Star
+0373. Guniibuu — Star
+0374. Hadar — Star
+0375. Haedus — Star
+0376. Hamal — Star
+0377. Hassaleh — Star
+0378. Hatysa — Star
+0379. Helvetios — Star
+0380. Heze — Star
+0381. Hoggar — Star
+0382. Homam — Star
+0383. Horna — Star
+0384. Hunahpu — Star
+0385. Hunor — Star
+0386. Iklil — Star
+0387. Illyrian — Star
+0388. Imai — Star
+0389. Inquill — Star
+0390. Intan — Star
+0391. Intercrus — Star
+0392. Irena — Star
+0393. Itonda — Star
+0394. Izar — Star
+0395. Jabbah — Star
+0396. Jishui — Star
+0397. Kaffaljidhma — Star
+0398. Kalausi — Star
+0399. Kamuy — Star
+0400. Kang — Star
+0401. Karaka — Star
+0402. Kaus Australis — Star
+0403. Kaus Borealis — Star
+0404. Kaus Media — Star
+0405. Kaveh — Star
+0406. Keid — Star
+0407. Khambalia — Star
+0408. Kitalpha — Star
+0409. Kochab — Star
+0410. Koeia — Star
+0411. Koit — Star
+0412. Kornephoros — Star
+0413. Kraz — Star
+0414. Kurhah — Star
+0415. La Superba — Star
+0416. Larawag — Star
+0417. Lerna — Star
+0418. Lesath — Star
+0419. Libertas — Star
+0420. Lich — Star
+0421. Liesma — Star
+0422. Lilii Borea — Star
+0423. Lionrock — Star
+0424. Lucilinburhuc — Star
+0425. Lusitania — Star
+0426. Maasym — Star
+0427. Macondo — Star
+0428. Mago — Star
+0429. Mahasim — Star
+0430. Mahsati — Star
+0431. Maia — Star
+0432. Malmok — Star
+0433. Marfik — Star
+0434. Markab — Star
+0435. Markeb — Star
+0436. Marohu — Star
+0437. Marsic — Star
+0438. Matar — Star
+0439. Mazaalai — Star
+0440. Mebsuta — Star
+0441. Megrez — Star
+0442. Meissa — Star
+0443. Mekbuda — Star
+0444. Meleph — Star
+0445. Menkalinan — Star
+0446. Menkar — Star
+0447. Menkent — Star
+0448. Menkib — Star
+0449. Merak — Star
+0450. Merga — Star
+0451. Meridiana — Star
+0452. Merope — Star
+0453. Mesarthim — Star
+0454. Miaplacidus — Star
+0455. Mimosa — Star
+0456. Minchir — Star
+0457. Minelauva — Star
+0458. Mintaka — Star
+0459. Mira — Star
+0460. Mirach — Star
+0461. Miram — Star
+0462. Mirfak — Star
+0463. Mirzam — Star
+0464. Misam — Star
+0465. Mizar — Star
+0466. Moldoveanu — Star
+0467. Monch — Star
+0468. Montuno — Star
+0469. Morava — Star
+0470. Moriah — Star
+0471. Mothallah — Star
+0472. Mouhoun — Star
+0473. Mpingo — Star
+0474. Muliphein — Star
+0475. Muphrid — Star
+0476. Muscida — Star
+0477. Musica — Star
+0478. Muspelheim — Star
+0479. Nahn — Star
+0480. Naledi — Star
+0481. Naos — Star
+0482. Nashira — Star
+0483. Nasti — Star
+0484. Natasha — Star
+0485. Nekkar — Star
+0486. Nembus — Star
+0487. Nenque — Star
+0488. Nervia — Star
+0489. Nganurganity — Star
+0490. Nihal — Star
+0491. Nikawiy — Star
+0492. Nosaxa — Star
+0493. Nunki — Star
+0494. Nusakan — Star
+0495. Nushagak — Star
+0496. Nyamien — Star
+0497. Ogma — Star
+0498. Okab — Star
+0499. Paikauhale — Star
+0500. Parumleo — Star
+0501. Peacock — Star
+0502. Petra — Star
+0503. Phact — Star
+0504. Phecda — Star
+0505. Pherkad — Star
+0506. Phoenicia — Star
+0507. Piautos — Star
+0508. Pincoya — Star
+0509. Pipirima — Star
+0510. Pipoltr — Star
+0511. Pleione — Star
+0512. Poerava — Star
+0513. Polaris — Star
+0514. Polaris Australis — Star
+0515. Polis — Star
+0516. Pollux — Star
+0517. Porrima — Star
+0518. Praecipua — Star
+0519. Prima Hyadum — Star
+0520. Procyon — Star
+0521. Propus — Star
+0522. Proxima Centauri — Star
+0523. Ran — Star
+0524. Rana — Star
+0525. Rapeto — Star
+0526. Rasalas — Star
+0527. Rasalgethi — Star
+0528. Rasalhague — Star
+0529. Rastaban — Star
+0530. Regulus — Star
+0531. Revati — Star
+0532. Rigel — Star
+0533. Rigil Kentaurus — Star
+0534. Rosaliadecastro — Star
+0535. Rotanev — Star
+0536. Ruchbah — Star
+0537. Rukbat — Star
+0538. Sabik — Star
+0539. Saclateni — Star
+0540. Sadachbia — Star
+0541. Sadalbari — Star
+0542. Sadalmelik — Star
+0543. Sadalsuud — Star
+0544. Sadr — Star
+0545. Sagarmatha — Star
+0546. Saiph — Star
+0547. Salm — Star
+0548. Samaya — Star
+0549. Sansuna — Star
+0550. Sargas — Star
+0551. Sarin — Star
+0552. Sceptrum — Star
+0553. Scheat — Star
+0554. Schedar — Star
+0555. Secunda Hyadum — Star
+0556. Segin — Star
+0557. Seginus — Star
+0558. Sham — Star
+0559. Shama — Star
+0560. Sharjah — Star
+0561. Shaula — Star
+0562. Sheliak — Star
+0563. Sheratan — Star
+0564. Sika — Star
+0565. Sirius — Star
+0566. Situla — Star
+0567. Skat — Star
+0568. Solaris — Star
+0569. Spica — Star
+0570. Sterrennacht — Star
+0571. Stribor — Star
+0572. Sualocin — Star
+0573. Subra — Star
+0574. Suhail — Star
+0575. Sulafat — Star
+0576. Syrma — Star
+0577. Tabit — Star
+0578. Taika — Star
+0579. Taiyangshou — Star
+0580. Taiyi — Star
+0581. Talitha — Star
+0582. Tangra — Star
+0583. Tania Australis — Star
+0584. Tania Borealis — Star
+0585. Tapecue — Star
+0586. Tarazed — Star
+0587. Tarf — Star
+0588. Taygeta — Star
+0589. Tegmine — Star
+0590. Tejat — Star
+0591. Terebellum — Star
+0592. Tevel — Star
+0593. Theemin — Star
+0594. Thuban — Star
+0595. Tiaki — Star
+0596. Tianguan — Star
+0597. Tianyi — Star
+0598. Timir — Star
+0599. Tislit — Star
+0600. Titawin — Star
+0601. Tojil — Star
+0602. Toliman — Star
+0603. Tonatiuh — Star
+0604. Torcular — Star
+0605. Tuiren — Star
+0606. Tupa — Star
+0607. Tupi — Star
+0608. Tureis — Star
+0609. Ukdah — Star
+0610. Uklun — Star
+0611. Unukalhai — Star
+0612. Uruk — Star
+0613. Vega — Star
+0614. Veritate — Star
+0615. Vindemiatrix — Star
+0616. Wasat — Star
+0617. Wazn — Star
+0618. Wezen — Star
+0619. Wurren — Star
+0620. Xamidimura — Star
+0621. Xihe — Star
+0622. Xuange — Star
+0623. Yed Posterior — Star
+0624. Yed Prior — Star
+0625. Yildun — Star
+0626. Zaniah — Star
+0627. Zaurak — Star
+0628. Zavijava — Star
+0629. Zhang — Star
+0630. Zibal — Star
+0631. Zosma — Star
+0632. Zubenelgenubi — Star
+0633. Zubenelhakrabi — Star
+0634. Zubeneschamali — Star
+
+GALAXIES — COMMON NAMES AND NGC DESIGNATIONS
+============================================
+0635. Milky Way — Galaxy
+0636. NGC 224 (Andromeda Galaxy) — Galaxy
+0637. NGC 253 (Sculptor Filament; Silver Coin) — Galaxy
+0638. NGC 292 (Small Magellanic Cloud) — Galaxy
+0639. NGC 598 (Triangulum Galaxy; Triangulum Pinwheel) — Galaxy
+0640. NGC 1275 (Perseus A) — Galaxy
+0641. NGC 1316 (Fornax A) — Galaxy
+0642. NGC 1317 (Fornax B) — Galaxy
+0643. NGC 2537 (Bear Claw Nebula; Bear-Paw Galaxy) — Galaxy
+0644. NGC 2573 (Polarissima Australis) — Galaxy
+0645. NGC 2685 (Helix Galaxy) — Galaxy
+0646. NGC 3031 (Bode's Galaxy) — Galaxy
+0647. NGC 3034 (Cigar Galaxy) — Galaxy
+0648. NGC 3115 (Spindle Galaxy) — Galaxy
+0649. NGC 3172 (Polarissima Borealis) — Galaxy
+0650. NGC 3561 (the Guitar) — Galaxy
+0651. NGC 3928 (Miniature Spiral) — Galaxy
+0652. NGC 4038 (Antennae Galaxies) — Galaxy
+0653. NGC 4039 (Antennae Galaxies) — Galaxy
+0654. NGC 4194 (Medusa Galaxy Merger) — Galaxy
+0655. NGC 4254 (Coma Pinwheel; Virgo Cluster Pinwheel) — Galaxy
+0656. NGC 4435 (Eyes) — Galaxy
+0657. NGC 4438 (Eyes) — Galaxy
+0658. NGC 4486 (Virgo Galaxy) — Galaxy
+0659. NGC 4490 (Cocoon Galaxy) — Galaxy
+0660. NGC 4565 (Needle Galaxy) — Galaxy
+0661. NGC 4567 (Butterfly Galaxies; Siamese Twins) — Galaxy
+0662. NGC 4568 (Butterfly Galaxies; Siamese Twins) — Galaxy
+0663. NGC 4594 (Sombrero Galaxy) — Galaxy
+0664. NGC 4631 (Whale Galaxy) — Galaxy
+0665. NGC 4651 (Umbrella Galaxy) — Galaxy
+0666. NGC 4826 (Black Eye Galaxy; Evil Eye Galaxy) — Galaxy
+0667. NGC 5055 (Sunflower Galaxy) — Galaxy
+0668. NGC 5128 (Centaurus A) — Galaxy
+0669. NGC 5194 (Whirlpool Galaxy) — Galaxy
+0670. NGC 5236 (Southern Pinwheel Galaxy) — Galaxy
+0671. NGC 6822 (Barnard's Galaxy) — Galaxy
+0672. NGC 6946 (Fireworks Galaxy) — Galaxy
+0673. NGC 1 — Galaxy
+0674. NGC 2 — Galaxy
+0675. NGC 3 — Galaxy
+0676. NGC 4 — Galaxy
+0677. NGC 5 — Galaxy
+0678. NGC 6 — Galaxy
+0679. NGC 7 — Galaxy
+0680. NGC 9 — Galaxy
+0681. NGC 10 — Galaxy
+0682. NGC 11 — Galaxy
+0683. NGC 12 — Galaxy
+0684. NGC 13 — Galaxy
+0685. NGC 14 — Galaxy
+0686. NGC 15 — Galaxy
+0687. NGC 16 — Galaxy
+0688. NGC 17 — Galaxy
+0689. NGC 19 — Galaxy
+0690. NGC 21 — Galaxy
+0691. NGC 22 — Galaxy
+0692. NGC 23 — Galaxy
+0693. NGC 24 — Galaxy
+0694. NGC 25 — Galaxy
+0695. NGC 26 — Galaxy
+0696. NGC 27 — Galaxy
+0697. NGC 28 — Galaxy
+0698. NGC 31 — Galaxy
+0699. NGC 35 — Galaxy
+0700. NGC 36 — Galaxy
+0701. NGC 37 — Galaxy
+0702. NGC 38 — Galaxy
+0703. NGC 39 — Galaxy
+0704. NGC 41 — Galaxy
+0705. NGC 42 — Galaxy
+0706. NGC 43 — Galaxy
+0707. NGC 45 — Galaxy
+0708. NGC 47 — Galaxy
+0709. NGC 48 — Galaxy
+0710. NGC 49 — Galaxy
+0711. NGC 50 — Galaxy
+0712. NGC 51 — Galaxy
+0713. NGC 52 — Galaxy
+0714. NGC 53 — Galaxy
+0715. NGC 54 — Galaxy
+0716. NGC 55 — Galaxy
+0717. NGC 57 — Galaxy
+0718. NGC 59 — Galaxy
+0719. NGC 60 — Galaxy
+0720. NGC 61A — Galaxy
+0721. NGC 61B — Galaxy
+0722. NGC 62 — Galaxy
+0723. NGC 63 — Galaxy
+0724. NGC 64 — Galaxy
+0725. NGC 65 — Galaxy
+0726. NGC 66 — Galaxy
+0727. NGC 67 — Galaxy
+0728. NGC 68 — Galaxy
+0729. NGC 69 — Galaxy
+0730. NGC 70 — Galaxy
+0731. NGC 71 — Galaxy
+0732. NGC 72 — Galaxy
+0733. NGC 72A — Galaxy
+0734. NGC 73 — Galaxy
+0735. NGC 74 — Galaxy
+0736. NGC 75 — Galaxy
+0737. NGC 76 — Galaxy
+0738. NGC 77 — Galaxy
+0739. NGC 78A — Galaxy
+0740. NGC 78B — Galaxy
+0741. NGC 79 — Galaxy
+0742. NGC 80 — Galaxy
+0743. NGC 81 — Galaxy
+0744. NGC 83 — Galaxy
+0745. NGC 85 — Galaxy
+0746. NGC 85B — Galaxy
+0747. NGC 86 — Galaxy
+0748. NGC 87 — Galaxy
+0749. NGC 88 — Galaxy
+0750. NGC 89 — Galaxy
+0751. NGC 90 — Galaxy
+0752. NGC 92 — Galaxy
+0753. NGC 93 — Galaxy
+0754. NGC 94 — Galaxy
+0755. NGC 95 — Galaxy
+0756. NGC 96 — Galaxy
+0757. NGC 97 — Galaxy
+0758. NGC 98 — Galaxy
+0759. NGC 99 — Galaxy
+0760. NGC 100 — Galaxy
+0761. NGC 101 — Galaxy
+0762. NGC 102 — Galaxy
+0763. NGC 105 — Galaxy
+0764. NGC 106 — Galaxy
+0765. NGC 107 — Galaxy
+0766. NGC 108 — Galaxy
+0767. NGC 109 — Galaxy
+0768. NGC 112 — Galaxy
+0769. NGC 113 — Galaxy
+0770. NGC 114 — Galaxy
+0771. NGC 115 — Galaxy
+0772. NGC 116 — Galaxy
+0773. NGC 117 — Galaxy
+0774. NGC 118 — Galaxy
+0775. NGC 119 — Galaxy
+0776. NGC 120 — Galaxy
+0777. NGC 124 — Galaxy
+0778. NGC 125 — Galaxy
+0779. NGC 126 — Galaxy
+0780. NGC 127 — Galaxy
+0781. NGC 128 — Galaxy
+0782. NGC 130 — Galaxy
+0783. NGC 131 — Galaxy
+0784. NGC 132 — Galaxy
+0785. NGC 134 — Galaxy
+0786. NGC 135 — Galaxy
+0787. NGC 137 — Galaxy
+0788. NGC 138 — Galaxy
+0789. NGC 139 — Galaxy
+0790. NGC 140 — Galaxy
+0791. NGC 141 — Galaxy
+0792. NGC 142 — Galaxy
+0793. NGC 143 — Galaxy
+0794. NGC 144 — Galaxy
+0795. NGC 145 — Galaxy
+0796. NGC 147 — Galaxy
+0797. NGC 148 — Galaxy
+0798. NGC 149 — Galaxy
+0799. NGC 150 — Galaxy
+0800. NGC 151 — Galaxy
+0801. NGC 154 — Galaxy
+0802. NGC 155 — Galaxy
+0803. NGC 157 — Galaxy
+0804. NGC 159 — Galaxy
+0805. NGC 160 — Galaxy
+0806. NGC 161 — Galaxy
+0807. NGC 163 — Galaxy
+0808. NGC 164 — Galaxy
+0809. NGC 165 — Galaxy
+0810. NGC 166 — Galaxy
+0811. NGC 167 — Galaxy
+0812. NGC 168 — Galaxy
+0813. NGC 169 — Galaxy
+0814. NGC 169A — Galaxy
+0815. NGC 170 — Galaxy
+0816. NGC 171 — Galaxy
+0817. NGC 172 — Galaxy
+0818. NGC 173 — Galaxy
+0819. NGC 174 — Galaxy
+0820. NGC 177 — Galaxy
+0821. NGC 178 — Galaxy
+0822. NGC 179 — Galaxy
+0823. NGC 180 — Galaxy
+0824. NGC 181 — Galaxy
+0825. NGC 182 — Galaxy
+0826. NGC 183 — Galaxy
+0827. NGC 184 — Galaxy
+0828. NGC 185 — Galaxy
+0829. NGC 186 — Galaxy
+0830. NGC 187 — Galaxy
+0831. NGC 190 NED01 — Galaxy
+0832. NGC 190 NED02 — Galaxy
+0833. NGC 191 — Galaxy
+0834. NGC 191A — Galaxy
+0835. NGC 192 — Galaxy
+0836. NGC 193 — Galaxy
+0837. NGC 194 — Galaxy
+0838. NGC 195 — Galaxy
+0839. NGC 196 — Galaxy
+0840. NGC 197 — Galaxy
+0841. NGC 198 — Galaxy
+0842. NGC 199 — Galaxy
+0843. NGC 200 — Galaxy
+0844. NGC 201 — Galaxy
+0845. NGC 202 — Galaxy
+0846. NGC 203 — Galaxy
+0847. NGC 204 — Galaxy
+0848. NGC 205 — Galaxy
+0849. NGC 207 — Galaxy
+0850. NGC 208 — Galaxy
+0851. NGC 209 — Galaxy
+0852. NGC 210 — Galaxy
+0853. NGC 212 — Galaxy
+0854. NGC 213 — Galaxy
+0855. NGC 214 — Galaxy
+0856. NGC 215 — Galaxy
+0857. NGC 216 — Galaxy
+0858. NGC 217 — Galaxy
+0859. NGC 218 — Galaxy
+0860. NGC 219 — Galaxy
+0861. NGC 221 — Galaxy
+0862. NGC 223 — Galaxy
+0863. NGC 226 — Galaxy
+0864. NGC 227 — Galaxy
+0865. NGC 228 — Galaxy
+0866. NGC 229 — Galaxy
+0867. NGC 230 — Galaxy
+0868. NGC 232 — Galaxy
+0869. NGC 233 — Galaxy
+0870. NGC 234 — Galaxy
+0871. NGC 235A — Galaxy
+0872. NGC 235B — Galaxy
+0873. NGC 236 — Galaxy
+0874. NGC 237 — Galaxy
+0875. NGC 238 — Galaxy
+0876. NGC 239 — Galaxy
+0877. NGC 240 — Galaxy
+0878. NGC 243 — Galaxy
+0879. NGC 244 — Galaxy
+0880. NGC 245 — Galaxy
+0881. NGC 247 — Galaxy
+0882. NGC 247A — Galaxy
+0883. NGC 247B — Galaxy
+0884. NGC 247D — Galaxy
+0885. NGC 250 — Galaxy
+0886. NGC 251 — Galaxy
+0887. NGC 252 — Galaxy
+0888. NGC 254 — Galaxy
+0889. NGC 255 — Galaxy
+0890. NGC 257 — Galaxy
+0891. NGC 258 — Galaxy
+0892. NGC 259 — Galaxy
+0893. NGC 260 — Galaxy
+0894. NGC 262 — Galaxy
+0895. NGC 263 — Galaxy
+0896. NGC 264 — Galaxy
+0897. NGC 266 — Galaxy
+0898. NGC 268 — Galaxy
+0899. NGC 270 — Galaxy
+0900. NGC 271 — Galaxy
+0901. NGC 273 — Galaxy
+0902. NGC 274 — Galaxy
+0903. NGC 275 — Galaxy
+0904. NGC 276 — Galaxy
+0905. NGC 277 — Galaxy
+0906. NGC 278 — Galaxy
+0907. NGC 279 — Galaxy
+0908. NGC 280 — Galaxy
+0909. NGC 282 — Galaxy
+0910. NGC 283 — Galaxy
+0911. NGC 284 — Galaxy
+0912. NGC 285 — Galaxy
+0913. NGC 286 — Galaxy
+0914. NGC 287 — Galaxy
+0915. NGC 289 — Galaxy
+0916. NGC 291 — Galaxy
+0917. NGC 293 — Galaxy
+0918. NGC 295 — Galaxy
+0919. NGC 296 — Galaxy
+0920. NGC 297 — Galaxy
+0921. NGC 298 — Galaxy
+0922. NGC 300 — Galaxy
+0923. NGC 301 — Galaxy
+0924. NGC 303 — Galaxy
+0925. NGC 304 — Galaxy
+0926. NGC 307 — Galaxy
+0927. NGC 309 — Galaxy
+0928. NGC 311 — Galaxy
+0929. NGC 312 — Galaxy
+0930. NGC 314 — Galaxy
+0931. NGC 315 — Galaxy
+0932. NGC 317A — Galaxy
+0933. NGC 317B — Galaxy
+0934. NGC 318 — Galaxy
+0935. NGC 319 — Galaxy
+0936. NGC 320 — Galaxy
+0937. NGC 321 — Galaxy
+0938. NGC 322 — Galaxy
+0939. NGC 323 — Galaxy
+0940. NGC 324 — Galaxy
+0941. NGC 325 — Galaxy
+0942. NGC 326 NED01 — Galaxy
+0943. NGC 326 NED02 — Galaxy
+0944. NGC 327 — Galaxy
+0945. NGC 328 — Galaxy
+0946. NGC 329 — Galaxy
+0947. NGC 331 — Galaxy
+0948. NGC 332 — Galaxy
+0949. NGC 333A — Galaxy
+0950. NGC 333B — Galaxy
+0951. NGC 334 — Galaxy
+0952. NGC 335 — Galaxy
+0953. NGC 336 — Galaxy
+0954. NGC 337 — Galaxy
+0955. NGC 337A — Galaxy
+0956. NGC 338 — Galaxy
+0957. NGC 340 — Galaxy
+0958. NGC 341 — Galaxy
+0959. NGC 342 — Galaxy
+0960. NGC 343 — Galaxy
+0961. NGC 344 — Galaxy
+0962. NGC 345 — Galaxy
+0963. NGC 347 — Galaxy
+0964. NGC 348 — Galaxy
+0965. NGC 349 — Galaxy
+0966. NGC 350 — Galaxy
+0967. NGC 351 — Galaxy
+0968. NGC 352 — Galaxy
+0969. NGC 353 — Galaxy
+0970. NGC 354 — Galaxy
+0971. NGC 355 — Galaxy
+0972. NGC 356 — Galaxy
+0973. NGC 357 — Galaxy
+0974. NGC 359 — Galaxy
+0975. NGC 360 — Galaxy
+0976. NGC 363 — Galaxy
+0977. NGC 364 — Galaxy
+0978. NGC 365 — Galaxy
+0979. NGC 367 — Galaxy
+0980. NGC 368 — Galaxy
+0981. NGC 369 — Galaxy
+0982. NGC 373 — Galaxy
+0983. NGC 374 — Galaxy
+0984. NGC 375 — Galaxy
+0985. NGC 377 — Galaxy
+0986. NGC 378 — Galaxy
+0987. NGC 379 — Galaxy
+0988. NGC 380 — Galaxy
+0989. NGC 382 — Galaxy
+0990. NGC 383 — Galaxy
+0991. NGC 384 — Galaxy
+0992. NGC 385 — Galaxy
+0993. NGC 386 — Galaxy
+0994. NGC 387 — Galaxy
+
+SUPERCLUSTERS
+=============
+0995. Laniakea Supercluster — Large-scale structure
+0996. Apus Supercluster — Large-scale structure
+0997. Hercules Supercluster — Large-scale structure
+0998. Lepus Supercluster — Large-scale structure
+0999. Perseus-Pisces Supercluster — Large-scale structure
+1000. Shapley Supercluster — Large-scale structure
+
+SOURCES AND ATTRIBUTION
+NASA — Solar System planets:
+https://science.nasa.gov/solar-system/planets/
+
+NASA/JPL — Planetary Satellite Discovery Circumstances:
+https://ssd.jpl.nasa.gov/sats/discovery.html
+
+IAU Working Group on Star Names — IAU Catalog of Star Names:
+https://iauarchive.eso.org/public/themes/naming_stars/
+Catalog snapshot used (updated 2022-04-04):
+https://github.com/mirandadam/iau-starnames/blob/master/catalog_data/IAU-CSN.txt
+IAU content attribution: International Astronomical Union, CC BY.
+
+OpenNGC — Mattia Verga and contributors:
+https://github.com/mattiaverga/OpenNGC
+https://raw.githubusercontent.com/mattiaverga/OpenNGC/master/database_files/NGC.csv
+OpenNGC is licensed CC BY-SA 4.0. The galaxy section is an adapted selection
+of names/designations, with formatting changed; it is shared under CC BY-SA 4.0.
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Dupuy et al. — Dynamic cosmography of the local Universe: Laniakea and
+five more watershed superclusters (2023):
+https://arxiv.org/abs/2305.02339

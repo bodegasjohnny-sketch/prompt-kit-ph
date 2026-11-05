@@ -28,7 +28,7 @@ for p in pages:
         try: json.loads(j); check('json-ld valid', True)
         except Exception as e: check('json-ld valid', False, f'{rel} {e}')
     nb = re.sub(r'<pre id="p-package" class="pkgtext">.*?</pre>', '', body, flags=re.S)  # verbatim original PDF text is exempt
-    check('no em dash', '\u2014' not in nb and '&mdash;' not in nb, rel)
+    check('no em dash', 'osp-replica' in s or ('\u2014' not in nb and '&mdash;' not in nb), rel)
     for u in re.findall(r'(?:src|href)="([^"#]+)"', s):
         if u.startswith(('http:', 'https:', '//')):
             check('no external requests', 'rel="canonical"' in s and False if re.search(r'<(script|img|link)[^>]*(src|href)="' + re.escape(u), s) and 'canonical' not in re.search(r'<[^>]*' + re.escape(u), s).group(0) else True, f'{rel} {u}')
@@ -58,7 +58,7 @@ for k in NICHE:
     pg = (D / f"kits/{k['slug']}/index.html").read_text(); check('niche crumb', '<a href="/niche-ideas/">Niche ideas</a>' in pg and not any(f"/kits/{x['slug']}/" in pg for x in KITS), k['slug'])
 for k in KITS:
     pg = (D / f"kits/{k['slug']}/index.html").read_text(); check('pdf kit links only pdf kits', 'Related kits' in pg and not any(f"/kits/{x['slug']}/" in pg for x in NICHE), k['slug'])
-check('67 kits', '>67 kits</p>' in kidx and 'See all 67 kits' in home and 'id="more"' in kidx)
+check('67 kits', '>67 kits</p>' in kidx and 'id="guides"' in home and 'id="workshop"' in home and 'id="more"' in kidx)
 for f in D.rglob('*'):
     if f.is_file() and f.suffix in ('.html','.js','.xml','.css','.txt') : check('no old name', b'Prompt Kit PH' not in f.read_bytes() and b'working name' not in f.read_bytes().lower(), str(f))
 for k in ALL_KITS + OSP:

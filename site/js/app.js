@@ -48,3 +48,5 @@ if(bf){var fm='Short video script',fc=bf.querySelectorAll('.fmt'),outs={
 var tl=d.querySelectorAll('.toc a');
 if(tl.length&&'IntersectionObserver' in window){var to=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tl.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-20% 0px -70% 0px'});tl.forEach(function(a){var h=d.getElementById(a.getAttribute('href').slice(1));if(h)to.observe(h)})}
 })();
+// mobile menu toggle (nav stays visible without JS)
+(function(){var b=document.querySelector('.menubtn'),n=document.getElementById('mainnav');if(!b||!n)return;document.documentElement.classList.add('js');b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',o?'false':'true');n.classList.toggle('open',!o)});n.addEventListener('click',function(e){if(e.target.closest('a')){b.setAttribute('aria-expanded','false');n.classList.remove('open')}})})();
