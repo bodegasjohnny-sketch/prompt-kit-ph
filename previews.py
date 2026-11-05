@@ -60,3 +60,18 @@ def render(k, outdir):
         d.text((x + 68, yy), wrap(d, c, F(FR, 16), w - 140)[0] + ' ...', font=F(FR, 16), fill='#9aa8bf'); yy += 30
     badge(d); d.text((40, 762), 'Sample inside page of the printable kit', font=F(FR, 18), fill='#9aa8bf')
     im.save(outdir / f"{k['slug']}-inside.jpg", quality=82, optimize=True, progressive=True)
+
+def cover_card(k, outdir):
+    """Cover card for an original OSP kit (no illustration): title, category, PDF label."""
+    outdir.mkdir(parents=True, exist_ok=True)
+    im, d = bg(); x, y, w, h = 120, 80, 960, 640; page(d, x, y, w, h)
+    d.rectangle([x, y, x + w, y + 8], fill='#c41e3a')
+    lab = k['cat'].upper() + ' KIT'
+    d.rounded_rectangle([x + 50, y + 60, x + 50 + d.textlength(lab, font=F(FB, 20)) + 36, y + 102], 21, fill=(196, 30, 58, 60), outline='#ff4d66')
+    d.text((x + 68, y + 69), lab, font=F(FB, 20), fill='#ff8a9a')
+    ty = y + 150
+    for l in wrap(d, k['short'], F(FB, 56), w - 100)[:4]: d.text((x + 50, ty), l, font=F(FB, 56), fill='#f4f6fa'); ty += 70
+    d.text((x + 50, y + h - 120), 'Creator Kit  |  AI Prompt Framework', font=F(FR, 24), fill='#9aa8bf')
+    d.rounded_rectangle([x + 50, y + h - 76, x + 230, y + h - 36], 20, fill='#c41e3a'); d.text((x + 72, y + h - 68), 'ORIGINAL PDF', font=F(FB, 18), fill='#fff')
+    d.text((x + w - 330, y + h - 66), 'Open Source Prompt PH', font=F(FR, 22), fill='#9aa8bf')
+    im.save(outdir / f"{k['slug']}-cover.jpg", quality=80, optimize=True, progressive=True)

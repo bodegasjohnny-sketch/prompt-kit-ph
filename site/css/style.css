@@ -156,3 +156,4 @@ footer.site a{color:var(--muted)}footer.site ul{list-style:none;display:flex;gap
   footer.site{padding-bottom:110px}
 }
 @media(max-width:820px){header.top{position:relative}}
+.filters .chip{min-height:44px}

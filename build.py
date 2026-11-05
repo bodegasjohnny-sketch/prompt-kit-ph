@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build Open Source Prompt PH: site/ (content.py, css, js) -> docs/. Change BASE_URL before deploying."""
-import json, shutil, pathlib, html, sys
-from previews import render
+import json, shutil, pathlib, html, sys, re
+from previews import render, cover_card
 from PIL import Image, ImageDraw, ImageFont
 BASE_URL = 'https://mjd.johnnybodegas.com'   # <- single config value for canonical, OG, sitemap
 SITE_NAME = 'Open Source Prompt PH'
@@ -9,6 +9,14 @@ SRC = pathlib.Path('site'); OUT = pathlib.Path('docs')
 sys.path.insert(0, str(SRC)); from content import KITS as ALL_KITS, GUIDES, DATE
 KITS = [k for k in ALL_KITS if (SRC/'pdfs'/f"{k['slug']}.pdf").exists()]
 NICHE = [k for k in ALL_KITS if k not in KITS]
+_EX = json.loads((SRC/'osp_existing.json').read_text())
+for k in KITS: k.update(_EX[k['slug']])
+def short(t): return re.sub(r'\s*Creator Kit\s*-?\s*AI Prompt Framework\s*(\.pdf)?\s*$', '', t, flags=re.I).strip(' -')
+OSP = json.loads((SRC/'osp_kits.json').read_text())
+for o in OSP:
+    o['osp'] = True; o['short'] = short(o['title'])
+    o['summary'] = f"The original {o['short']} creator kit from Open Source Prompt PH. Read the full PDF text, copy it all or download the original PDF."
+PDFK = sorted(KITS + OSP, key=lambda k: (k['date'], k['post_id']), reverse=True)
 E = html.escape
 NOTICE = 'AI-assisted content. Check facts before you publish.'
 PAGES = []  # (path, title) for sitemap
@@ -138,13 +146,37 @@ def make_pdf(k, path):
         c.setFont('Helvetica',8); c.setFillColor(colors.grey); c.drawString(20*mm,10*mm,SITE_NAME+' | '+k['title']); c.drawRightString(190*mm,10*mm,'Page %d'%d.page)
     SimpleDocTemplate(str(path),pagesize=A4,leftMargin=20*mm,rightMargin=20*mm,topMargin=18*mm,bottomMargin=18*mm,title=k['title'],author=SITE_NAME).build(st,onFirstPage=foot,onLaterPages=foot)
 
+def osp_page(k, prev, nxt, rel):
+    (OUT/'downloads').mkdir(exist_ok=True)
+    shutil.copyfile(SRC/'pdfs'/f"{k['slug']}.pdf", OUT/'downloads'/f"{k['slug']}.pdf")
+    dlname = (SRC/'pdfs'/f"{k['slug']}.name").read_text().strip()
+    ptext = (SRC/'pdf_text'/f"{k['slug']}.txt").read_text(encoding='utf-8')
+    otitle = (SRC/'pdfs'/f"{k['slug']}.title").read_text(encoding='utf-8').strip()
+    if len(ptext.strip()) > 50:
+        box = f'<pre id="p-package" class="pkgtext">{E(ptext)}</pre>'; pintro = 'This is the complete text of the PDF; downloading gives you the original file.'
+    else:
+        box = '<pre id="p-package" class="pkgtext">This PDF has no extractable text (it may be scanned images). Use Download PDF for the original file.</pre>'; pintro = 'No text could be extracted from this PDF. The download is the original file.'
+    n = words(ptext)
+    pkg = f'''<section class="pkg" id="package" aria-labelledby="pkg-h"><h2 id="pkg-h">Full package: complete text of the PDF</h2><p>{pintro}</p><p class="orig"><strong>Original title:</strong> {E(otitle)}<br><strong>Original:</strong> {E(otitle)} ({E(dlname)})</p>
+<div class="pblock"><div class="ph"><span>{E(k['short'])} (full text)</span><span class="pb"><button class="copy" type="button" data-target="p-package" aria-label="Copy the whole package">Copy all</button><a class="dl" href="/downloads/{k['slug']}.pdf" download="{E(dlname)}">Download PDF</a></span></div>{box}</div></section>'''
+    art = f'''<article class="prose">{pkg}<p class="notice" role="note">{NOTICE}</p>
+<p>New to these kits? Read <a href="/guides/adapt-a-kit-to-your-project/">how to adapt a kit to your project</a> and <a href="/guides/fact-check-ai-output/">how to fact-check AI output</a>.</p>
+<nav class="pager" aria-label="More kits"><a class="card prev" href="/kits/{prev['slug']}/"><small>Previous kit</small>{E(prev.get('short', prev['title']))}</a><a class="card next" href="/kits/{nxt['slug']}/"><small>Next kit</small>{E(nxt.get('short', nxt['title']))}</a></nav>
+<section class="related" aria-labelledby="rel"><h2 id="rel">Related kits</h2><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">{''.join(kitcard(x) for x in rel)}</div></section></article>'''
+    tools = f'<div class="tools"><a class="btn pri" href="/downloads/{k['slug']}.pdf" download="{E(dlname)}">Download PDF</a><button class="btn" type="button" data-print>Print</button><a class="btn" href="/kits/">All kits</a></div>'
+    body = hero(E(k['title']), E(k['summary']), E(k['cat']) + ' kit', f'<div class="meta"><span>{rtime(n)} min read</span><span>Posted {k["date"][:10]}</span><span>{k["pages"]} page PDF</span></div><p class="notice" role="note">{NOTICE}</p>{tools}') + \
+        f'<div class="wrap layout"><nav class="toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#package">Full package</a></li><li><a href="#rel">Related kits</a></li></ol></nav>{art}</div>'
+    cw = {"@context": "https://schema.org", "@type": "CreativeWork", "name": k['title'], "description": k['summary'], "inLanguage": "en", "datePublished": k['date'][:10], "image": url(f"assets/kits/{k['slug']}-cover.jpg"), "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": url(f"downloads/{k['slug']}.pdf")}, "isBasedOn": "https://opensourcepromptph.com/?p=" + str(k['post_id'])}
+    layout(f"kits/{k['slug']}/", k['short'], k['summary'][:158], body, crumbs=[('kits/', 'Kits'), (f"kits/{k['slug']}/", k['short'])], ld=[cw], og_slug='kit-' + k['slug'], og_kicker=k['cat'] + ' kit', og_override=f"assets/kits/{k['slug']}-cover.jpg")
+
 def build():
     if OUT.exists(): shutil.rmtree(OUT)
     OUT.mkdir(); (OUT / 'CNAME').write_text('mjd.johnnybodegas.com\n'); (OUT / '.nojekyll').write_text(''); shutil.copytree(SRC / 'css', OUT / 'css'); shutil.copytree(SRC / 'js', OUT / 'js')
     (OUT / 'favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#c41e3a"/><text x="16" y="22" font-family="monospace" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">&gt;_</text></svg>')
     for k in ALL_KITS: render(k, SRC / 'assets/kits')
+    for k in OSP: cover_card(k, SRC / 'assets/kits')
     shutil.copytree(SRC / 'assets', OUT / 'assets')
-    cats = sorted({k['cat'] for k in KITS})
+    cats = sorted({k['cat'] for k in PDFK})
     # HOME
     nb = '''<div class="card glow rv" id="notebook"><div class="nb-head"><span>Prompt notebook</span><span>Sample page</span></div>
 <div class="nb-tabs" role="group" aria-label="Show prompt parts"><button class="chip" type="button" aria-pressed="true">01 Role</button><button class="chip" type="button" aria-pressed="false">02 Context</button><button class="chip" type="button" aria-pressed="false">03 Output</button></div>
@@ -160,29 +192,31 @@ def build():
 <section class="sec"><div class="wrap"><p class="eyebrow">How it works</p><h2 class="rv">Four steps from idea to a checked draft</h2>{STEPS}</div></section>
 <section class="sec" style="padding-top:0"><div class="wrap"><p class="eyebrow">Latest creator kits</p><h2 class="rv">Ready to adapt, free to read and print</h2>
 <p class="muted">Every kit is a full web page with a prompt framework, worked examples and a fact check list. Every kit has a Copy all button and a Download PDF button.</p>
-<div class="grid">{''.join(kitcard(k) for k in KITS[-6:][::-1])}</div><div class="ctas"><a class="btn" href="/kits/">See all {len(KITS)} kits</a></div></div></section>
+<div class="grid">{''.join(kitcard(k) for k in PDFK[:6])}</div><div class="ctas"><a class="btn" href="/kits/">See all {len(PDFK)} kits</a></div></div></section>
 <section class="sec" style="padding-top:0"><div class="wrap"><div class="cta-box rv"><p class="eyebrow">Prompt builder</p><h2>Build a 3 part prompt in seconds</h2><p class="muted">Type a topic, pick a format and copy the result. Nothing is saved or sent anywhere.</p><div class="ctas"><a class="btn pri" href="/builder/">Open the builder</a><a class="btn" href="/guides/write-a-prompt-in-3-parts/">Read the 3 part guide</a></div></div></div></section>'''
     layout('', SITE_NAME, 'Free, original AI prompt kits and guides for Filipino creators. Copy a framework, adapt it to your topic and fact-check before you publish.', body, og_slug='home')
     # KITS INDEX
     chips = '<button class="chip" type="button" data-cat="All" aria-pressed="true">All</button>' + ''.join(f'<button class="chip" type="button" data-cat="{E(c)}" aria-pressed="false">{E(c)}</button>' for c in cats)
     body = hero('Creator kits', 'Original prompt frameworks for explainers, scripts and image series. Search by topic or filter by category.', 'Kits library') + f'''
 <section class="sec" style="padding-top:44px"><div class="wrap"><label class="lbl" for="q">Search kits</label><input class="search" id="q" type="search" placeholder="Try: space, dog, logo" autocomplete="off">
-<div class="filters" role="group" aria-label="Filter by category">{chips}</div><p class="count" id="count" aria-live="polite">{len(KITS)} kits shown</p>
-<div class="grid">{''.join(kitcard(k, 'h2') for k in KITS)}</div></div></section>'''
-    il = {"@context": "https://schema.org", "@type": "ItemList", "name": "Creator kits", "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": url(f"kits/{k['slug']}/"), "name": k['title']} for i, k in enumerate(KITS)]}
-    layout('kits/', 'Creator Kits: Free AI Prompt Frameworks', f'Browse {len(KITS)} free, original AI prompt kits for explainers on animals, space, history, tech and Filipino culture. Search and filter by topic.', body, crumbs=[('kits/', 'Kits')], ld=[il], og_slug='kits', og_kicker='Kits library')
+<div class="filters" role="group" aria-label="Filter by category">{chips}</div><p class="count" id="count" aria-live="polite">{len(PDFK)} kits</p>
+<div class="grid" id="kitgrid">{''.join(kitcard(k, 'h2') for k in PDFK)}</div><div class="ctas"><button class="btn" type="button" id="more" hidden>Show more kits</button></div></div></section>'''
+    il = {"@context": "https://schema.org", "@type": "ItemList", "name": "Creator kits", "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": url(f"kits/{k['slug']}/"), "name": k['title']} for i, k in enumerate(PDFK)]}
+    layout('kits/', 'Creator Kits: Free AI Prompt Frameworks', f'Browse {len(PDFK)} free Open Source Prompt PH creator kits with full PDF text and downloads: animals, space, history, health, maps, military and more.', body, crumbs=[('kits/', 'Kits')], ld=[il], og_slug='kits', og_kicker='Kits library')
     # KIT PAGES
     nbody = hero('Niche ideas', 'Starter niche ideas written for this site. These are not from the original PDF kits.', 'Other niche options') + f'''
 <section class="sec" style="padding-top:44px"><div class="wrap"><p class="muted">Each idea has a site-written prompt framework, examples and a fact check list you can adapt. For the original kits with PDFs, see <a href="/kits/">Kits</a>.</p>
 <div class="grid">{''.join(kitcard(k, 'h2') for k in NICHE)}</div></div></section>'''
     nil = {"@context": "https://schema.org", "@type": "ItemList", "name": "Niche ideas", "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": url(f"kits/{k['slug']}/"), "name": k['title']} for i, k in enumerate(NICHE)]}
     layout('niche-ideas/', 'Niche Ideas: Starter Prompt Ideas', 'Starter niche ideas written for this site: jeepney history, Filipino street food and Philippine festivals. Not from the original PDF kits.', nbody, crumbs=[('niche-ideas/', 'Niche ideas')], ld=[nil], og_slug='niche-ideas', og_kicker='Niche ideas')
-    for GROUP in (KITS, NICHE):
+    for GROUP in (PDFK, NICHE):
       isn = GROUP is NICHE
       for i, k in enumerate(GROUP):
         prev, nxt = GROUP[i - 1], GROUP[(i + 1) % len(GROUP)]
         rel = [x for x in GROUP if x['cat'] == k['cat'] and x is not k][:3]
         rel += [x for x in GROUP if x not in rel and x is not k and x not in (prev, nxt)][:3 - len(rel)]
+        if k.get('osp'):
+            osp_page(k, prev, nxt, rel); continue
         n = words(k['summary'], k['why'], k['role'], k['context'], k['output'], *[e[1] for e in k['examples']], *k['adapt'], *k['checks']) + 150
         toc = [('package', 'Full package'), ('overview', 'Overview'), ('framework', 'Prompt framework'), ('examples', 'Example prompts'), ('adapt', 'How to adapt it'), ('fact-check', 'Fact check checklist')]
         full = f"{k['role']}\n{k['context']}\n{k['output']}"

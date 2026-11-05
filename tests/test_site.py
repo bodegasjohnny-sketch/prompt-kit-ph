@@ -42,21 +42,27 @@ for p in pages:
         check('heading order', int(b) <= int(a) + 1, f'{rel} h{a}->h{b}')
     if '/kits/' in rel and rel.count('/') == 3:
         check('kit notice', 'AI-assisted content. Check facts before you publish.' in s, rel)
-        check('kit features', all(x in s for x in ['class="toc"', 'class="copy"', 'data-print', 'class="pager"', 'crumbs', 'min read', '"HowTo"']), rel)
-from build import KITS, NICHE, ALL_KITS
-check('10 pdf kits', len(KITS) == 10 and len(NICHE) == 3)
+        check('kit features', all(x in s for x in ['class="toc"', 'class="copy"', 'data-print', 'class="pager"', 'crumbs', 'min read']) and ('"HowTo"' in s or '"CreativeWork"' in s), rel)
+from build import KITS, NICHE, ALL_KITS, OSP, PDFK
+import hashlib, html as _h
 home = (D/'index.html').read_text(); kidx = (D/'kits/index.html').read_text(); nidx = (D/'niche-ideas/index.html').read_text()
+check('pdf kit counts', len(KITS) == 10 and len(NICHE) == 3 and len(OSP) == 57 and len(PDFK) == 67)
+for k in OSP:
+    pg = (D / f"kits/{k['slug']}/index.html").read_text()
+    check('osp sha', hashlib.sha256((D/'downloads'/f"{k['slug']}.pdf").read_bytes()).hexdigest() == k['sha256'], k['slug'])
+    check('osp text verbatim', _h.unescape(re.search(r'<pre id="p-package" class="pkgtext">(.*?)</pre>', pg, re.S).group(1)) == (D.parent/'site/pdf_text'/f"{k['slug']}.txt").read_text(encoding='utf-8'), k['slug'])
+    check('osp original title', 'Original title:</strong> ' + _h.escape(k['title'].strip()) in pg and f"/kits/{k['slug']}/" in kidx, k['slug'])
 for k in NICHE:
     check('niche not on home/kits', f"/kits/{k['slug']}/" not in home and f"/kits/{k['slug']}/" not in kidx, k['slug'])
     check('niche on niche page', f"/kits/{k['slug']}/" in nidx, k['slug'])
     pg = (D / f"kits/{k['slug']}/index.html").read_text(); check('niche crumb', '<a href="/niche-ideas/">Niche ideas</a>' in pg and not any(f"/kits/{x['slug']}/" in pg for x in KITS), k['slug'])
 for k in KITS:
     pg = (D / f"kits/{k['slug']}/index.html").read_text(); check('pdf kit links only pdf kits', 'Related kits' in pg and not any(f"/kits/{x['slug']}/" in pg for x in NICHE), k['slug'])
-check('10 kits shown', '10 kits shown' in kidx and 'See all 10 kits' in home)
+check('67 kits', '>67 kits</p>' in kidx and 'See all 67 kits' in home and 'id="more"' in kidx)
 for f in D.rglob('*'):
     if f.is_file() and f.suffix in ('.html','.js','.xml','.css','.txt') : check('no old name', b'Prompt Kit PH' not in f.read_bytes() and b'working name' not in f.read_bytes().lower(), str(f))
-for k in ALL_KITS:
-    for part in ('cover', 'inside'):
+for k in ALL_KITS + OSP:
+    for part in (('cover',) if k.get('osp') else ('cover', 'inside')):
         f = D / f"assets/kits/{k['slug']}-{part}.jpg"; check('kit preview images', f.exists() and f.stat().st_size > 5000, str(f))
         pg = (D / f"kits/{k['slug']}/index.html").read_text(); check('kit page shows preview', f"{k['slug']}-{part}.jpg" in pg, k['slug'])
     for idx in ['niche-ideas/index.html' if k in NICHE else 'kits/index.html']: check('kit card uses cover', f"{k['slug']}-cover.jpg" in (D / idx).read_text(), k['slug'])

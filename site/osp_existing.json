@@ -1,0 +1,62 @@
+{
+ "cat-breed-explainer": {
+  "date": "2026-11-03T10:37:12",
+  "post_id": 484,
+  "pdf_url": "https://opensourcepromptph.com/wp-content/uploads/2026/11/Cat-Breed-Advance-Prompt-Creator-Kit.pdf",
+  "sha256": "67c52bd2ccd429a4d0836342e5c36b61bea0a6399a65390cf7a2215c5f03e8df"
+ },
+ "dog-breed-explainer": {
+  "date": "2026-11-03T10:38:12",
+  "post_id": 487,
+  "pdf_url": "https://opensourcepromptph.com/wp-content/uploads/2026/11/Dog-Breed-Advance-Prompt-Creator-Kit.pdf",
+  "sha256": "0118511fa416af8fb8fac5c7d3696800fda607182d4e7912c5ed2b36cc906305"
+ },
+ "drink-history-explainer": {
+  "date": "2026-11-03T10:39:11",
+  "post_id": 490,
+  "pdf_url": "https://opensourcepromptph.com/wp-content/uploads/2026/11/Liquor-History-Advance-Prompt-Creator-Kit.pdf",
+  "sha256": "c2f9188af150e6d65426ec0eafac9e814ee69d89973638754092d19f3f7389bc"
+ },
+ "unusual-jobs-explainer": {
+  "date": "2026-10-31T14:25:03",
+  "post_id": 461,
+  "pdf_url": "https://opensourcepromptph.com/wp-content/uploads/2026/10/Dark-Job-Creator-Kit.pdf",
+  "sha256": "996123c1c18f2f6121aaed8bced447943648304ff102c575472304f38c8a6932"
+ },
+ "cosmic-origin-map": {
+  "date": "2026-10-31T14:36:16",
+  "post_id": 464,
+  "pdf_url": "https://opensourcepromptph.com/wp-content/uploads/2026/10/COSMIC-ORIGIN-MAP-EXPLAINER.pdf",
+  "sha256": "0fc3f8bb59df8b14a98d37a6788f6c35e0fbae1a16668919db0fd334846336aa"
+ },
+ "dwarf-planet-origin-map": {
+  "date": "2026-11-01T03:50:36",
+  "post_id": 469,
+  "pdf_url": "https://opensourcepromptph.com/wp-content/uploads/2026/11/claude_Eris_Cosmic_Origin_Map_Reels.pdf",
+  "sha256": "688187bd337c7627120385796fe7f271930c8372dded9c47904b286b097a9a3e"
+ },
+ "what-if-map-cartoon": {
+  "date": "2026-11-02T05:18:41",
+  "post_id": 473,
+  "pdf_url": "https://opensourcepromptph.com/wp-content/uploads/2026/11/WHATIF_MAP_CARTOON_EXPLAINER_V1.pdf",
+  "sha256": "0c27d0af56c33edc9e16c59b56eaf9c26ab385f10f84a917fda2a189d78ad15a"
+ },
+ "gadget-explainer": {
+  "date": "2026-11-03T10:03:50",
+  "post_id": 479,
+  "pdf_url": "https://opensourcepromptph.com/wp-content/uploads/2026/11/2D_ZackStyle-Gadget-Explainer.pdf",
+  "sha256": "e06db4a3c22c2e313b0cbcb9ed1750831e34a460d07a08aaebc8ddeb9afbfff6"
+ },
+ "logo-history-explainer": {
+  "date": "2026-11-03T10:40:12",
+  "post_id": 493,
+  "pdf_url": "https://opensourcepromptph.com/wp-content/uploads/2026/11/Logo-History-Advance-Prompt-Creator-Kit.pdf",
+  "sha256": "49bce68414f84f9fa6334d7eb2f65d0472ef966217e481232ef3a83d611ad431"
+ },
+ "science-legend-explainer": {
+  "date": "2026-11-03T10:41:43",
+  "post_id": 496,
+  "pdf_url": "https://opensourcepromptph.com/wp-content/uploads/2026/11/Science-legend-Advance-Prompt-Creator-Kit.pdf",
+  "sha256": "2d63427a18ea6b617b4a69acd05f637cf6b8a3f26e237341d0a308b9a86664c9"
+ }
+}

@@ -27,8 +27,9 @@ if(st.length&&!rm){var s=0;st[0].classList.add('on');setInterval(function(){st[s
 // kit search + filter
 var q=d.getElementById('q');
 if(q){var cards=d.querySelectorAll('[data-kit]'),cnt=d.getElementById('count'),cat='All',chips=d.querySelectorAll('.filters .chip');
- function run(){var v=q.value.trim().toLowerCase(),n=0;cards.forEach(function(c){var ok=(cat==='All'||c.dataset.cat===cat)&&(!v||c.dataset.text.indexOf(v)>-1);c.hidden=!ok;if(ok)n++});cnt.textContent=n+(n===1?' kit':' kits')+' shown'}
- q.addEventListener('input',run);chips.forEach(function(c){c.addEventListener('click',function(){cat=c.dataset.cat;chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});run()})});run()}
+ var lim=24,mb=d.getElementById('more');function run(){var v=q.value.trim().toLowerCase(),n=0;cards.forEach(function(c){var ok=(cat==='All'||c.dataset.cat===cat)&&(!v||c.dataset.text.indexOf(v)>-1);if(ok)n++;c.hidden=!ok||n>lim});var s=Math.min(n,lim);cnt.textContent=(n>s?'Showing '+s+' of ':'')+n+(n===1?' kit':' kits');if(mb)mb.hidden=n<=lim}
+ if(mb)mb.addEventListener('click',function(){lim+=24;run()});
+ q.addEventListener('input',function(){lim=24;run()});chips.forEach(function(c){c.addEventListener('click',function(){cat=c.dataset.cat;lim=24;chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});run()})});run()}
 // builder
 var bf=d.getElementById('builder');
 if(bf){var fm='Short video script',fc=bf.querySelectorAll('.fmt'),outs={
